@@ -1,1 +1,3 @@
-// import foo from './components/bar';
+import gptActiveViewRefresh from './components/gpt-active-view-refresh';
+
+gptActiveViewRefresh();
