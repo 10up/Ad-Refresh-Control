@@ -38,7 +38,7 @@ The NPM commands will fail without these files present.
 	- ActiveAdRefresh
 	- ACTIVE_AD_REFRESH
 	- tenup-scaffold
-	- tenup_scaffold
+	- active_ad_refresh
 
 - `cd` into the plugin folder
 - run `npm run start` to build the front-end assets

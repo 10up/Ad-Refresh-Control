@@ -28,7 +28,7 @@ class Core_Tests extends Base\TestCase {
 		// Setup
 		\WP_Mock::expectActionAdded( 'init', 'ActiveAdRefresh\Core\i18n' );
 		\WP_Mock::expectActionAdded( 'init', 'ActiveAdRefresh\Core\init' );
-		\WP_Mock::expectAction( 'tenup_scaffold_loaded' );
+		\WP_Mock::expectAction( 'active_ad_refresh_loaded' );
 
 		// Act
 		setup();
@@ -74,7 +74,7 @@ class Core_Tests extends Base\TestCase {
 	 */
 	public function test_init() {
 		// Setup
-		\WP_Mock::expectAction( 'tenup_scaffold_init' );
+		\WP_Mock::expectAction( 'active_ad_refresh_init' );
 
 		// Act
 		init();

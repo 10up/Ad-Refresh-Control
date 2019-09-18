@@ -31,7 +31,7 @@ function setup() {
 	// Hook to allow async or defer on asset loading.
 	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
 
-	do_action( 'tenup_scaffold_loaded' );
+	do_action( 'active_ad_refresh_loaded' );
 }
 
 /**
@@ -51,7 +51,7 @@ function i18n() {
  * @return void
  */
 function init() {
-	do_action( 'tenup_scaffold_init' );
+	do_action( 'active_ad_refresh_init' );
 }
 
 /**
@@ -83,7 +83,7 @@ function deactivate() {
  * @return array
  */
 function get_enqueue_contexts() {
-	return [ 'admin', 'frontend', 'shared' ];
+	return [ 'frontend' ];
 }
 
 /**
@@ -130,7 +130,7 @@ function style_url( $stylesheet, $context ) {
 function scripts() {
 
 	wp_enqueue_script(
-		'tenup_scaffold_shared',
+		'active_ad_refresh_shared',
 		script_url( 'shared', 'shared' ),
 		[],
 		ACTIVE_AD_REFRESH_VERSION,
@@ -138,7 +138,7 @@ function scripts() {
 	);
 
 	wp_enqueue_script(
-		'tenup_scaffold_frontend',
+		'active_ad_refresh_frontend',
 		script_url( 'frontend', 'frontend' ),
 		[],
 		ACTIVE_AD_REFRESH_VERSION,
@@ -155,7 +155,7 @@ function scripts() {
 function admin_scripts() {
 
 	wp_enqueue_script(
-		'tenup_scaffold_shared',
+		'active_ad_refresh_shared',
 		script_url( 'shared', 'shared' ),
 		[],
 		ACTIVE_AD_REFRESH_VERSION,
@@ -163,7 +163,7 @@ function admin_scripts() {
 	);
 
 	wp_enqueue_script(
-		'tenup_scaffold_admin',
+		'active_ad_refresh_admin',
 		script_url( 'admin', 'admin' ),
 		[],
 		ACTIVE_AD_REFRESH_VERSION,
@@ -180,7 +180,7 @@ function admin_scripts() {
 function styles() {
 
 	wp_enqueue_style(
-		'tenup_scaffold_shared',
+		'active_ad_refresh_shared',
 		style_url( 'shared-style', 'shared' ),
 		[],
 		ACTIVE_AD_REFRESH_VERSION
@@ -188,14 +188,14 @@ function styles() {
 
 	if ( is_admin() ) {
 		wp_enqueue_style(
-			'tenup_scaffold_admin',
+			'active_ad_refresh_admin',
 			style_url( 'admin-style', 'admin' ),
 			[],
 			ACTIVE_AD_REFRESH_VERSION
 		);
 	} else {
 		wp_enqueue_style(
-			'tenup_scaffold_frontend',
+			'active_ad_refresh_frontend',
 			style_url( 'style', 'frontend' ),
 			[],
 			ACTIVE_AD_REFRESH_VERSION
@@ -212,14 +212,14 @@ function styles() {
 function admin_styles() {
 
 	wp_enqueue_style(
-		'tenup_scaffold_shared',
+		'active_ad_refresh_shared',
 		style_url( 'shared-style', 'shared' ),
 		[],
 		ACTIVE_AD_REFRESH_VERSION
 	);
 
 	wp_enqueue_style(
-		'tenup_scaffold_admin',
+		'active_ad_refresh_admin',
 		style_url( 'admin-style', 'admin' ),
 		[],
 		ACTIVE_AD_REFRESH_VERSION
