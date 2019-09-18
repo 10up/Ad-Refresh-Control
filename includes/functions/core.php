@@ -22,9 +22,11 @@ function setup() {
 	add_action( 'init', $n( 'i18n' ) );
 	add_action( 'init', $n( 'init' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'scripts' ) );
-	add_action( 'wp_enqueue_scripts', $n( 'styles' ) );
-	add_action( 'admin_enqueue_scripts', $n( 'admin_scripts' ) );
-	add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
+
+	// Not needed at this point.
+	// add_action( 'wp_enqueue_scripts', $n( 'styles' ) );
+	// add_action( 'admin_enqueue_scripts', $n( 'admin_scripts' ) );
+	// add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
 
 	// Editor styles. add_editor_style() doesn't work outside of a theme.
 	add_filter( 'mce_css', $n( 'mce_css' ) );
@@ -129,13 +131,14 @@ function style_url( $stylesheet, $context ) {
  */
 function scripts() {
 
-	wp_enqueue_script(
-		'active_ad_refresh_shared',
-		script_url( 'shared', 'shared' ),
-		[],
-		ACTIVE_AD_REFRESH_VERSION,
-		true
-	);
+	// Not needed currently.
+	// wp_enqueue_script(
+	// 	'active_ad_refresh_shared',
+	// 	script_url( 'shared', 'shared' ),
+	// 	[],
+	// 	ACTIVE_AD_REFRESH_VERSION,
+	// 	true
+	// );
 
 	wp_enqueue_script(
 		'active_ad_refresh_frontend',
