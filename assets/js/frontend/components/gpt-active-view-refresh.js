@@ -1,9 +1,9 @@
 const {googletag} = window;
-const advertiserId = 4788048711; // Only trigger active view refresh for the given advertiserId.
-const viewabilityThreshold = 70; // Percentage of visibility above which to trigger active view refresh.
-const refreshInterval = 3; // Time interval, in seconds, to refresh slots.
+const advertiserIds        = window.ActiveAdRefresh.advertiserIds || []; // Only trigger active view refresh for the given advertiserId.
+const viewabilityThreshold = window.ActiveAdRefresh.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
+const refreshInterval      = window.ActiveAdRefresh.refreshInterval || 30; // Time interval, in seconds, to refresh slots.
+const debug                = ( 'true' === window.ActiveAdRefresh.debug ? true : false ); // Set to true to force refresh timer behavior regardless of advertiserIds, and to enable console logging.
 const viewedAds = {}; // Object to cache ad slot info.
-const debug = true; // Set to true to force refresh timer behavior regardless of advertiserId, and to enable console logging.
 
 /**
  * Start countdown timer to refreshing the given slot.
@@ -11,6 +11,7 @@ const debug = true; // Set to true to force refresh timer behavior regardless of
  * @param {object} slot   GPT Slot object to refresh.
  */
 const startRefreshCountdown = ( slotId, slot ) => {
+
 	if ( ! viewedAds[slotId].refreshing ) {
 		if ( debug ) {
 			console.log( `starting refresh countdown for ${  slotId}` );
@@ -66,8 +67,21 @@ const viewabilityHandler = ( event ) => {
 	const {inViewPercentage} = event;
 	const slotId = event.slot.getSlotElementId();
 	const slotInfo = event.slot.getResponseInformation();
+	let refresh = true;
 
-	if ( debug || slotInfo.advertiserId === advertiserId ) {
+	// Prevent a refresh if the ad has the advertiser ID.
+	if ( 0 < advertiserIds.length ) {
+		if ( advertiserIds.includes( slotInfo.advertiserId ) ) {
+
+			if ( debug ) {
+				console.log( `Preventing refresh of Advertiser ID: ${slotInfo.advertiserId}` );
+			}
+
+			refresh = false;
+		}
+	}
+
+	if ( refresh ) {
 		if ( ! viewedAds[slotId] ) {
 			viewedAds[slotId] = {};
 		}

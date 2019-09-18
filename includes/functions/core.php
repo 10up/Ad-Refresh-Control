@@ -148,6 +148,16 @@ function scripts() {
 		true
 	);
 
+	wp_localize_script(
+		'active_ad_refresh_frontend',
+		'ActiveAdRefresh',
+		[
+			'advertiserIds'        => apply_filters( 'active_ad_refresh_advertiser_ids', [] ),
+			'viewabilityThreshold' => apply_filters( 'active_ad_refresh_viewability_threshold', 70 ),
+			'refreshInterval'      => apply_filters( 'active_ad_refresh_refresh_interval', 30 ),
+			'debug'                => apply_filters( 'active_ad_refresh_refresh_debug', 'false' ),
+		]
+	);
 }
 
 /**
