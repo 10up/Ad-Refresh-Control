@@ -133,11 +133,11 @@ function refresh_interval_callback() {
 function advertiser_ids_callback() {
 
 	$avc_settings = get_option( 'avc_settings' );
-	$value        = $avc_settings['advertiser_ids'] ?? '';
+	$value        = $avc_settings['advertiser_ids'] ?? [];
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[advertiser_ids]">
-			<p><?php esc_html_e( 'Prevent ad refresh\'s for specific Publisher IDs. (Comma Seperated Lists)', 'ad-viewability-control' ); ?></p>
+			<p><?php esc_html_e( 'Prevent ad refresh\'s for specific Publisher IDs. (Comma Seperated List)', 'ad-viewability-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -175,5 +175,35 @@ function register_settings() {
  * @since  1.0
  */
 function sanitize_settings( $settings ) {
+
+	// disable_refresh
+	if ( isset( $settings['disable_refresh'] ) ) {
+		$settings['disable_refresh'] = true;
+	} else {
+		$settings['disable_refresh'] = false;
+	}
+
+	// viewability_threshold
+	$viewability_threshold_default = 70;
+	if ( ! is_numeric( $settings['viewability_threshold'] ) || intval( $settings['viewability_threshold'] ) > 0 || intval( $settings['viewability_threshold'] ) < 100 ) {
+		$settings['viewability_threshold'] = $viewability_threshold_default;
+	}
+
+	// refresh_interval
+	$refresh_interval = 30;
+	if ( ! is_numeric( $settings['refresh_interval'] ) || intval( $settings['refresh_interval'] ) > 0 ) {
+		$settings['refresh_interval'] = $refresh_interval_default;
+	}
+
+	// 'refresh_interval' => string '10' (length=2)
+	// 'advertiser_ids' => string '' (length=0)
+
+	// debug
+	if ( isset( $settings['debug'] ) ) {
+		$settings['debug'] = true;
+	} else {
+		$settings['debug'] = false;
+	}
+
 	return $settings;
 }
