@@ -136,8 +136,8 @@ function advertiser_ids_callback() {
 	$value        = $avc_settings['advertiser_ids'] ?? [];
 
 	?>
-		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[advertiser_ids]">
-			<p><?php esc_html_e( 'Prevent ad refresh\'s for specific Publisher IDs. (Comma Seperated List)', 'ad-viewability-control' ); ?></p>
+		<label><input type="text" value="<?php echo esc_attr( implode( ',', $value ) ); ?>" name="avc_settings[advertiser_ids]">
+			<p><?php esc_html_e( 'Prevent ad refreshs for specific Publisher IDs. (Comma Seperated List)', 'ad-viewability-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -185,18 +185,40 @@ function sanitize_settings( $settings ) {
 
 	// viewability_threshold
 	$viewability_threshold_default = 70;
-	if ( ! is_numeric( $settings['viewability_threshold'] ) || intval( $settings['viewability_threshold'] ) > 0 || intval( $settings['viewability_threshold'] ) < 100 ) {
+	if ( isset( $settings['viewability_threshold'] ) ) {
+		if ( ! is_numeric( $settings['viewability_threshold'] ) || intval( $settings['viewability_threshold'] ) > 0 || intval( $settings['viewability_threshold'] ) < 100 ) {
+			$settings['viewability_threshold'] = intval( $viewability_threshold_default );
+		}
+	} else {
 		$settings['viewability_threshold'] = $viewability_threshold_default;
 	}
 
 	// refresh_interval
-	$refresh_interval = 30;
-	if ( ! is_numeric( $settings['refresh_interval'] ) || intval( $settings['refresh_interval'] ) > 0 ) {
+	$refresh_interval_default = 30;
+	if ( isset( $settings['refresh_interval'] ) ) {
+		if ( ! is_numeric( $settings['refresh_interval'] ) || intval( $settings['refresh_interval'] ) > 0 ) {
+			$settings['refresh_interval'] = intval( $refresh_interval_default );
+		}
+	} else {
 		$settings['refresh_interval'] = $refresh_interval_default;
 	}
 
-	// 'refresh_interval' => string '10' (length=2)
-	// 'advertiser_ids' => string '' (length=0)
+	$advertiser_ids_default = [];
+	if ( isset( $settings['advertiser_ids'] ) ) {
+
+		$advertiser_ids = explode( ',', $settings['advertiser_ids'] );
+
+		$advertiser_ids = array_filter( 
+			$advertiser_ids,
+			function( $advertiser_id ):int {
+				return is_numeric( $advertiser_id );
+			}
+		);
+
+		$settings['advertiser_ids'] = $advertiser_ids;
+	} else {
+		$settings['advertiser_ids'] = $advertiser_ids_default;
+	}
 
 	// debug
 	if ( isset( $settings['debug'] ) ) {
