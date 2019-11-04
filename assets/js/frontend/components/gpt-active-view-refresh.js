@@ -1,8 +1,8 @@
 const {googletag} = window;
-const advertiserIds        = window.ActiveAdRefresh.advertiserIds || []; // Only trigger active view refresh for the given advertiserId.
-const viewabilityThreshold = window.ActiveAdRefresh.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
-const refreshInterval      = window.ActiveAdRefresh.refreshInterval || 30; // Time interval, in seconds, to refresh slots.
-const debug                = ( 'true' === window.ActiveAdRefresh.debug ? true : false ); // Set to true to force refresh timer behavior regardless of advertiserIds, and to enable console logging.
+const advertiserIds        = window.AdViewabilityControl.advertiserIds || []; // Only trigger active view refresh for the given advertiserId.
+const viewabilityThreshold = window.AdViewabilityControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
+const refreshInterval      = window.AdViewabilityControl.refreshInterval || 30; // Time interval, in seconds, to refresh slots.
+const debug                = ( 'true' === window.AdViewabilityControl.debug ? true : false ); // Set to true to force refresh timer behavior regardless of advertiserIds, and to enable console logging.
 const viewedAds = {}; // Object to cache ad slot info.
 
 /**

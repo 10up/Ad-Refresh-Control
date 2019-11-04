@@ -15,7 +15,7 @@ A brief description of the plugin.
 
 = Manual Installation =
 
-1. Upload the entire `/tenup-scaffold` directory to the `/wp-content/plugins/` directory.
+1. Upload the entire `/ad-viewability-control` directory to the `/wp-content/plugins/` directory.
 2. Activate 10up Scaffold through the 'Plugins' menu in WordPress.
 
 == Frequently Asked Questions ==
