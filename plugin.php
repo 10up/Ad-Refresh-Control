@@ -20,6 +20,7 @@ define( 'AD_VIEWABILITY_CONTROL_INC', AD_VIEWABILITY_CONTROL_PATH . 'includes/' 
 
 // Include files.
 require_once AD_VIEWABILITY_CONTROL_INC . 'functions/core.php';
+require_once AD_VIEWABILITY_CONTROL_INC . 'settings.php';
 
 // Activation/Deactivation.
 register_activation_hook( __FILE__, '\AdViewabilityControl\Core\activate' );
@@ -27,6 +28,7 @@ register_deactivation_hook( __FILE__, '\AdViewabilityControl\Core\deactivate' );
 
 // Bootstrap.
 AdViewabilityControl\Core\setup();
+AdViewabilityControl\Settings\setup();
 
 // Require Composer autoloader if it exists.
 if ( file_exists( AD_VIEWABILITY_CONTROL_PATH . '/vendor/autoload.php' ) ) {
