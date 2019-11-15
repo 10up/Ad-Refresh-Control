@@ -65,7 +65,13 @@ const killRefreshCountdown = ( slotId ) => {
  * see: https://developers.google.com/doubleclick-gpt/reference#googletageventsslotvisibilitychangedevent
  */
 const viewabilityHandler = ( event ) => {
-	const {inViewPercentage} = event;
+
+	let {inViewPercentage} = event;
+
+	if ( 'undefined' === typeof event.inViewPercentage ) {
+		inViewPercentage = 100;
+	}
+
 	const slotId = event.slot.getSlotElementId();
 	const slotInfo = event.slot.getResponseInformation();
 	let refresh = true;
@@ -99,6 +105,7 @@ const viewabilityHandler = ( event ) => {
  * Add event listeners for viewability.
  */
 const viewabilityListener = () => {
+	googletag.pubads().addEventListener( 'impressionViewable', viewabilityHandler );
 	googletag.pubads().addEventListener( 'slotVisibilityChanged', viewabilityHandler );
 };
 
