@@ -203,6 +203,7 @@ function sanitize_settings( $settings ) {
 		$settings['refresh_interval'] = $refresh_interval_default;
 	}
 
+	// advertiser_ids
 	$advertiser_ids_default = [];
 	if ( isset( $settings['advertiser_ids'] ) ) {
 
