@@ -1,8 +1,8 @@
 const {googletag} = window;
-const advertiserIds        = window.ActiveAdRefresh.advertiserIds || []; // Only trigger active view refresh for the given advertiserId.
-const viewabilityThreshold = window.ActiveAdRefresh.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
-const refreshInterval      = window.ActiveAdRefresh.refreshInterval || 30; // Time interval, in seconds, to refresh slots.
-const debug                = ( 'true' === window.ActiveAdRefresh.debug ? true : false ); // Set to true to force refresh timer behavior regardless of advertiserIds, and to enable console logging.
+const advertiserIds        = window.AdViewabilityControl.advertiserIds || []; // Only trigger active view refresh for the given advertiserId.
+const viewabilityThreshold = window.AdViewabilityControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
+const refreshInterval      = window.AdViewabilityControl.refreshInterval || 30; // Time interval, in seconds, to refresh slots.
+const debug                = ( '1' === window.AdViewabilityControl.debug ? true : false ); // Set to true to force refresh timer behavior regardless of advertiserIds, and to enable console logging.
 const viewedAds = {}; // Object to cache ad slot info.
 
 /**
@@ -14,7 +14,8 @@ const startRefreshCountdown = ( slotId, slot ) => {
 
 	if ( ! viewedAds[slotId].refreshing ) {
 		if ( debug ) {
-			console.log( `starting refresh countdown for ${  slotId}` );
+			console.log( `starting refresh countdown for ${slotId}` );
+			console.log( `viewability threshold set at ${viewabilityThreshold}%` );
 		}
 
 		viewedAds[slotId].startTime = new Date().valueOf();
@@ -23,14 +24,14 @@ const startRefreshCountdown = ( slotId, slot ) => {
 			const diff = Math.round( ( now - viewedAds[slotId].startTime ) / 1000 ); // Number of seconds elapsed since this slot last rendered/refreshed.
 
 			if ( debug ) {
-				console.log( `${diff  } seconds since last ${  slotId  } refresh` );
+				console.log( `${diff  } seconds since last ${slotId  } refresh` );
 			}
 
 			if ( diff >= refreshInterval ) {
 				// Refresh ad slot.
 				googletag.cmd.push( () => {
 					if ( debug ) {
-						console.log( `refreshing ${  slotId}` );
+						console.log( `refreshing ${slotId}` );
 					}
 
 					googletag.pubads().refresh( [ slot ] );
@@ -50,7 +51,7 @@ const startRefreshCountdown = ( slotId, slot ) => {
 const killRefreshCountdown = ( slotId ) => {
 	if ( viewedAds[slotId].refreshing ) {
 		if ( debug ) {
-			console.log( `killing refresh countdown for ${  slotId}` );
+			console.log( `killing refresh countdown for ${slotId}` );
 		}
 
 		window.clearInterval( viewedAds[slotId].refreshing );
@@ -64,7 +65,13 @@ const killRefreshCountdown = ( slotId ) => {
  * see: https://developers.google.com/doubleclick-gpt/reference#googletageventsslotvisibilitychangedevent
  */
 const viewabilityHandler = ( event ) => {
-	const {inViewPercentage} = event;
+
+	let {inViewPercentage} = event;
+
+	if ( 'undefined' === typeof event.inViewPercentage ) {
+		inViewPercentage = 100;
+	}
+
 	const slotId = event.slot.getSlotElementId();
 	const slotInfo = event.slot.getResponseInformation();
 	let refresh = true;
@@ -98,6 +105,7 @@ const viewabilityHandler = ( event ) => {
  * Add event listeners for viewability.
  */
 const viewabilityListener = () => {
+	googletag.pubads().addEventListener( 'impressionViewable', viewabilityHandler );
 	googletag.pubads().addEventListener( 'slotVisibilityChanged', viewabilityHandler );
 };
 

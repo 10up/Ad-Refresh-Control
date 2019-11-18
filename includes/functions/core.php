@@ -2,10 +2,10 @@
 /**
  * Core plugin functionality.
  *
- * @package ActiveAdRefresh
+ * @package AdViewabilityControl
  */
 
-namespace ActiveAdRefresh\Core;
+namespace AdViewabilityControl\Core;
 
 use \WP_Error as WP_Error;
 
@@ -42,9 +42,9 @@ function setup() {
  * @return void
  */
 function i18n() {
-	$locale = apply_filters( 'plugin_locale', get_locale(), 'tenup-scaffold' );
-	load_textdomain( 'tenup-scaffold', WP_LANG_DIR . '/tenup-scaffold/tenup-scaffold-' . $locale . '.mo' );
-	load_plugin_textdomain( 'tenup-scaffold', false, plugin_basename( ACTIVE_AD_REFRESH_PATH ) . '/languages/' );
+	$locale = apply_filters( 'plugin_locale', get_locale(), 'ad-viewability-control' );
+	load_textdomain( 'ad-viewability-control', WP_LANG_DIR . '/ad-viewability-control/ad-viewability-control-' . $locale . '.mo' );
+	load_plugin_textdomain( 'ad-viewability-control', false, plugin_basename( AD_VIEWABILITY_CONTROL_PATH ) . '/languages/' );
 }
 
 /**
@@ -99,10 +99,10 @@ function get_enqueue_contexts() {
 function script_url( $script, $context ) {
 
 	if ( ! in_array( $context, get_enqueue_contexts(), true ) ) {
-		return new WP_Error( 'invalid_enqueue_context', 'Invalid $context specified in ActiveAdRefresh script loader.' );
+		return new WP_Error( 'invalid_enqueue_context', 'Invalid $context specified in AdViewabilityControl script loader.' );
 	}
 
-	return ACTIVE_AD_REFRESH_URL . "dist/js/${script}.js";
+	return AD_VIEWABILITY_CONTROL_URL . "dist/js/${script}.js";
 
 }
 
@@ -117,10 +117,10 @@ function script_url( $script, $context ) {
 function style_url( $stylesheet, $context ) {
 
 	if ( ! in_array( $context, get_enqueue_contexts(), true ) ) {
-		return new WP_Error( 'invalid_enqueue_context', 'Invalid $context specified in ActiveAdRefresh stylesheet loader.' );
+		return new WP_Error( 'invalid_enqueue_context', 'Invalid $context specified in AdViewabilityControl stylesheet loader.' );
 	}
 
-	return ACTIVE_AD_REFRESH_URL . "dist/css/${stylesheet}.css";
+	return AD_VIEWABILITY_CONTROL_URL . "dist/css/${stylesheet}.css";
 
 }
 
@@ -136,7 +136,7 @@ function scripts() {
 	// 	'active_ad_refresh_shared',
 	// 	script_url( 'shared', 'shared' ),
 	// 	[],
-	// 	ACTIVE_AD_REFRESH_VERSION,
+	// 	AD_VIEWABILITY_CONTROL_VERSION,
 	// 	true
 	// );
 
@@ -144,18 +144,26 @@ function scripts() {
 		'active_ad_refresh_frontend',
 		script_url( 'frontend', 'frontend' ),
 		[],
-		ACTIVE_AD_REFRESH_VERSION,
+		AD_VIEWABILITY_CONTROL_VERSION,
 		true
 	);
 
+	$avc_settings          = get_option( 'avc_settings' );
+	$disable_refresh       = $avc_settings['disable_refresh'] ?? false;
+	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
+	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
+	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
+	$debug                 = $avc_settings['debug'] ?? false;
+
 	wp_localize_script(
 		'active_ad_refresh_frontend',
-		'ActiveAdRefresh',
+		'AdViewabilityControl',
 		[
-			'advertiserIds'        => apply_filters( 'active_ad_refresh_advertiser_ids', [] ),
-			'viewabilityThreshold' => apply_filters( 'active_ad_refresh_viewability_threshold', 70 ),
-			'refreshInterval'      => apply_filters( 'active_ad_refresh_refresh_interval', 30 ),
-			'debug'                => apply_filters( 'active_ad_refresh_refresh_debug', 'false' ),
+			'disableRefresh'       => apply_filters( 'active_ad_refresh_disable_refresh', $disable_refresh ),
+			'advertiserIds'        => apply_filters( 'active_ad_refresh_advertiser_ids', $advertiser_ids ),
+			'viewabilityThreshold' => apply_filters( 'active_ad_refresh_viewability_threshold', $viewability_threshold ),
+			'refreshInterval'      => apply_filters( 'active_ad_refresh_refresh_interval', $refresh_interval ),
+			'debug'                => apply_filters( 'active_ad_refresh_refresh_debug', $debug ),
 		]
 	);
 }
@@ -171,7 +179,7 @@ function admin_scripts() {
 		'active_ad_refresh_shared',
 		script_url( 'shared', 'shared' ),
 		[],
-		ACTIVE_AD_REFRESH_VERSION,
+		AD_VIEWABILITY_CONTROL_VERSION,
 		true
 	);
 
@@ -179,7 +187,7 @@ function admin_scripts() {
 		'active_ad_refresh_admin',
 		script_url( 'admin', 'admin' ),
 		[],
-		ACTIVE_AD_REFRESH_VERSION,
+		AD_VIEWABILITY_CONTROL_VERSION,
 		true
 	);
 
@@ -196,7 +204,7 @@ function styles() {
 		'active_ad_refresh_shared',
 		style_url( 'shared-style', 'shared' ),
 		[],
-		ACTIVE_AD_REFRESH_VERSION
+		AD_VIEWABILITY_CONTROL_VERSION
 	);
 
 	if ( is_admin() ) {
@@ -204,14 +212,14 @@ function styles() {
 			'active_ad_refresh_admin',
 			style_url( 'admin-style', 'admin' ),
 			[],
-			ACTIVE_AD_REFRESH_VERSION
+			AD_VIEWABILITY_CONTROL_VERSION
 		);
 	} else {
 		wp_enqueue_style(
 			'active_ad_refresh_frontend',
 			style_url( 'style', 'frontend' ),
 			[],
-			ACTIVE_AD_REFRESH_VERSION
+			AD_VIEWABILITY_CONTROL_VERSION
 		);
 	}
 
@@ -228,14 +236,14 @@ function admin_styles() {
 		'active_ad_refresh_shared',
 		style_url( 'shared-style', 'shared' ),
 		[],
-		ACTIVE_AD_REFRESH_VERSION
+		AD_VIEWABILITY_CONTROL_VERSION
 	);
 
 	wp_enqueue_style(
 		'active_ad_refresh_admin',
 		style_url( 'admin-style', 'admin' ),
 		[],
-		ACTIVE_AD_REFRESH_VERSION
+		AD_VIEWABILITY_CONTROL_VERSION
 	);
 
 }
@@ -251,7 +259,7 @@ function mce_css( $stylesheets ) {
 		$stylesheets .= ',';
 	}
 
-	return $stylesheets . ACTIVE_AD_REFRESH_URL . ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ?
+	return $stylesheets . AD_VIEWABILITY_CONTROL_URL . ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ?
 			'assets/css/frontend/editor-style.css' :
 			'dist/css/editor-style.min.css' );
 }

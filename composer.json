@@ -1,5 +1,5 @@
 {
-  "name": "10up/tenup-scaffold",
+  "name": "10up/ad-viewability-control",
   "description": "10up Scaffold",
   "authors": [
     {
@@ -12,7 +12,7 @@
   },
   "autoload": {
     "psr-4": {
-      "ActiveAdRefresh\\": "includes/classes/"
+      "AdViewabilityControl\\": "includes/classes/"
     }
   },
   "require-dev": {

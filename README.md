@@ -35,9 +35,9 @@ The NPM commands will fail without these files present.
 
 - Do case-sensitive search/replace for the following:
 
-	- ActiveAdRefresh
-	- ACTIVE_AD_REFRESH
-	- tenup-scaffold
+	- AdViewabilityControl
+	- AD_VIEWABILITY_CONTROL
+	- ad-viewability-control
 	- active_ad_refresh
 
 - `cd` into the plugin folder
