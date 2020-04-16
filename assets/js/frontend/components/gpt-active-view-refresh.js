@@ -1,9 +1,17 @@
 const {googletag} = window;
-const advertiserIds        = window.AdViewabilityControl.advertiserIds || []; // Only trigger active view refresh for the given advertiserId.
+let advertiserIds        = window.AdViewabilityControl.advertiserIds || []; // Do not trigger active view refresh for the given advertiserId.
+if ( 0 < advertiserIds.length ) {
+	const advertiserIdObject = {};
+	for ( let i = 0, {length} = advertiserIds; i < length; i++ ) {
+		advertiserIdObject[ advertiserIds[ i ] ] = 1;
+	}
+	advertiserIds = advertiserIdObject;
+}
 const viewabilityThreshold = window.AdViewabilityControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
 const refreshInterval      = window.AdViewabilityControl.refreshInterval || 30; // Time interval, in seconds, to refresh slots.
 const debug                = ( '1' === window.AdViewabilityControl.debug ? true : false ); // Set to true to force refresh timer behavior regardless of advertiserIds, and to enable console logging.
 const viewedAds = {}; // Object to cache ad slot info.
+let browserFocus = true;
 
 /**
  * Start countdown timer to refreshing the given slot.
@@ -28,6 +36,9 @@ const startRefreshCountdown = ( slotId, slot ) => {
 			}
 
 			if ( diff >= refreshInterval ) {
+				if ( ! browserFocus ) {
+					return;
+				}
 				// Refresh ad slot.
 				googletag.cmd.push( () => {
 					if ( debug ) {
@@ -78,7 +89,7 @@ const viewabilityHandler = ( event ) => {
 
 	// Prevent a refresh if the ad has the advertiser ID.
 	if ( 0 < advertiserIds.length ) {
-		if ( advertiserIds.includes( slotInfo.advertiserId ) ) {
+		if ( advertiserIds[ slotInfo.advertiserId ] ) {
 
 			if ( debug ) {
 				console.log( `Preventing refresh of Advertiser ID: ${slotInfo.advertiserId}` );
@@ -110,6 +121,38 @@ const viewabilityListener = () => {
 };
 
 /**
+ * Setup detection of whether the browser is focused.
+ */
+const setupBrowserFocusDetection = () => {
+	if ( 'undefined' !== typeof document.hidden ) {
+		browserFocus = ! document.hidden;
+		document.addEventListener( 'visibilitychange', function() {
+			browserFocus = ! document.hidden;
+		} );
+	} else if ( 'undefined' !== typeof document.onfocusin ) {
+		document.onfocusin = indicatePageIsFocused;
+		document.onfocusout = indicatePageIsNotFocused;
+	} else {
+		window.onfocus = indicatePageIsFocused;
+		window.onblur = indicatePageIsNotFocused;
+	}
+
+	/**
+	 * Set flag showing the page is in focus within the browser.
+	 */
+	function indicatePageIsFocused() {
+		browserFocus = true;
+	}
+
+	/**
+	 * Set flag showing the page has lost focus within the browser.
+	 */
+	function indicatePageIsNotFocused() {
+		browserFocus = false;
+	}
+};
+
+/**
  * Init ads functionality.
  */
 const init = () => {
@@ -133,6 +176,7 @@ const init = () => {
 	}
 
 	viewabilityListener();
+	setupBrowserFocusDetection();
 };
 
 export default init;
