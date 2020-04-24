@@ -90,7 +90,7 @@ function get_enqueue_contexts() {
  * Generate an URL to a script, taking into account whether SCRIPT_DEBUG is enabled.
  *
  * @param string $script Script file name (no .js extension)
- * @param string $context Context for the script ('admin', 'frontend', or 'shared')
+ * @param string $context Context for the script
  *
  * @return string|WP_Error URL
  */
@@ -108,7 +108,7 @@ function script_url( $script, $context ) {
  * Generate an URL to a stylesheet, taking into account whether SCRIPT_DEBUG is enabled.
  *
  * @param string $stylesheet Stylesheet file name (no .css extension)
- * @param string $context Context for the script ('admin', 'frontend', or 'shared')
+ * @param string $context Context for the script
  *
  * @return string URL
  */
@@ -128,15 +128,6 @@ function style_url( $stylesheet, $context ) {
  * @return void
  */
 function scripts() {
-
-	// Not needed currently.
-	// wp_enqueue_script(
-	// 	'active_ad_refresh_shared',
-	// 	script_url( 'shared', 'shared' ),
-	// 	[],
-	// 	AD_VIEWABILITY_CONTROL_VERSION,
-	// 	true
-	// );
 
 	wp_enqueue_script(
 		'active_ad_refresh_frontend',
@@ -172,14 +163,6 @@ function scripts() {
 function admin_scripts() {
 
 	wp_enqueue_script(
-		'active_ad_refresh_shared',
-		script_url( 'shared', 'shared' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION,
-		true
-	);
-
-	wp_enqueue_script(
 		'active_ad_refresh_admin',
 		script_url( 'admin', 'admin' ),
 		[],
@@ -195,13 +178,6 @@ function admin_scripts() {
  * @return void
  */
 function styles() {
-
-	wp_enqueue_style(
-		'active_ad_refresh_shared',
-		style_url( 'shared-style', 'shared' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION
-	);
 
 	if ( is_admin() ) {
 		wp_enqueue_style(
@@ -227,13 +203,6 @@ function styles() {
  * @return void
  */
 function admin_styles() {
-
-	wp_enqueue_style(
-		'active_ad_refresh_shared',
-		style_url( 'shared-style', 'shared' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION
-	);
 
 	wp_enqueue_style(
 		'active_ad_refresh_admin',
