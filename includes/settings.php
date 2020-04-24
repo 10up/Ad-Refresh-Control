@@ -71,24 +71,6 @@ function setup_fields_sections() {
 	add_settings_field( 'viewability_threshold', esc_html__( 'Viewability Threshold', 'ad-viewability-control' ), __NAMESPACE__ . '\activate_viewability_threshold_callback', 'ad-viewability-control', 'avc-section-1' );
 	add_settings_field( 'refresh_interval', esc_html__( 'Refresh Interval', 'ad-viewability-control' ), __NAMESPACE__ . '\refresh_interval_callback', 'ad-viewability-control', 'avc-section-1' );
 	add_settings_field( 'advertiser_ids', esc_html__( 'Advertiser IDs', 'ad-viewability-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-viewability-control', 'avc-section-1' );
-	add_settings_field( 'debug', esc_html__( 'Activate Debug', 'ad-viewability-control' ), __NAMESPACE__ . '\debug_callback', 'ad-viewability-control', 'avc-section-1' );
-}
-
-/**
- * Output debug field.
- *
- * @since 1.0
- */
-function disable_refresh_callback() {
-
-	$avc_settings = get_option( 'avc_settings' );
-	$value        = $avc_settings['disable_refresh'] ?? false;
-
-	?>
-		<label><input <?php checked( $value, true ); ?> type="checkbox" value="1" name="avc_settings[disable_refresh]">
-			<?php esc_html_e( 'Disable ad refresh on all ads.', 'ad-viewability-control' ); ?>
-		</label>
-	<?php
 }
 
 /**
@@ -143,23 +125,6 @@ function advertiser_ids_callback() {
 }
 
 /**
- * Output debug field.
- *
- * @since 1.0
- */
-function debug_callback() {
-
-	$avc_settings = get_option( 'avc_settings' );
-	$value        = $avc_settings['debug'] ?? false;
-
-	?>
-		<label><input <?php checked( $value, true ); ?> type="checkbox" value="1" name="avc_settings[debug]">
-			<?php esc_html_e( 'Display ad viewability data in the console.', 'ad-viewability-control' ); ?>
-		</label>
-	<?php
-}
-
-/**
  * Register settings for options table
  *
  * @since  1.0
@@ -209,7 +174,7 @@ function sanitize_settings( $settings ) {
 
 		$advertiser_ids = explode( ',', $settings['advertiser_ids'] );
 
-		$advertiser_ids = array_filter( 
+		$advertiser_ids = array_filter(
 			$advertiser_ids,
 			function( $advertiser_id ):int {
 				return is_numeric( $advertiser_id );
@@ -219,13 +184,6 @@ function sanitize_settings( $settings ) {
 		$settings['advertiser_ids'] = $advertiser_ids;
 	} else {
 		$settings['advertiser_ids'] = $advertiser_ids_default;
-	}
-
-	// debug
-	if ( isset( $settings['debug'] ) ) {
-		$settings['debug'] = true;
-	} else {
-		$settings['debug'] = false;
 	}
 
 	return $settings;
