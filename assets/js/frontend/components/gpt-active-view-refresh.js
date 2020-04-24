@@ -9,7 +9,6 @@ if ( 0 < advertiserIds.length ) {
 }
 const viewabilityThreshold = window.AdViewabilityControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
 const refreshInterval      = window.AdViewabilityControl.refreshInterval || 30; // Time interval, in seconds, to refresh slots.
-const debug                = ( '1' === window.AdViewabilityControl.debug ? true : false ); // Set to true to force refresh timer behavior regardless of advertiserIds, and to enable console logging.
 const viewedAds = {}; // Object to cache ad slot info.
 let browserFocus = true;
 
@@ -21,19 +20,10 @@ let browserFocus = true;
 const startRefreshCountdown = ( slotId, slot ) => {
 
 	if ( ! viewedAds[slotId].refreshing ) {
-		if ( debug ) {
-			console.log( `starting refresh countdown for ${slotId}` );
-			console.log( `viewability threshold set at ${viewabilityThreshold}%` );
-		}
-
 		viewedAds[slotId].startTime = new Date().valueOf();
 		viewedAds[slotId].refreshing = window.setInterval( () => {
 			const now = new Date().valueOf();
 			const diff = Math.round( ( now - viewedAds[slotId].startTime ) / 1000 ); // Number of seconds elapsed since this slot last rendered/refreshed.
-
-			if ( debug ) {
-				console.log( `${diff  } seconds since last ${slotId  } refresh` );
-			}
 
 			if ( diff >= refreshInterval ) {
 				if ( ! browserFocus ) {
@@ -41,10 +31,6 @@ const startRefreshCountdown = ( slotId, slot ) => {
 				}
 				// Refresh ad slot.
 				googletag.cmd.push( () => {
-					if ( debug ) {
-						console.log( `refreshing ${slotId}` );
-					}
-
 					googletag.pubads().refresh( [ slot ] );
 				} );
 
@@ -61,10 +47,6 @@ const startRefreshCountdown = ( slotId, slot ) => {
  */
 const killRefreshCountdown = ( slotId ) => {
 	if ( viewedAds[slotId].refreshing ) {
-		if ( debug ) {
-			console.log( `killing refresh countdown for ${slotId}` );
-		}
-
 		window.clearInterval( viewedAds[slotId].refreshing );
 		viewedAds[slotId].refreshing = null;
 	}
@@ -90,11 +72,6 @@ const viewabilityHandler = ( event ) => {
 	// Prevent a refresh if the ad has the advertiser ID.
 	if ( 0 < advertiserIds.length ) {
 		if ( advertiserIds[ slotInfo.advertiserId ] ) {
-
-			if ( debug ) {
-				console.log( `Preventing refresh of Advertiser ID: ${slotInfo.advertiserId}` );
-			}
-
 			refresh = false;
 		}
 	}

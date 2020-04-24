@@ -153,7 +153,6 @@ function scripts() {
 	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
 	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
 	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
-	$debug                 = $avc_settings['debug'] ?? false;
 
 	wp_localize_script(
 		'active_ad_refresh_frontend',
@@ -163,7 +162,6 @@ function scripts() {
 			'advertiserIds'        => apply_filters( 'active_ad_refresh_advertiser_ids', $advertiser_ids ),
 			'viewabilityThreshold' => apply_filters( 'active_ad_refresh_viewability_threshold', $viewability_threshold ),
 			'refreshInterval'      => apply_filters( 'active_ad_refresh_refresh_interval', $refresh_interval ),
-			'debug'                => apply_filters( 'active_ad_refresh_refresh_debug', $debug ),
 		]
 	);
 }
