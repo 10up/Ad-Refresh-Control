@@ -76,50 +76,26 @@ function deactivate() {
 
 }
 
-
-/**
- * The list of knows contexts for enqueuing scripts/styles.
- *
- * @return array
- */
-function get_enqueue_contexts() {
-	return [ 'frontend' ];
-}
-
 /**
  * Generate an URL to a script, taking into account whether SCRIPT_DEBUG is enabled.
  *
  * @param string $script Script file name (no .js extension)
- * @param string $context Context for the script
  *
  * @return string|WP_Error URL
  */
-function script_url( $script, $context ) {
-
-	if ( ! in_array( $context, get_enqueue_contexts(), true ) ) {
-		return new WP_Error( 'invalid_enqueue_context', 'Invalid $context specified in AdViewabilityControl script loader.' );
-	}
-
+function script_url( $script ) {
 	return AD_VIEWABILITY_CONTROL_URL . "dist/js/${script}.js";
-
 }
 
 /**
  * Generate an URL to a stylesheet, taking into account whether SCRIPT_DEBUG is enabled.
  *
  * @param string $stylesheet Stylesheet file name (no .css extension)
- * @param string $context Context for the script
  *
  * @return string URL
  */
-function style_url( $stylesheet, $context ) {
-
-	if ( ! in_array( $context, get_enqueue_contexts(), true ) ) {
-		return new WP_Error( 'invalid_enqueue_context', 'Invalid $context specified in AdViewabilityControl stylesheet loader.' );
-	}
-
+function style_url( $stylesheet ) {
 	return AD_VIEWABILITY_CONTROL_URL . "dist/css/${stylesheet}.css";
-
 }
 
 /**
