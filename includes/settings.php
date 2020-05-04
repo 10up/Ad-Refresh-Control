@@ -121,7 +121,7 @@ function refresh_interval_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[refresh_interval]">
-			<p><?php esc_html_e( 'How many seconds until the ads refresh?', 'ad-viewability-control' ); ?></p>
+			<p><?php esc_html_e( 'How many seconds until the ads refresh? (minimum of 30)', 'ad-viewability-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -197,7 +197,7 @@ function sanitize_settings( $settings ) {
 	// refresh_interval
 	$refresh_interval_default = 30;
 	if ( isset( $settings['refresh_interval'] ) ) {
-		if ( ! is_numeric( $settings['refresh_interval'] ) || intval( $settings['refresh_interval'] ) > 0 ) {
+		if ( ! is_numeric( $settings['refresh_interval'] ) || intval( $settings['refresh_interval'] ) < 30 ) {
 			$settings['refresh_interval'] = intval( $refresh_interval_default );
 		}
 	} else {
