@@ -28,14 +28,16 @@ function setup() {
  * @since  1.0
  */
 function admin_menu() {
-	add_submenu_page(
-		'options-general.php',
-		esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
-		esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
-		'manage_options',
-		'ad-viewability-control-settings',
-		__NAMESPACE__ . '\settings_screen'
-	);
+	if ( apply_filters( 'avc_menu_access', current_user_can('administrator') ) ) {
+		add_submenu_page(
+			'options-general.php',
+			esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
+			esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
+			'manage_options',
+			'ad-viewability-control-settings',
+			__NAMESPACE__ . '\settings_screen'
+		);
+	}
 }
 
 /**
