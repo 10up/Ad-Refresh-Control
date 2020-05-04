@@ -75,6 +75,24 @@ function setup_fields_sections() {
 }
 
 /**
+ * Output disable refresh field.
+ *
+ * @since 1.0
+ */
+function disable_refresh_callback() {
+
+	$avc_settings = get_option( 'avc_settings' );
+	$value        = $avc_settings['disable_refresh'] ?? false;
+
+	?>
+		<label><input <?php checked( $value, true ); ?> type="checkbox" value="1" name="avc_settings[disable_refresh]">
+			<?php esc_html_e( 'Disable ad refresh on all ads.', 'ad-viewability-control' ); ?>
+		</label>
+	<?php
+}
+
+
+/**
  * Output viewability threshold settings field
  *
  * @since 1.0
