@@ -70,6 +70,7 @@ function setup_fields_sections() {
 	add_settings_field( 'disable_refresh', esc_html__( 'Disable Ad Refresh', 'ad-viewability-control' ), __NAMESPACE__ . '\disable_refresh_callback', 'ad-viewability-control', 'avc-section-1' );
 	add_settings_field( 'viewability_threshold', esc_html__( 'Viewability Threshold', 'ad-viewability-control' ), __NAMESPACE__ . '\activate_viewability_threshold_callback', 'ad-viewability-control', 'avc-section-1' );
 	add_settings_field( 'refresh_interval', esc_html__( 'Refresh Interval', 'ad-viewability-control' ), __NAMESPACE__ . '\refresh_interval_callback', 'ad-viewability-control', 'avc-section-1' );
+	add_settings_field( 'maximum_refreshes', esc_html__( 'Maximum Refreshes', 'ad-viewability-control' ), __NAMESPACE__ . '\maximum_refreshes_callback', 'ad-viewability-control', 'avc-section-1' );
 	add_settings_field( 'advertiser_ids', esc_html__( 'Advertiser IDs', 'ad-viewability-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-viewability-control', 'avc-section-1' );
 }
 
@@ -103,6 +104,23 @@ function refresh_interval_callback() {
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[refresh_interval]">
 			<p><?php esc_html_e( 'How many seconds until the ads refresh?', 'ad-viewability-control' ); ?></p>
+		</label>
+	<?php
+}
+
+/**
+ * Output maximum refreshes settings field
+ *
+ * @since 1.0
+ */
+function maximum_refreshes_callback() {
+
+	$avc_settings = get_option( 'avc_settings' );
+	$value        = $avc_settings['maximum_refreshes'] ?? 10;
+
+	?>
+		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[maximum_refreshes]">
+			<p><?php esc_html_e( 'What is the maximum number of times each ad slot should be allowed to refresh?', 'ad-viewability-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -166,6 +184,17 @@ function sanitize_settings( $settings ) {
 		}
 	} else {
 		$settings['refresh_interval'] = $refresh_interval_default;
+	}
+
+	// maximum_refreshes
+	$maximum_refreshes_default = 10;
+
+	if ( isset( $settings['maximum_refreshes'] ) ) {
+		if ( is_numeric( $settings['maximum_refreshes'] ) && intval( $settings['maximum_refreshes'] ) > 0 ) {
+			$settings['maximum_refreshes'] = intval( $maximum_refreshes_default );
+		}
+	} else {
+		$settings['maximum_refreshes'] = $maximum_refreshes_default;
 	}
 
 	// advertiser_ids
