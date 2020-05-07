@@ -189,7 +189,7 @@ function sanitize_settings( $settings ) {
 	// viewability_threshold
 	$viewability_threshold_default = 70;
 	if ( isset( $settings['viewability_threshold'] ) ) {
-		if ( ! is_numeric( $settings['viewability_threshold'] ) || intval( $settings['viewability_threshold'] ) > 0 || intval( $settings['viewability_threshold'] ) < 100 ) {
+		if ( ! is_numeric( $settings['viewability_threshold'] ) || intval( $settings['viewability_threshold'] ) < 0 || intval( $settings['viewability_threshold'] ) > 100 ) {
 			$settings['viewability_threshold'] = intval( $viewability_threshold_default );
 		}
 	} else {
