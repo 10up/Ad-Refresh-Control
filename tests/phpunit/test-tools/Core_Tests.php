@@ -28,7 +28,7 @@ class Core_Tests extends Base\TestCase {
 		// Setup
 		\WP_Mock::expectActionAdded( 'init', 'AdViewabilityControl\Core\i18n' );
 		\WP_Mock::expectActionAdded( 'init', 'AdViewabilityControl\Core\init' );
-		\WP_Mock::expectAction( 'active_ad_refresh_loaded' );
+		\WP_Mock::expectAction( 'avc_loaded' );
 
 		// Act
 		setup();
@@ -74,7 +74,7 @@ class Core_Tests extends Base\TestCase {
 	 */
 	public function test_init() {
 		// Setup
-		\WP_Mock::expectAction( 'active_ad_refresh_init' );
+		\WP_Mock::expectAction( 'avc_init' );
 
 		// Act
 		init();

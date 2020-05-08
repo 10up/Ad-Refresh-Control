@@ -26,7 +26,7 @@ function setup() {
 	// Hook to allow async or defer on asset loading.
 	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
 
-	do_action( 'active_ad_refresh_loaded' );
+	do_action( 'avc_loaded' );
 }
 
 /**
@@ -46,7 +46,7 @@ function i18n() {
  * @return void
  */
 function init() {
-	do_action( 'active_ad_refresh_init' );
+	do_action( 'avc_init' );
 }
 
 /**
@@ -90,7 +90,7 @@ function scripts() {
 
 	$avc_settings          = get_option( 'avc_settings' );
 	$disable_refresh       = apply_filters(
-		'active_ad_refresh_disable_refresh',
+		'avc_disable_refresh',
 		$avc_settings['disable_refresh'] ?? false
 	);
 	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
@@ -103,7 +103,7 @@ function scripts() {
 	}
 
 	wp_enqueue_script(
-		'active_ad_refresh_frontend',
+		'avc_frontend',
 		script_url( 'frontend', 'frontend' ),
 		[],
 		AD_VIEWABILITY_CONTROL_VERSION,
@@ -112,12 +112,12 @@ function scripts() {
 
 
 	wp_localize_script(
-		'active_ad_refresh_frontend',
+		'avc_frontend',
 		'AdViewabilityControl',
 		[
-			'advertiserIds'        => apply_filters( 'active_ad_refresh_advertiser_ids', $advertiser_ids ),
-			'viewabilityThreshold' => apply_filters( 'active_ad_refresh_viewability_threshold', $viewability_threshold ),
-			'refreshInterval'      => apply_filters( 'active_ad_refresh_refresh_interval', $refresh_interval ),
+			'advertiserIds'        => apply_filters( 'avc_advertiser_ids', $advertiser_ids ),
+			'viewabilityThreshold' => apply_filters( 'avc_viewability_threshold', $viewability_threshold ),
+			'refreshInterval'      => apply_filters( 'avc_refresh_interval', $refresh_interval ),
 		]
 	);
 }
