@@ -23,17 +23,10 @@ function setup() {
 	add_action( 'init', $n( 'init' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'scripts' ) );
 
-	// Not needed at this point.
-	// add_action( 'wp_enqueue_scripts', $n( 'styles' ) );
-	// add_action( 'admin_enqueue_scripts', $n( 'admin_scripts' ) );
-	// add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
-
-	// Editor styles. add_editor_style() doesn't work outside of a theme.
-	add_filter( 'mce_css', $n( 'mce_css' ) );
 	// Hook to allow async or defer on asset loading.
 	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
 
-	do_action( 'active_ad_refresh_loaded' );
+	do_action( 'avc_loaded' );
 }
 
 /**
@@ -53,7 +46,7 @@ function i18n() {
  * @return void
  */
 function init() {
-	do_action( 'active_ad_refresh_init' );
+	do_action( 'avc_init' );
 }
 
 /**
@@ -64,7 +57,6 @@ function init() {
 function activate() {
 	// First load the init scripts in case any rewrite functionality is being loaded
 	init();
-	flush_rewrite_rules();
 }
 
 /**
@@ -78,50 +70,15 @@ function deactivate() {
 
 }
 
-
-/**
- * The list of knows contexts for enqueuing scripts/styles.
- *
- * @return array
- */
-function get_enqueue_contexts() {
-	return [ 'frontend' ];
-}
-
 /**
  * Generate an URL to a script, taking into account whether SCRIPT_DEBUG is enabled.
  *
  * @param string $script Script file name (no .js extension)
- * @param string $context Context for the script ('admin', 'frontend', or 'shared')
  *
  * @return string|WP_Error URL
  */
-function script_url( $script, $context ) {
-
-	if ( ! in_array( $context, get_enqueue_contexts(), true ) ) {
-		return new WP_Error( 'invalid_enqueue_context', 'Invalid $context specified in AdViewabilityControl script loader.' );
-	}
-
+function script_url( $script ) {
 	return AD_VIEWABILITY_CONTROL_URL . "dist/js/${script}.js";
-
-}
-
-/**
- * Generate an URL to a stylesheet, taking into account whether SCRIPT_DEBUG is enabled.
- *
- * @param string $stylesheet Stylesheet file name (no .css extension)
- * @param string $context Context for the script ('admin', 'frontend', or 'shared')
- *
- * @return string URL
- */
-function style_url( $stylesheet, $context ) {
-
-	if ( ! in_array( $context, get_enqueue_contexts(), true ) ) {
-		return new WP_Error( 'invalid_enqueue_context', 'Invalid $context specified in AdViewabilityControl stylesheet loader.' );
-	}
-
-	return AD_VIEWABILITY_CONTROL_URL . "dist/css/${stylesheet}.css";
-
 }
 
 /**
@@ -131,137 +88,38 @@ function style_url( $stylesheet, $context ) {
  */
 function scripts() {
 
-	// Not needed currently.
-	// wp_enqueue_script(
-	// 	'active_ad_refresh_shared',
-	// 	script_url( 'shared', 'shared' ),
-	// 	[],
-	// 	AD_VIEWABILITY_CONTROL_VERSION,
-	// 	true
-	// );
+	$avc_settings          = get_option( 'avc_settings' );
+	$disable_refresh       = apply_filters(
+		'avc_disable_refresh',
+		$avc_settings['disable_refresh'] ?? false
+	);
+	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
+	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
+	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
+
+	if ( $disable_refresh ) {
+		// No need to enqueue scripts if no refreshing will occur.
+		return;
+	}
 
 	wp_enqueue_script(
-		'active_ad_refresh_frontend',
+		'avc_frontend',
 		script_url( 'frontend', 'frontend' ),
 		[],
 		AD_VIEWABILITY_CONTROL_VERSION,
 		true
 	);
 
-	$avc_settings          = get_option( 'avc_settings' );
-	$disable_refresh       = $avc_settings['disable_refresh'] ?? false;
-	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
-	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
-	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
-	$debug                 = $avc_settings['debug'] ?? false;
 
 	wp_localize_script(
-		'active_ad_refresh_frontend',
+		'avc_frontend',
 		'AdViewabilityControl',
 		[
-			'disableRefresh'       => apply_filters( 'active_ad_refresh_disable_refresh', $disable_refresh ),
-			'advertiserIds'        => apply_filters( 'active_ad_refresh_advertiser_ids', $advertiser_ids ),
-			'viewabilityThreshold' => apply_filters( 'active_ad_refresh_viewability_threshold', $viewability_threshold ),
-			'refreshInterval'      => apply_filters( 'active_ad_refresh_refresh_interval', $refresh_interval ),
-			'debug'                => apply_filters( 'active_ad_refresh_refresh_debug', $debug ),
+			'advertiserIds'        => apply_filters( 'avc_advertiser_ids', $advertiser_ids ),
+			'viewabilityThreshold' => apply_filters( 'avc_viewability_threshold', $viewability_threshold ),
+			'refreshInterval'      => apply_filters( 'avc_refresh_interval', $refresh_interval ),
 		]
 	);
-}
-
-/**
- * Enqueue scripts for admin.
- *
- * @return void
- */
-function admin_scripts() {
-
-	wp_enqueue_script(
-		'active_ad_refresh_shared',
-		script_url( 'shared', 'shared' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION,
-		true
-	);
-
-	wp_enqueue_script(
-		'active_ad_refresh_admin',
-		script_url( 'admin', 'admin' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION,
-		true
-	);
-
-}
-
-/**
- * Enqueue styles for front-end.
- *
- * @return void
- */
-function styles() {
-
-	wp_enqueue_style(
-		'active_ad_refresh_shared',
-		style_url( 'shared-style', 'shared' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION
-	);
-
-	if ( is_admin() ) {
-		wp_enqueue_style(
-			'active_ad_refresh_admin',
-			style_url( 'admin-style', 'admin' ),
-			[],
-			AD_VIEWABILITY_CONTROL_VERSION
-		);
-	} else {
-		wp_enqueue_style(
-			'active_ad_refresh_frontend',
-			style_url( 'style', 'frontend' ),
-			[],
-			AD_VIEWABILITY_CONTROL_VERSION
-		);
-	}
-
-}
-
-/**
- * Enqueue styles for admin.
- *
- * @return void
- */
-function admin_styles() {
-
-	wp_enqueue_style(
-		'active_ad_refresh_shared',
-		style_url( 'shared-style', 'shared' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION
-	);
-
-	wp_enqueue_style(
-		'active_ad_refresh_admin',
-		style_url( 'admin-style', 'admin' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION
-	);
-
-}
-
-/**
- * Enqueue editor styles. Filters the comma-delimited list of stylesheets to load in TinyMCE.
- *
- * @param string $stylesheets Comma-delimited list of stylesheets.
- * @return string
- */
-function mce_css( $stylesheets ) {
-	if ( ! empty( $stylesheets ) ) {
-		$stylesheets .= ',';
-	}
-
-	return $stylesheets . AD_VIEWABILITY_CONTROL_URL . ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ?
-			'assets/css/frontend/editor-style.css' :
-			'dist/css/editor-style.min.css' );
 }
 
 /**
