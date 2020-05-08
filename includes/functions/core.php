@@ -89,6 +89,20 @@ function script_url( $script ) {
  */
 function scripts() {
 
+	$avc_settings          = get_option( 'avc_settings' );
+	$disable_refresh       = apply_filters(
+		'active_ad_refresh_disable_refresh',
+		$avc_settings['disable_refresh'] ?? false
+	);
+	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
+	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
+	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
+
+	if ( $disable_refresh ) {
+		// No need to enqueue scripts if no refreshing will occur.
+		return;
+	}
+
 	wp_enqueue_script(
 		'active_ad_refresh_frontend',
 		script_url( 'frontend', 'frontend' ),
@@ -97,17 +111,11 @@ function scripts() {
 		true
 	);
 
-	$avc_settings          = get_option( 'avc_settings' );
-	$disable_refresh       = $avc_settings['disable_refresh'] ?? false;
-	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
-	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
-	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
 
 	wp_localize_script(
 		'active_ad_refresh_frontend',
 		'AdViewabilityControl',
 		[
-			'disableRefresh'       => apply_filters( 'active_ad_refresh_disable_refresh', $disable_refresh ),
 			'advertiserIds'        => apply_filters( 'active_ad_refresh_advertiser_ids', $advertiser_ids ),
 			'viewabilityThreshold' => apply_filters( 'active_ad_refresh_viewability_threshold', $viewability_threshold ),
 			'refreshInterval'      => apply_filters( 'active_ad_refresh_refresh_interval', $refresh_interval ),
