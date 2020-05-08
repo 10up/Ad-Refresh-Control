@@ -28,16 +28,14 @@ function setup() {
  * @since  1.0
  */
 function admin_menu() {
-	if ( apply_filters( 'avc_menu_access', current_user_can('administrator') ) ) {
-		add_submenu_page(
-			'options-general.php',
-			esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
-			esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
-			'manage_options',
-			'ad-viewability-control-settings',
-			__NAMESPACE__ . '\settings_screen'
-		);
-	}
+	add_submenu_page(
+		'options-general.php',
+		esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
+		esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
+		apply_filters( 'avc_menu_access', 'manage_options' ),
+		'ad-viewability-control-settings',
+		__NAMESPACE__ . '\settings_screen'
+	);
 }
 
 /**
@@ -168,7 +166,9 @@ function advertiser_ids_callback() {
  * @since  1.0
  */
 function register_settings() {
-	register_setting( 'avc_settings', 'avc_settings', __NAMESPACE__ . '\sanitize_settings' );
+	if ( apply_filters( 'avc_menu_access', current_user_can('manage_options') ) ) {
+		register_setting( 'avc_settings', 'avc_settings', __NAMESPACE__ . '\sanitize_settings' );
+	}
 }
 
 /**
