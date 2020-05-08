@@ -23,11 +23,6 @@ function setup() {
 	add_action( 'init', $n( 'init' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'scripts' ) );
 
-	// Not needed at this point.
-	// add_action( 'wp_enqueue_scripts', $n( 'styles' ) );
-	// add_action( 'admin_enqueue_scripts', $n( 'admin_scripts' ) );
-	// add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
-
 	// Hook to allow async or defer on asset loading.
 	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
 
@@ -88,17 +83,6 @@ function script_url( $script ) {
 }
 
 /**
- * Generate an URL to a stylesheet, taking into account whether SCRIPT_DEBUG is enabled.
- *
- * @param string $stylesheet Stylesheet file name (no .css extension)
- *
- * @return string URL
- */
-function style_url( $stylesheet ) {
-	return AD_VIEWABILITY_CONTROL_URL . "dist/css/${stylesheet}.css";
-}
-
-/**
  * Enqueue scripts for front-end.
  *
  * @return void
@@ -129,64 +113,6 @@ function scripts() {
 			'refreshInterval'      => apply_filters( 'active_ad_refresh_refresh_interval', $refresh_interval ),
 		]
 	);
-}
-
-/**
- * Enqueue scripts for admin.
- *
- * @return void
- */
-function admin_scripts() {
-
-	wp_enqueue_script(
-		'active_ad_refresh_admin',
-		script_url( 'admin', 'admin' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION,
-		true
-	);
-
-}
-
-/**
- * Enqueue styles for front-end.
- *
- * @return void
- */
-function styles() {
-
-	if ( is_admin() ) {
-		wp_enqueue_style(
-			'active_ad_refresh_admin',
-			style_url( 'admin-style', 'admin' ),
-			[],
-			AD_VIEWABILITY_CONTROL_VERSION
-		);
-	} else {
-		wp_enqueue_style(
-			'active_ad_refresh_frontend',
-			style_url( 'style', 'frontend' ),
-			[],
-			AD_VIEWABILITY_CONTROL_VERSION
-		);
-	}
-
-}
-
-/**
- * Enqueue styles for admin.
- *
- * @return void
- */
-function admin_styles() {
-
-	wp_enqueue_style(
-		'active_ad_refresh_admin',
-		style_url( 'admin-style', 'admin' ),
-		[],
-		AD_VIEWABILITY_CONTROL_VERSION
-	);
-
 }
 
 /**

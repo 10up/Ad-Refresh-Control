@@ -8,8 +8,8 @@ module.exports = {
 		'frontend': './assets/js/frontend/frontend.js',
 
 		// CSS files.
-		'admin-style': './assets/css/admin/admin-style.css',
-		'style': './assets/css/frontend/style.css',
+		// 'admin-style': './assets/css/admin/admin-style.css',
+		// 'style': './assets/css/frontend/style.css',
 	},
 	filename: {
 		js: 'js/[name].js',
