@@ -4,7 +4,7 @@
 module.exports = {
 	entries: {
 		// JS files.
-		'admin': './assets/js/admin/admin.js',
+		// 'admin': './assets/js/admin/admin.js',
 		'frontend': './assets/js/frontend/frontend.js',
 
 		// CSS files.
