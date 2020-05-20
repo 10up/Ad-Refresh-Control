@@ -96,6 +96,7 @@ function scripts() {
 	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
 	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
 	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
+	$maximum_refreshes     = $avc_settings['maximum_refreshes'] ?? 25;
 
 	if ( $disable_refresh ) {
 		// No need to enqueue scripts if no refreshing will occur.
@@ -118,6 +119,7 @@ function scripts() {
 			'advertiserIds'        => apply_filters( 'avc_advertiser_ids', $advertiser_ids ),
 			'viewabilityThreshold' => apply_filters( 'avc_viewability_threshold', $viewability_threshold ),
 			'refreshInterval'      => apply_filters( 'avc_refresh_interval', $refresh_interval ),
+			'maximumRefreshes'      => apply_filters( 'avc_maximum_refreshes', $maximum_refreshes ),
 		]
 	);
 }

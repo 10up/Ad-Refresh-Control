@@ -207,7 +207,7 @@ function sanitize_settings( $settings ) {
 	}
 
 	// maximum_refreshes
-	$maximum_refreshes_default = 10;
+	$maximum_refreshes_default = 25;
 
 	if ( isset( $settings['maximum_refreshes'] ) ) {
 		if ( ! is_numeric( $settings['maximum_refreshes'] ) || intval( $settings['maximum_refreshes'] ) < 1 ) {
