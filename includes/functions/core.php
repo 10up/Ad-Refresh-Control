@@ -93,7 +93,14 @@ function scripts() {
 		'avc_disable_refresh',
 		$avc_settings['disable_refresh'] ?? false
 	);
-	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
+	$advertiser_ids        = apply_filters(
+		'avc_advertiser_ids',
+		$avc_settings['advertiser_ids'] ?? []
+	);
+	$advertiser_ids_assoc = [];
+	foreach ( $advertiser_ids as $advertiser_id ) {
+		$advertiser_ids_assoc[ $advertiser_id ] = 1;
+	}
 	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
 	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
 	$maximum_refreshes     = $avc_settings['maximum_refreshes'] ?? 10;
@@ -116,7 +123,7 @@ function scripts() {
 		'avc_frontend',
 		'AdViewabilityControl',
 		[
-			'advertiserIds'        => apply_filters( 'avc_advertiser_ids', $advertiser_ids ),
+			'advertiserIds'        => $advertiser_ids_assoc,
 			'viewabilityThreshold' => apply_filters( 'avc_viewability_threshold', $viewability_threshold ),
 			'refreshInterval'      => apply_filters( 'avc_refresh_interval', $refresh_interval ),
 			'maximumRefreshes'      => apply_filters( 'avc_maximum_refreshes', $maximum_refreshes ),
