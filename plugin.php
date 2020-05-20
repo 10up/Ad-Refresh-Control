@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Ad Viewability Control
  * Plugin URI:
- * Description:
+ * Description: Enable Active View refresh for your ads.
  * Version:     0.2.0
  * Author:      10up
  * Author URI:  https://10up.com
