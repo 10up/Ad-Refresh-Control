@@ -1,56 +1,60 @@
 const {googletag} = window;
-let advertiserIds        = window.AdViewabilityControl.advertiserIds || []; // Do not trigger active view refresh for the given advertiserId.
-if ( 0 < advertiserIds.length ) {
-	const advertiserIdObject = {};
-	for ( let i = 0, {length} = advertiserIds; i < length; i++ ) {
-		advertiserIdObject[ advertiserIds[ i ] ] = 1;
-	}
-	advertiserIds = advertiserIdObject;
-}
+const advertiserIds = window.AdViewabilityControl.advertiserIds || []; // Do not trigger active view refresh for the given advertiserId.
 const viewabilityThreshold = window.AdViewabilityControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
-const refreshInterval      = window.AdViewabilityControl.refreshInterval || 30; // Time interval, in seconds, to refresh slots.
-const viewedAds = {}; // Object to cache ad slot info.
+const refreshInterval      = ( window.AdViewabilityControl.refreshInterval || 30 ) * 1000;
+const maximumRefreshes = window.AdViewabilityControl.maximumRefreshes || 10;
 let browserFocus = true;
+const adsData = [];
 
 /**
- * Start countdown timer to refreshing the given slot.
- * @param {number} slotId Slot ID string of the slot to refresh.
- * @param {object} slot   GPT Slot object to refresh.
+ * Check to see if any ads are ready to refresh.
  */
-const startRefreshCountdown = ( slotId, slot ) => {
+const checkForAdsReadyToRefresh = () => {
+	const slotsToRefresh = [];
 
-	if ( ! viewedAds[slotId].refreshing ) {
-		viewedAds[slotId].startTime = new Date().valueOf();
-		viewedAds[slotId].refreshing = window.setInterval( () => {
-			const now = new Date().valueOf();
-			const diff = Math.round( ( now - viewedAds[slotId].startTime ) / 1000 ); // Number of seconds elapsed since this slot last rendered/refreshed.
-
-			if ( diff >= refreshInterval ) {
-				if ( ! browserFocus ) {
-					return;
-				}
-				// Refresh ad slot.
-				googletag.cmd.push( () => {
-					googletag.pubads().refresh( [ slot ] );
-				} );
-
-				// Reset timestamp of slot render.
-				viewedAds[slotId].startTime = new Date().valueOf();
+	if ( ! browserFocus ) {
+		setTimeout( checkForAdsReadyToRefresh, 500 );
+		return;
+	}
+	for ( const slot in adsData ) {
+		if ( adsData.hasOwnProperty( slot ) ) {
+			if ( ! adsData[ slot ].canRefresh || ! adsData[ slot ].viewable ||
+					adsData[ slot ].viewability < viewabilityThreshold ) {
+				continue;
 			}
-		}, 1000 );
+			adsData[ slot ].timeViewable += 500;
+			if ( adsData[ slot ].timeViewable >= refreshInterval ) {
+				slotsToRefresh.push( adsData[ slot ].slotObject );
+				// Reset the time viewable to prevent a double refresh if the
+				// rendering is slow.
+				adsData[ slot ].timeViewable = 0;
+			}
+		}
 	}
+
+	if ( 0 < slotsToRefresh.length ) {
+		googletag.pubads().refresh( slotsToRefresh );
+	}
+
+	setTimeout( checkForAdsReadyToRefresh, 500 );
 };
 
 /**
- * Kill the refresh countdown for the given slot.
- * @param {number} slotId slotId of slot to kill refresh counter.
+ * Handle impressionViewable event.
+ * @param {object} event googletag.events.ImpressionViewableEvent
+ * see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.impressionviewableevent
  */
-const killRefreshCountdown = ( slotId ) => {
-	if ( viewedAds[slotId].refreshing ) {
-		window.clearInterval( viewedAds[slotId].refreshing );
-		viewedAds[slotId].refreshing = null;
+const impressionViewableHandler = ( event ) => {
+	const slotID = event.slot.getSlotElementId();
+	if ( ! slotID ) {
+		return;
 	}
+	if ( 'undefined' === typeof adsData[ slotID ] ) {
+		initializeSlotData( event.slot );
+	}
+	adsData[ slotID ].viewable = true;
 };
+
 
 /**
  * Handle slotVisibilityChanged event.
@@ -58,43 +62,98 @@ const killRefreshCountdown = ( slotId ) => {
  * see: https://developers.google.com/doubleclick-gpt/reference#googletageventsslotvisibilitychangedevent
  */
 const viewabilityHandler = ( event ) => {
-
 	let {inViewPercentage} = event;
 
 	if ( 'undefined' === typeof event.inViewPercentage ) {
 		inViewPercentage = 100;
 	}
 
-	const slotId = event.slot.getSlotElementId();
-	const slotInfo = event.slot.getResponseInformation();
-	let refresh = true;
-
-	// Prevent a refresh if the ad has the advertiser ID.
-	if ( 0 < advertiserIds.length ) {
-		if ( advertiserIds[ slotInfo.advertiserId ] ) {
-			refresh = false;
-		}
+	const slotID = event.slot.getSlotElementId();
+	if ( 'undefined' === typeof adsData[ slotID ] ) {
+		initializeSlotData( event.slot );
 	}
 
-	if ( refresh ) {
-		if ( ! viewedAds[slotId] ) {
-			viewedAds[slotId] = {};
-		}
+	adsData[ slotID ].viewability = inViewPercentage;
+};
 
-		if ( 'visible' === document.visibilityState && inViewPercentage >= viewabilityThreshold ) {
-			startRefreshCountdown( slotId, event.slot );
-		} else {
-			killRefreshCountdown( slotId );
-		}
+/**
+ * Handle slotRenderEnded event.
+ * @param {object} event googletag.events.SlotRenderEndedEvent
+ * see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
+ */
+const slotRenderEndedHandler = ( event ) => {
+	const slotID = event.slot.getSlotElementId();
+	if ( ! slotID ) {
+		return;
 	}
+	if ( 'undefined' === typeof adsData[ slotID ] ) {
+		initializeSlotData( event.slot );
+	} else {
+		adsData[ slotID ].renderCount += 1;
+		adsData[ slotID ].timeViewable = 0;
+		adsData[ slotID ].viewable = false;
+		adsData[ slotID ].canRefresh = isEligible( event.slot );
+	}
+};
+
+/**
+ * Initialize the data being recorded for the slot.
+ * @param {object} slot A GPT slot object.
+ */
+const initializeSlotData = ( slot ) => {
+	const slotID = slot.getSlotElementId();
+	if ( ! slotID ) {
+		return;
+	}
+
+	if ( 'undefined' !== typeof adsData[ slotID ] ) {
+		return;
+	}
+
+	adsData[ slotID ] = {};
+	adsData[ slotID ].viewable = true;
+	// In the event the ad rendered before the plugin's event handlers were
+	// added, we need to ensure the ad data is fully populated.
+	adsData[ slotID ].renderCount = 1;
+	adsData[ slotID ].timeViewable = 0;
+	adsData[ slotID ].canRefresh = isEligible( slot );
+	adsData[ slotID ].slotObject = slot;
+	adsData[ slotID ].viewability = 0;
+};
+
+/**
+ * Determine whether an ad slot should be eligible for active refresh.
+ * @param {object} slot Slot object.
+ * @returns bool
+ */
+const isEligible = ( slot ) => {
+	const slotInfo = slot.getResponseInformation();
+	if ( ! slotInfo ) {
+		return false;
+	}
+
+	// Prevent a refresh if the ad has a blacklisted advertiser ID.
+	if ( 'undefined' !== typeof advertiserIds[ slotInfo.advertiserId ] ) {
+		return false;
+	}
+
+	// Enforce limit on maximum number of refreshes per slot.
+	const slotID = slot.getSlotElementId();
+	if ( 'undefined' !== typeof adsData[ slotID ] &&
+			adsData[ slotID ].renderCount >= maximumRefreshes ) {
+		return false;
+	}
+
+	return true;
 };
 
 /**
  * Add event listeners for viewability.
  */
 const viewabilityListener = () => {
-	googletag.pubads().addEventListener( 'impressionViewable', viewabilityHandler );
+	googletag.pubads().addEventListener( 'impressionViewable', impressionViewableHandler );
 	googletag.pubads().addEventListener( 'slotVisibilityChanged', viewabilityHandler );
+	googletag.pubads().addEventListener( 'slotRenderEnded', slotRenderEndedHandler );
 };
 
 /**
@@ -133,10 +192,10 @@ const setupBrowserFocusDetection = () => {
  * Init ads functionality.
  */
 const init = () => {
-	const timesToTry = 30; // number of times to try checking if googletag API is ready
-	let tries = 0; // number of times we've tried initing googletag API
+	const timesToTry = 30;
+	let tries = 0;
 
-	// Check if GPT API is ready. If not, try again every 100ms up to 30x.
+	// Check if GPT API is ready. If not, try again.
 	if ( ! googletag || ! googletag.apiReady ) {
 		const timeout = window.setTimeout( () => {
 			if ( tries <= timesToTry ) {
@@ -154,6 +213,7 @@ const init = () => {
 
 	viewabilityListener();
 	setupBrowserFocusDetection();
+	setTimeout( checkForAdsReadyToRefresh, 500 );
 };
 
 export default init;

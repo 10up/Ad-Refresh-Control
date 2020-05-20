@@ -70,7 +70,7 @@ function setup_fields_sections() {
 	add_settings_field( 'disable_refresh', esc_html__( 'Disable Ad Refresh', 'ad-viewability-control' ), __NAMESPACE__ . '\disable_refresh_callback', 'ad-viewability-control', 'avc-section-1' );
 	add_settings_field( 'viewability_threshold', esc_html__( 'Viewability Threshold', 'ad-viewability-control' ), __NAMESPACE__ . '\activate_viewability_threshold_callback', 'ad-viewability-control', 'avc-section-1' );
 	add_settings_field( 'refresh_interval', esc_html__( 'Refresh Interval', 'ad-viewability-control' ), __NAMESPACE__ . '\refresh_interval_callback', 'ad-viewability-control', 'avc-section-1' );
-	// add_settings_field( 'maximum_refreshes', esc_html__( 'Maximum Refreshes', 'ad-viewability-control' ), __NAMESPACE__ . '\maximum_refreshes_callback', 'ad-viewability-control', 'avc-section-1' );
+	add_settings_field( 'maximum_refreshes', esc_html__( 'Maximum Refreshes', 'ad-viewability-control' ), __NAMESPACE__ . '\maximum_refreshes_callback', 'ad-viewability-control', 'avc-section-1' );
 	add_settings_field( 'advertiser_ids', esc_html__( 'Advertiser IDs', 'ad-viewability-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-viewability-control', 'avc-section-1' );
 }
 
@@ -228,6 +228,12 @@ function sanitize_settings( $settings ) {
 			function( $advertiser_id ):int {
 				return is_numeric( $advertiser_id );
 			}
+		);
+		$advertiser_ids = array_map(
+			function( $advertiser_id ) {
+				return (int) $advertiser_id;
+			},
+			$advertiser_ids
 		);
 
 		$settings['advertiser_ids'] = $advertiser_ids;

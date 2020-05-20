@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Ad Viewability Control
  * Plugin URI:
- * Description:
- * Version:     0.1.0
+ * Description: Enable Active View refresh for your ads.
+ * Version:     0.2.0
  * Author:      10up
  * Author URI:  https://10up.com
  * Text Domain: ad-viewability-control
@@ -13,7 +13,7 @@
  */
 
 // Useful global constants.
-define( 'AD_VIEWABILITY_CONTROL_VERSION', '0.1.0' );
+define( 'AD_VIEWABILITY_CONTROL_VERSION', '0.2.0' );
 define( 'AD_VIEWABILITY_CONTROL_URL', plugin_dir_url( __FILE__ ) );
 define( 'AD_VIEWABILITY_CONTROL_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AD_VIEWABILITY_CONTROL_INC', AD_VIEWABILITY_CONTROL_PATH . 'includes/' );
