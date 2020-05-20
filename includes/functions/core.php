@@ -96,7 +96,7 @@ function scripts() {
 	$advertiser_ids        = $avc_settings['advertiser_ids'] ?? [];
 	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
 	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
-	$maximum_refreshes     = $avc_settings['maximum_refreshes'] ?? 25;
+	$maximum_refreshes     = $avc_settings['maximum_refreshes'] ?? 10;
 
 	if ( $disable_refresh ) {
 		// No need to enqueue scripts if no refreshing will occur.
