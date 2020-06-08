@@ -71,7 +71,7 @@ function setup_fields_sections() {
 	add_settings_field( 'viewability_threshold', esc_html__( 'Viewability Threshold', 'ad-refresh-control' ), __NAMESPACE__ . '\activate_viewability_threshold_callback', 'ad-refresh-control', 'arc-section-1' );
 	add_settings_field( 'refresh_interval', esc_html__( 'Refresh Interval', 'ad-refresh-control' ), __NAMESPACE__ . '\refresh_interval_callback', 'ad-refresh-control', 'arc-section-1' );
 	add_settings_field( 'maximum_refreshes', esc_html__( 'Maximum Refreshes', 'ad-refresh-control' ), __NAMESPACE__ . '\maximum_refreshes_callback', 'ad-refresh-control', 'arc-section-1' );
-	add_settings_field( 'advertiser_ids', esc_html__( 'Advertiser IDs', 'ad-refresh-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'advertiser_ids', esc_html__( 'Excluded Advertiser IDs', 'ad-refresh-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-refresh-control', 'arc-section-1' );
 }
 
 /**
