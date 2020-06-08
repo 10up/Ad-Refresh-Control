@@ -104,7 +104,7 @@ function activate_viewability_threshold_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[viewability_threshold]">
-			<p><?php esc_html_e( 'Percentage of the ad which must be visible in the viewport in order to be considered eligible for being refreshed.', 'ad-refresh-control' ); ?></p>
+			<p><?php esc_html_e( 'The percentage of the ad slot which must be visible in the viewport in order to be considered eligible for being refreshed. It\'s recommended you do not lower this below 50 or you risk third-party viewability tracking platforms flagging your ad impressions as not having been viewed before refreshing.', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -121,7 +121,7 @@ function refresh_interval_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[refresh_interval]">
-			<p><?php esc_html_e( 'How many seconds until the ads refresh? (minimum of 30)', 'ad-refresh-control' ); ?></p>
+			<p><?php esc_html_e( 'The number of seconds that must pass between an ad crossing the viewability threshold and the the ad refreshing. The plugin enforces a minimum of 30 in order to avoid your site being flagged for abusing ad refreshes by advertisers.', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -138,7 +138,7 @@ function maximum_refreshes_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[maximum_refreshes]">
-			<p><?php esc_html_e( 'What is the maximum number of times each ad slot should be allowed to refresh?', 'ad-refresh-control' ); ?></p>
+			<p><?php esc_html_e( 'The number of times each ad slot is allowed to be refreshed. If this is set to 4 then an ad slot could have a total of 5 impressions by combining the initial loading of the ad with the 4 times it can refresh.', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -155,7 +155,7 @@ function advertiser_ids_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( implode( ',', $value ) ); ?>" name="avc_settings[advertiser_ids]">
-			<p><?php esc_html_e( 'Prevent ad refreshes for specific advertiser IDs. (comma seperated list)', 'ad-refresh-control' ); ?></p>
+			<p><?php esc_html_e( 'Prevent ad refreshes for specific advertiser IDs in the format of a comma separated list (e.g., 125,594,293). If an ad slot ever displays an ad creative from one of the listed advertiser IDs then that ad slot will stop refreshing for the remainder of the page view.', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
