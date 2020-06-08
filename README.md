@@ -1,4 +1,4 @@
-# 10up Ad Viewability Control Plugin
+# 10up Ad Refresh Control Plugin
 
 
 ## Support Level

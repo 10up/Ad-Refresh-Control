@@ -1,8 +1,8 @@
 const {googletag} = window;
-const advertiserIds = window.AdViewabilityControl.advertiserIds || []; // Do not trigger active view refresh for the given advertiserId.
-const viewabilityThreshold = window.AdViewabilityControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
-const refreshInterval      = ( window.AdViewabilityControl.refreshInterval || 30 ) * 1000;
-const maximumRefreshes = window.AdViewabilityControl.maximumRefreshes || 10;
+const advertiserIds = window.AdRefreshControl.advertiserIds || []; // Do not trigger active view refresh for the given advertiserId.
+const viewabilityThreshold = window.AdRefreshControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
+const refreshInterval      = ( window.AdRefreshControl.refreshInterval || 30 ) * 1000;
+const maximumRefreshes = window.AdRefreshControl.maximumRefreshes || 10;
 let browserFocus = true;
 const adsData = [];
 
@@ -201,8 +201,6 @@ const init = () => {
 			if ( tries <= timesToTry ) {
 				tries++;
 				init();
-			} else {
-				console.error( 'Could not init GPT API.' );
 			}
 
 			window.clearTimeout( timeout );

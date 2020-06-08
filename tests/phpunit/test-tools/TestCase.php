@@ -1,6 +1,6 @@
 <?php
 
-namespace AdViewabilityControl;
+namespace AdRefreshControl;
 
 use PHPUnit\Framework\TestResult;
 use Text_Template;

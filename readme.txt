@@ -1,6 +1,6 @@
 === 10up Scaffold ===
 Contributors:      10up
-Tags: 
+Tags:
 Requires at least: 4.9
 Tested up to:      4.9
 Stable tag:        0.1.0
@@ -15,7 +15,7 @@ A brief description of the plugin.
 
 = Manual Installation =
 
-1. Upload the entire `/ad-viewability-control` directory to the `/wp-content/plugins/` directory.
+1. Upload the entire `/ad-refresh-control` directory to the `/wp-content/plugins/` directory.
 2. Activate 10up Scaffold through the 'Plugins' menu in WordPress.
 
 == Frequently Asked Questions ==

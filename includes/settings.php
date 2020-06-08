@@ -2,10 +2,10 @@
 /**
  * Admin Settings.
  *
- * @package AdViewabilityControl
+ * @package AdRefreshControl
  */
 
-namespace AdViewabilityControl\Settings;
+namespace AdRefreshControl\Settings;
 
 /**
  * Default setup routine
@@ -30,10 +30,10 @@ function setup() {
 function admin_menu() {
 	add_submenu_page(
 		'options-general.php',
-		esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
-		esc_html__( 'Ad Viewability Control', 'ad-viewability-control' ),
+		esc_html__( 'Ad Refresh Control', 'ad-refresh-control' ),
+		esc_html__( 'Ad Refresh Control', 'ad-refresh-control' ),
 		apply_filters( 'avc_menu_access', 'manage_options' ),
-		'ad-viewability-control-settings',
+		'ad-refresh-control-settings',
 		__NAMESPACE__ . '\settings_screen'
 	);
 }
@@ -46,12 +46,12 @@ function admin_menu() {
 function settings_screen() {
 	?>
 	<div class="wrap">
-		<h2><?php esc_html_e( 'Ad Viewability Control Settings', 'ad-viewability-control' ); ?></h2>
+		<h2><?php esc_html_e( 'Ad Refresh Control Settings', 'ad-refresh-control' ); ?></h2>
 
 		<form method="post" action="options.php">
 
 		<?php settings_fields( 'avc_settings' ); ?>
-		<?php do_settings_sections( 'ad-viewability-control' ); ?>
+		<?php do_settings_sections( 'ad-refresh-control' ); ?>
 
 		<?php submit_button(); ?>
 
@@ -66,12 +66,12 @@ function settings_screen() {
  * @since  1.0
  */
 function setup_fields_sections() {
-	add_settings_section( 'avc-section-1', '', '', 'ad-viewability-control' );
-	add_settings_field( 'disable_refresh', esc_html__( 'Disable Ad Refresh', 'ad-viewability-control' ), __NAMESPACE__ . '\disable_refresh_callback', 'ad-viewability-control', 'avc-section-1' );
-	add_settings_field( 'viewability_threshold', esc_html__( 'Viewability Threshold', 'ad-viewability-control' ), __NAMESPACE__ . '\activate_viewability_threshold_callback', 'ad-viewability-control', 'avc-section-1' );
-	add_settings_field( 'refresh_interval', esc_html__( 'Refresh Interval', 'ad-viewability-control' ), __NAMESPACE__ . '\refresh_interval_callback', 'ad-viewability-control', 'avc-section-1' );
-	add_settings_field( 'maximum_refreshes', esc_html__( 'Maximum Refreshes', 'ad-viewability-control' ), __NAMESPACE__ . '\maximum_refreshes_callback', 'ad-viewability-control', 'avc-section-1' );
-	add_settings_field( 'advertiser_ids', esc_html__( 'Advertiser IDs', 'ad-viewability-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-viewability-control', 'avc-section-1' );
+	add_settings_section( 'arc-section-1', '', '', 'ad-refresh-control' );
+	add_settings_field( 'disable_refresh', esc_html__( 'Disable Ad Refresh', 'ad-refresh-control' ), __NAMESPACE__ . '\disable_refresh_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'viewability_threshold', esc_html__( 'Viewability Threshold', 'ad-refresh-control' ), __NAMESPACE__ . '\activate_viewability_threshold_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'refresh_interval', esc_html__( 'Refresh Interval', 'ad-refresh-control' ), __NAMESPACE__ . '\refresh_interval_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'maximum_refreshes', esc_html__( 'Maximum Refreshes', 'ad-refresh-control' ), __NAMESPACE__ . '\maximum_refreshes_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'advertiser_ids', esc_html__( 'Advertiser IDs', 'ad-refresh-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-refresh-control', 'arc-section-1' );
 }
 
 /**
@@ -86,7 +86,7 @@ function disable_refresh_callback() {
 
 	?>
 		<label><input <?php checked( $value, true ); ?> type="checkbox" value="1" name="avc_settings[disable_refresh]">
-			<?php esc_html_e( 'Disable ad refresh on all ads.', 'ad-viewability-control' ); ?>
+			<?php esc_html_e( 'Disable ad refresh on all ads.', 'ad-refresh-control' ); ?>
 		</label>
 	<?php
 }
@@ -104,7 +104,7 @@ function activate_viewability_threshold_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[viewability_threshold]">
-			<p><?php esc_html_e( 'Percentage of the ad which must be in the viewport.', 'ad-viewability-control' ); ?></p>
+			<p><?php esc_html_e( 'Percentage of the ad which must be visible in the viewport in order to be considered eligible for being refreshed.', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -121,7 +121,7 @@ function refresh_interval_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[refresh_interval]">
-			<p><?php esc_html_e( 'How many seconds until the ads refresh? (minimum of 30)', 'ad-viewability-control' ); ?></p>
+			<p><?php esc_html_e( 'How many seconds until the ads refresh? (minimum of 30)', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -138,7 +138,7 @@ function maximum_refreshes_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[maximum_refreshes]">
-			<p><?php esc_html_e( 'What is the maximum number of times each ad slot should be allowed to refresh?', 'ad-viewability-control' ); ?></p>
+			<p><?php esc_html_e( 'What is the maximum number of times each ad slot should be allowed to refresh?', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -155,7 +155,7 @@ function advertiser_ids_callback() {
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( implode( ',', $value ) ); ?>" name="avc_settings[advertiser_ids]">
-			<p><?php esc_html_e( 'Prevent ad refreshs for specific Publisher IDs. (Comma Seperated List)', 'ad-viewability-control' ); ?></p>
+			<p><?php esc_html_e( 'Prevent ad refreshes for specific advertiser IDs. (comma seperated list)', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
