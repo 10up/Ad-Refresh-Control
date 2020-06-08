@@ -1,5 +1,5 @@
 <?php
-namespace AdViewabilityControl\Core;
+namespace AdRefreshControl\Core;
 
 /**
  * This is a very basic test case to get things started. You should probably rename this and make
@@ -13,7 +13,7 @@ namespace AdViewabilityControl\Core;
  *   - https://github.com/10up/wp_mock
  */
 
-use AdViewabilityControl as Base;
+use AdRefreshControl as Base;
 
 class Core_Tests extends Base\TestCase {
 
@@ -26,8 +26,8 @@ class Core_Tests extends Base\TestCase {
 	 */
 	public function test_setup() {
 		// Setup
-		\WP_Mock::expectActionAdded( 'init', 'AdViewabilityControl\Core\i18n' );
-		\WP_Mock::expectActionAdded( 'init', 'AdViewabilityControl\Core\init' );
+		\WP_Mock::expectActionAdded( 'init', 'AdRefreshControl\Core\i18n' );
+		\WP_Mock::expectActionAdded( 'init', 'AdRefreshControl\Core\init' );
 		\WP_Mock::expectAction( 'avc_loaded' );
 
 		// Act
@@ -47,10 +47,10 @@ class Core_Tests extends Base\TestCase {
 			'args' => array(),
 			'return' => 'en_US',
 		) );
-		\WP_Mock::onFilter( 'plugin_locale' )->with( 'en_US', 'ad-viewability-control' )->reply( 'en_US' );
+		\WP_Mock::onFilter( 'plugin_locale' )->with( 'en_US', 'ad-refresh-control' )->reply( 'en_US' );
 		\WP_Mock::userFunction( 'load_textdomain', array(
 			'times' => 1,
-			'args' => array( 'ad-viewability-control', 'lang_dir/ad-viewability-control/ad-viewability-control-en_US.mo' ),
+			'args' => array( 'ad-refresh-control', 'lang_dir/ad-refresh-control/ad-refresh-control-en_US.mo' ),
 		) );
 		\WP_Mock::userFunction( 'plugin_basename', array(
 			'times' => 1,
@@ -59,7 +59,7 @@ class Core_Tests extends Base\TestCase {
 		) );
 		\WP_Mock::userFunction( 'load_plugin_textdomain', array(
 			'times' => 1,
-			'args' => array( 'ad-viewability-control', false, 'path/languages/' ),
+			'args' => array( 'ad-refresh-control', false, 'path/languages/' ),
 		) );
 
 		// Act

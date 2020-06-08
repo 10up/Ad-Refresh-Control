@@ -1,9 +1,9 @@
 {
-  "name": "10up/ad-viewability-control",
-  "description": "10up Scaffold",
+  "name": "10up/ad-refresh-control",
+  "description": "10up Ad Refresh Control",
   "authors": [
     {
-      "name": "Author",
+      "name": "10up",
       "email": "info@10up.com"
     }
   ],
@@ -12,7 +12,7 @@
   },
   "autoload": {
     "psr-4": {
-      "AdViewabilityControl\\": "includes/classes/"
+      "AdRefreshControl\\": "includes/classes/"
     }
   },
   "require-dev": {

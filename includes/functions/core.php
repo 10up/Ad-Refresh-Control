@@ -2,10 +2,10 @@
 /**
  * Core plugin functionality.
  *
- * @package AdViewabilityControl
+ * @package AdRefreshControl
  */
 
-namespace AdViewabilityControl\Core;
+namespace AdRefreshControl\Core;
 
 use \WP_Error as WP_Error;
 
@@ -35,9 +35,9 @@ function setup() {
  * @return void
  */
 function i18n() {
-	$locale = apply_filters( 'plugin_locale', get_locale(), 'ad-viewability-control' );
-	load_textdomain( 'ad-viewability-control', WP_LANG_DIR . '/ad-viewability-control/ad-viewability-control-' . $locale . '.mo' );
-	load_plugin_textdomain( 'ad-viewability-control', false, plugin_basename( AD_VIEWABILITY_CONTROL_PATH ) . '/languages/' );
+	$locale = apply_filters( 'plugin_locale', get_locale(), 'ad-refresh-control' );
+	load_textdomain( 'ad-refresh-control', WP_LANG_DIR . '/ad-refresh-control/ad-refresh-control-' . $locale . '.mo' );
+	load_plugin_textdomain( 'ad-refresh-control', false, plugin_basename( AD_REFRESH_CONTROL_PATH ) . '/languages/' );
 }
 
 /**
@@ -78,7 +78,7 @@ function deactivate() {
  * @return string|WP_Error URL
  */
 function script_url( $script ) {
-	return AD_VIEWABILITY_CONTROL_URL . "dist/js/${script}.js";
+	return AD_REFRESH_CONTROL_URL . "dist/js/${script}.js";
 }
 
 /**
@@ -114,14 +114,14 @@ function scripts() {
 		'avc_frontend',
 		script_url( 'frontend', 'frontend' ),
 		[],
-		AD_VIEWABILITY_CONTROL_VERSION,
+		AD_REFRESH_CONTROL_VERSION,
 		true
 	);
 
 
 	wp_localize_script(
 		'avc_frontend',
-		'AdViewabilityControl',
+		'AdRefreshControl',
 		[
 			'advertiserIds'        => $advertiser_ids_assoc,
 			'viewabilityThreshold' => apply_filters( 'avc_viewability_threshold', $viewability_threshold ),

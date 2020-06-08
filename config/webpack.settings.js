@@ -47,7 +47,7 @@ module.exports = {
 	BrowserSyncConfig: {
 		host: 'localhost',
 		port: 3000,
-		proxy: 'http://ad-viewability-control.test',
+		proxy: 'http://ad-refresh-control.test',
 		open: false,
 		files: [
 			'**/*.php',
