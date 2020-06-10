@@ -36,7 +36,7 @@ If you identify any errors or have an idea for improving the plugin, please [ope
 
 **Active:** 10up is actively working on this, and we expect to continue work for the foreseeable future including keeping tested up to the most recent version of WordPress.  Bug reports, feature requests, questions, and pull requests are welcome.
 
-# Changelog
+## Changelog
 
 A complete listing of all notable changes to Ad Refresh Control are documented in [CHANGELOG.md](/CHANGELOG.md).
 
