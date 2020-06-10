@@ -1,13 +1,24 @@
 {
-  "name": "ad-refresh-control",
+  "name": "@10up/ad-refresh-control",
   "version": "1.0.0",
   "description": "Ad Refresh Control",
+  "license": "GPLv2",
+  "homepage": "https://github.com/10up/ad-refresh-control",
+  "bugs": {
+    "url": "https://github.com/10up/ad-refresh-control/issues"
+  },
   "author": {
     "name": "10up",
     "email": "info@10up.com",
     "url": "https://10up.com",
     "role": "developer"
   },
+  "keywords": [
+    "wordpress",
+    "wp",
+    "google",
+    "ad-manager"
+  ],
   "scripts": {
     "test": "phpunit",
     "start": "composer install && npm install && npm run build",
