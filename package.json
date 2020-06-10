@@ -32,7 +32,8 @@
     "lint-php": "composer run lint",
     "format-js": "eslint --fix assets/js",
     "lint": "npm run lint-css && npm run lint-js && npm run lint-php",
-    "format": "npm run format-js"
+    "format": "npm run format-js",
+    "makepot": "wpi18n makepot && echo '.pot file updated'"
   },
   "husky": {
     "hooks": {
@@ -93,6 +94,7 @@
     "node": ">=8.11"
   },
   "dependencies": {
-    "normalize.css": "^8.0.0"
+    "normalize.css": "^8.0.0",
+    "node-wp-i18n": "^1.2.3"
   }
 }
