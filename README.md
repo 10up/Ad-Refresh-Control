@@ -2,6 +2,8 @@
 
 > Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
 
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level)
+
 ## Background & Purpose
 There is always a drive for more page views to bring more ad impressions, but publishers can often leverage their current traffic and ad slots in order to further increase ad impressions by refreshing the ad slots after a given amount of time.
 
