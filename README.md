@@ -40,6 +40,10 @@ If you identify any errors or have an idea for improving the plugin, please [ope
 
 A complete listing of all notable changes to Ad Refresh Control are documented in [CHANGELOG.md](/CHANGELOG.md).
 
+## Contributing
+
+Please read [CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md) for details on our code of conduct, [CONTRIBUTING.md](/CONTRIBUTING.md) for details on the process for submitting pull requests to us, and [CREDITS.md](/CREDITS.md) for a listing of maintainers, contributors, and libraries for Ad Refresh Control.
+
 ## Like what you see?
 
 <a href="http://10up.com/contact/"><img src="https://10updotcom-uploads.s3.amazonaws.com/uploads/2016/08/10up_github_banner-2.png" alt="Work with 10up, we create amazing websites and tools that make content management simple and fun using open source tools and platforms"></a>
