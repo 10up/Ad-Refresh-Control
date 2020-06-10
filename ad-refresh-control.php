@@ -1,15 +1,19 @@
 <?php
 /**
- * Plugin Name: Ad Refresh Control
- * Plugin URI:
- * Description: Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
- * Version:     1.0.0
- * Author:      10up
- * Author URI:  https://10up.com
- * Text Domain: ad-refresh-control
- * Domain Path: /languages
+ * Plugin Name:       Ad Refresh Control
+ * Plugin URI:        https://github.com/10up/Ad-Refresh-Control
+ * Description:       Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
+ * Version:           1.0.0
+ * Requires at least: 4.9
+ * Requires PHP:      7.0
+ * Author:            10up
+ * Author URI:        https://10up.com
+ * License:           GPL v2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       ad-refresh-control
+ * Domain Path:       /languages
  *
- * @package AdRefreshControl
+ * @package           AdRefreshControl
  */
 
 // Useful global constants.

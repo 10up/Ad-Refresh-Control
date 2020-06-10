@@ -1,0 +1,25 @@
+# Copyright (C) 2020 Ad Refresh Control
+# This file is distributed under the same license as the Ad Refresh Control package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ad Refresh Control 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/ad-refresh-control\n"
+"POT-Creation-Date: 2020-06-09 20:49:02+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. Description of the plugin/theme
+msgid "Enable Active View refresh for Google Ad Manager ads without needing to modify any code."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "10up"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://10up.com"
+msgstr ""
