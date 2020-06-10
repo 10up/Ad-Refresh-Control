@@ -2,6 +2,8 @@
 
 > Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
 
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Release Version](https://img.shields.io/github/release/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/releases/latest) ![WordPress tested up to version](https://img.shields.io/badge/WordPress-v5.4%20tested-success.svg) [![GPLv2 License](https://img.shields.io/github/license/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/blob/develop/LICENSE.md)
+
 ## Background & Purpose
 There is always a drive for more page views to bring more ad impressions, but publishers can often leverage their current traffic and ad slots in order to further increase ad impressions by refreshing the ad slots after a given amount of time.
 
@@ -33,6 +35,14 @@ If you identify any errors or have an idea for improving the plugin, please [ope
 ## Support Level
 
 **Active:** 10up is actively working on this, and we expect to continue work for the foreseeable future including keeping tested up to the most recent version of WordPress.  Bug reports, feature requests, questions, and pull requests are welcome.
+
+## Changelog
+
+A complete listing of all notable changes to Ad Refresh Control are documented in [CHANGELOG.md](/CHANGELOG.md).
+
+## Contributing
+
+Please read [CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md) for details on our code of conduct, [CONTRIBUTING.md](/CONTRIBUTING.md) for details on the process for submitting pull requests to us, and [CREDITS.md](/CREDITS.md) for a listing of maintainers, contributors, and libraries for Ad Refresh Control.
 
 ## Like what you see?
 

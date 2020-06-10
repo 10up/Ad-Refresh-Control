@@ -1,10 +1,20 @@
 {
   "name": "10up/ad-refresh-control",
-  "description": "10up Ad Refresh Control",
+  "description": "Enable Active View refresh for Google Ad Manager ads without needing to modify any code.",
+  "type": "wordpress-plugin",
+  "keywords": [
+    "wordpress",
+    "wp",
+    "google",
+    "ad-manager"
+  ],
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "10up",
-      "email": "info@10up.com"
+      "email": "info@10up.com",
+      "homepage": "https://10up.com",
+      "role": "Developer"
     }
   ],
   "require": {
