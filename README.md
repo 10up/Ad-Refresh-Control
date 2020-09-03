@@ -28,10 +28,6 @@ A settings page will allow adjustments such as the time between refreshes, the m
 
 - **Excluded Advertiser IDs:** Prevent ad refreshes for specific advertiser IDs in the format of a comma separated list (e.g., 125,594,293). If an ad slot ever displays an ad creative from one of the listed advertiser IDs then that ad slot will stop refreshing for the remainder of the page view.
 
-## Issues
-
-If you identify any errors or have an idea for improving the plugin, please [open an issue](https://github.com/10up/ad-refresh-control/issues). We're excited to see what the community thinks of this project, and we would love your input!
-
 ## Support Level
 
 **Active:** 10up is actively working on this, and we expect to continue work for the foreseeable future including keeping tested up to the most recent version of WordPress.  Bug reports, feature requests, questions, and pull requests are welcome.
