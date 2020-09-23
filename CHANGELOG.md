@@ -8,5 +8,5 @@ All notable changes to this project will be documented in this file, per [the Ke
 ### Added
 - Initial public release! 🎉
 
-[Unreleased]: https://github.com/10up/Ad-Refresh-Control/compare/master...develop
+[Unreleased]: https://github.com/10up/Ad-Refresh-Control/compare/trunk...develop
 [1.0.0]: https://github.com/10up/Ad-Refresh-Control/releases/tag/v1.0.0
