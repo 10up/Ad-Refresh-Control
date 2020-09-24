@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
-## [1.0.0] - TBD
+## [1.0.0] - 2020-06-10
 ### Added
 - Initial public release! 🎉
 
