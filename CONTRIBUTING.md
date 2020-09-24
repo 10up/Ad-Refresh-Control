@@ -29,7 +29,7 @@ The `develop` branch is the development branch which means it contains the next 
 ## Release instructions
 
 1. Branch: Starting from `develop`, cut a release branch named `release/X.Y.Z` for your changes.
-2. Version bump: Bump the version number in `ad-refresh-control.php`, `ad-refresh-control.pot`, `composer.json`, `package.json`, and `readme.txt` if it does not already reflect the version being released.  In `ad-refresh-control.php` update both the plugin "Version:" property and the plugin `AD_REFRESH_CONTROL_VERSION` constant.
+2. Version bump: Bump the version number in `ad-refresh-control.php`, `package.json`, and `readme.txt` if it does not already reflect the version being released.  In `ad-refresh-control.php` update both the plugin "Version:" property and the plugin `AD_REFRESH_CONTROL_VERSION` constant.
 3. Changelog: Add/update the changelog in both `CHANGELOG.md` and `readme.txt`.
 4. Props: Update `CREDITS.md` file with any new contributors, confirm maintainers are accurate.
 5. Readme updates: Make any other readme changes as necessary.  `README.md` is geared toward GitHub and `readme.txt` contains WordPress.org-specific content.  The two are slightly different.
