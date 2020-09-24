@@ -33,7 +33,7 @@ The `develop` branch is the development branch which means it contains the next 
 3. Changelog: Add/update the changelog in both `CHANGELOG.md` and `readme.txt`.
 4. Props: Update `CREDITS.md` file with any new contributors, confirm maintainers are accurate.
 5. Readme updates: Make any other readme changes as necessary.  `README.md` is geared toward GitHub and `readme.txt` contains WordPress.org-specific content.  The two are slightly different.
-6. New files: Check to be sure any new files/paths that are unnecessary in the production version are included in `.gitattributes`.
+6. New files: Check to be sure any new files/paths that are unnecessary in the production version are included in `.distignore`.
 7. Merge: Make a non-fast-forward merge from your release branch to `develop` (or merge the pull request), then do the same for `develop` into `master` (`git checkout master && git merge --no-ff develop`).  `master` contains the stable development version.
 8. Test: While still on the `master` branch, test for functionality locally.
 9. Push: Push your `master` branch to GitHub (e.g. `git push origin master`).
