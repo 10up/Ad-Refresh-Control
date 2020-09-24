@@ -20,6 +20,8 @@ A settings page will allow adjustments such as the time between refreshes, the m
 
 ### Settings
 
+![1. Ad Refresh Control plugin settings.](/.wordpress-org/screenshot-1.png)
+
 - **Viewability Threshold:** The percentage of the ad slot which must be visible in the viewport in order to be considered eligible for being refreshed. It's recommended you do not lower this below 50 or you risk third-party viewability tracking platforms flagging your ad impressions as not having been viewed before refreshing.
 
 - **Refresh Interval:** The number of seconds that must pass between an ad crossing the viewability threshold and the the ad refreshing. The plugin enforces a minimum of 30 in order to avoid your site being flagged for abusing ad refreshes by advertisers.

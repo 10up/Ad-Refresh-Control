@@ -39,6 +39,7 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 
 == Screenshots ==
 
+1. Ad Refresh Control plugin settings.
 
 == Changelog ==
 
