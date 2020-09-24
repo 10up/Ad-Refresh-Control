@@ -14,7 +14,7 @@ The increase in impressions will vary from site-to-site, depending largely on ho
 A settings page will allow adjustments such as the time between refreshes, the maximum number of refreshes, and even list advertisers who would not be happy if their ads were refreshed, but smart defaults will be active for all settings out of the box so you can feel safe activating the plugin without consulting an ads expert first.
 
 ## Installation
-1. [Download a zip file](http://github.com/10up/ad-refresh-control/archive/master.zip) and install via the WordPress plugin installer.
+1. [Download a zip file](http://github.com/10up/ad-refresh-control/archive/trunk.zip) and install via the WordPress plugin installer.
 
 2. Go to the _WP-Admin > Settings > Ad Refresh Control_ settings page within the WordPress admin in order to adjust the settings to meet your specific needs. Settings that we've found useful for most sites will be used by default.
 
