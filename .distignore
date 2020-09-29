@@ -2,6 +2,7 @@
 /.git
 /.github
 /.wordpress-org
+/config
 /tests
 
 # Files
