@@ -32,8 +32,7 @@
     "lint-php": "composer run lint",
     "format-js": "eslint --fix assets/js",
     "lint": "npm run lint-css && npm run lint-js && npm run lint-php",
-    "format": "npm run format-js",
-    "makepot": "wpi18n makepot && echo '.pot file updated'"
+    "format": "npm run format-js"
   },
   "husky": {
     "hooks": {
