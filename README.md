@@ -2,7 +2,7 @@
 
 > Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
 
-[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Release Version](https://img.shields.io/github/release/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/releases/latest) ![WordPress tested up to version](https://img.shields.io/badge/WordPress-v5.4%20tested-success.svg) [![GPLv2 License](https://img.shields.io/github/license/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/blob/develop/LICENSE.md)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Release Version](https://img.shields.io/github/release/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/releases/latest) ![WordPress tested up to version](https://img.shields.io/badge/WordPress-v5.5.1%20tested-success.svg) [![GPLv2 License](https://img.shields.io/github/license/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/blob/develop/LICENSE.md)
 
 ## Background & Purpose
 There is always a drive for more page views to bring more ad impressions, but publishers can often leverage their current traffic and ad slots in order to further increase ad impressions by refreshing the ad slots after a given amount of time.
@@ -14,11 +14,13 @@ The increase in impressions will vary from site-to-site, depending largely on ho
 A settings page will allow adjustments such as the time between refreshes, the maximum number of refreshes, and even list advertisers who would not be happy if their ads were refreshed, but smart defaults will be active for all settings out of the box so you can feel safe activating the plugin without consulting an ads expert first.
 
 ## Installation
-1. [Download a zip file](http://github.com/10up/ad-refresh-control/archive/master.zip) and install via the WordPress plugin installer.
+1. [Download a zip file](http://github.com/10up/ad-refresh-control/archive/trunk.zip) and install via the WordPress plugin installer.
 
 2. Go to the _WP-Admin > Settings > Ad Refresh Control_ settings page within the WordPress admin in order to adjust the settings to meet your specific needs. Settings that we've found useful for most sites will be used by default.
 
 ### Settings
+
+![1. Ad Refresh Control plugin settings.](/.wordpress-org/screenshot-1.png)
 
 - **Viewability Threshold:** The percentage of the ad slot which must be visible in the viewport in order to be considered eligible for being refreshed. It's recommended you do not lower this below 50 or you risk third-party viewability tracking platforms flagging your ad impressions as not having been viewed before refreshing.
 
@@ -27,10 +29,6 @@ A settings page will allow adjustments such as the time between refreshes, the m
 - **Maximum Refreshes:** The number of times each ad slot is allowed to be refreshed. If this is set to 4 then an ad slot could have a total of 5 impressions by combining the initial loading of the ad with the 4 times it can refresh.
 
 - **Excluded Advertiser IDs:** Prevent ad refreshes for specific advertiser IDs in the format of a comma separated list (e.g., 125,594,293). If an ad slot ever displays an ad creative from one of the listed advertiser IDs then that ad slot will stop refreshing for the remainder of the page view.
-
-## Issues
-
-If you identify any errors or have an idea for improving the plugin, please [open an issue](https://github.com/10up/ad-refresh-control/issues). We're excited to see what the community thinks of this project, and we would love your input!
 
 ## Support Level
 
@@ -46,4 +44,4 @@ Please read [CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md) for details on our code of
 
 ## Like what you see?
 
-<a href="http://10up.com/contact/"><img src="https://10updotcom-uploads.s3.amazonaws.com/uploads/2016/08/10up_github_banner-2.png" alt="Work with 10up, we create amazing websites and tools that make content management simple and fun using open source tools and platforms"></a>
+<a href="http://10up.com/contact/"><img src="https://10up.com/uploads/2016/10/10up-Github-Banner.png" alt="Work with 10up, we create amazing websites and tools that make content management simple and fun using open source tools and platforms"></a>

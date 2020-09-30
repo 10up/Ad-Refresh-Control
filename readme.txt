@@ -2,9 +2,9 @@
 Contributors:      10up, doomwaxer, davidrgreen
 Tags:              google, ad manager
 Requires at least: 4.9
-Tested up to:      5.4
+Tested up to:      5.5.1
 Requires PHP:      7.0
-Stable tag:        1.0.0
+Stable tag:        1.0.1
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ A settings page will allow adjustments such as the time between refreshes, the m
 
 = Manual Installation =
 
-1. [Download a zip file](http://github.com/10up/ad-refresh-control/archive/master.zip) and install via the WordPress plugin installer.
+1. [Download a zip file](http://github.com/10up/ad-refresh-control/archive/trunk.zip) and install via the WordPress plugin installer.
 2. Go to the WP-Admin > Settings > Ad Refresh Control settings page within the WordPress admin in order to adjust the settings to meet your specific needs. Settings that we've found useful for most sites will be used by default.
 
 = Settings =
@@ -39,8 +39,16 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 
 == Screenshots ==
 
+1. Ad Refresh Control plugin settings.
 
 == Changelog ==
 
+= 1.0.1 =
+* **Added:** Plugin header and icon images (props [@jackiekjome](https://profiles.wordpress.org/jackiekjome/)).
+* **Added:** GitHub Actions for deploys to WordPress.org (props [@jeffpaul](https://profiles.wordpress.org/jeffpaul/)).
+* **Added:** Documentation updates (props [@jeffpaul](https://profiles.wordpress.org/jeffpaul/)).
+* **Security:** Bump `lodash` from 4.17.15 to 4.17.19 (props [@dependabot](https://github.com/apps/dependabot)).
+* **Security:** Bump `elliptic` from 6.4.1 to 6.5.3 (props [@dependabot](https://github.com/apps/dependabot)).
+
 = 1.0.0 =
-* Initial public release! 🎉
+* **Added:** Initial public release! 🎉
