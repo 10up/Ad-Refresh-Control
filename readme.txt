@@ -2,7 +2,7 @@
 Contributors:      10up, doomwaxer, davidrgreen
 Tags:              google, ad manager
 Requires at least: 4.9
-Tested up to:      5.4
+Tested up to:      5.5.1
 Requires PHP:      7.0
 Stable tag:        1.0.1
 License:           GPLv2 or later
@@ -24,7 +24,7 @@ A settings page will allow adjustments such as the time between refreshes, the m
 
 = Manual Installation =
 
-1. [Download a zip file](http://github.com/10up/ad-refresh-control/archive/master.zip) and install via the WordPress plugin installer.
+1. [Download a zip file](http://github.com/10up/ad-refresh-control/archive/trunk.zip) and install via the WordPress plugin installer.
 2. Go to the WP-Admin > Settings > Ad Refresh Control settings page within the WordPress admin in order to adjust the settings to meet your specific needs. Settings that we've found useful for most sites will be used by default.
 
 = Settings =
@@ -39,6 +39,7 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 
 == Screenshots ==
 
+1. Ad Refresh Control plugin settings.
 
 == Changelog ==
 
