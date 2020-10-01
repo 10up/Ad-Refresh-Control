@@ -4,6 +4,7 @@
 /.wordpress-org
 /config
 /tests
+/node_modules
 
 # Files
 .babelrc
