@@ -22,7 +22,7 @@ define( 'AD_REFRESH_CONTROL_URL', plugin_dir_url( __FILE__ ) );
 define( 'AD_REFRESH_CONTROL_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AD_REFRESH_CONTROL_INC', AD_REFRESH_CONTROL_PATH . 'includes/' );
 
-// Include files.
+// phpcs:disable WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
 require_once AD_REFRESH_CONTROL_INC . 'functions/core.php';
 require_once AD_REFRESH_CONTROL_INC . 'settings.php';
 
