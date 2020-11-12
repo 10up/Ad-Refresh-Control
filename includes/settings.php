@@ -13,10 +13,6 @@ namespace AdRefreshControl\Settings;
  * @return void
  */
 function setup() {
-	$n = function( $function ) {
-		return __NAMESPACE__ . "\\$function";
-	};
-
 	add_action( 'admin_menu', __NAMESPACE__ . '\admin_menu', 20 );
 	add_action( 'admin_init', __NAMESPACE__ . '\setup_fields_sections' );
 	add_action( 'admin_init', __NAMESPACE__ . '\register_settings' );
