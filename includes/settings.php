@@ -72,7 +72,7 @@ function setup_fields_sections() {
 	add_settings_field( 'refresh_interval', esc_html__( 'Refresh Interval', 'ad-refresh-control' ), __NAMESPACE__ . '\refresh_interval_callback', 'ad-refresh-control', 'arc-section-1' );
 	add_settings_field( 'maximum_refreshes', esc_html__( 'Maximum Refreshes', 'ad-refresh-control' ), __NAMESPACE__ . '\maximum_refreshes_callback', 'ad-refresh-control', 'arc-section-1' );
 	add_settings_field( 'advertiser_ids', esc_html__( 'Excluded Advertiser IDs', 'ad-refresh-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-refresh-control', 'arc-section-1' );
-	add_settings_field( 'line_item_ids', esc_html__( 'Line Items IDs', 'ad-refresh-control' ), __NAMESPACE__ . '\line_items_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'line_item_ids', esc_html__( 'Line Items IDs to Exclude', 'ad-refresh-control' ), __NAMESPACE__ . '\line_items_callback', 'ad-refresh-control', 'arc-section-1' );
 	add_settings_field( 'sizes_to_exclude', esc_html__( 'Sizes to Exclude', 'ad-refresh-control' ), __NAMESPACE__ . '\sizes_to_exclude_callback', 'ad-refresh-control', 'arc-section-1' );
 	add_settings_field( 'slot_ids_to_exclude', esc_html__( 'Slot IDs to Exclude', 'ad-refresh-control' ), __NAMESPACE__ . '\slot_ids_to_exclude_callback', 'ad-refresh-control', 'arc-section-1' );
 }
@@ -166,7 +166,7 @@ function advertiser_ids_callback() {
 /**
  * Output the line items settings field.
  *
- * @since 1.1
+ * @since 1.0.2
  */
 function line_items_callback() {
 	$avc_settings = get_option( 'avc_settings' );
@@ -182,7 +182,7 @@ function line_items_callback() {
 /**
  * Output the sizes to exclude field.
  *
- * @since 1.1
+ * @since 1.0.2
  */
 function sizes_to_exclude_callback() {
 	$avc_settings = get_option( 'avc_settings' );
@@ -198,7 +198,7 @@ function sizes_to_exclude_callback() {
 /**
  * Output the slot IDs to exclude field.
  *
- * @since 1.1
+ * @since 1.0.2
  */
 function slot_ids_to_exclude_callback() {
 	$avc_settings = get_option( 'avc_settings' );
