@@ -30,6 +30,12 @@ A settings page will allow adjustments such as the time between refreshes, the m
 
 - **Excluded Advertiser IDs:** Prevent ad refreshes for specific advertiser IDs in the format of a comma separated list (e.g., 125,594,293). If an ad slot ever displays an ad creative from one of the listed advertiser IDs then that ad slot will stop refreshing for the remainder of the page view.
 
+- **Line Items IDs to Exclude:** Prevent ad refreshes for specific line item IDs in the format of a comma separated list (e.g., 125,594,293).
+
+- **Sizes to Exclude:** Prevent ad refreshes for specific sizes in the format of a comma separated list (e.g., 125,594,293). Sizes can be specified by name "fluid" or size 300x250, e.g. fluid,300x250.
+
+- **Slot IDs to Exclude:** Prevent ad refreshes for specific slot IDs in the format of a comma separated list based on the ID of the div, e.g. div-gpt-ad-grid-1.
+
 ## Support Level
 
 **Active:** 10up is actively working on this, and we expect to continue work for the foreseeable future including keeping tested up to the most recent version of WordPress.  Bug reports, feature requests, questions, and pull requests are welcome.
