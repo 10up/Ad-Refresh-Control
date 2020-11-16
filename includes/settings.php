@@ -227,7 +227,7 @@ function register_settings() {
 function sanitize_settings( $settings ) {
 
 	// disable_refresh
-	if ( isset( $settings['disable_refresh'] ) ) {
+	if ( isset( $settings['disable_refresh'] ) && filter_var( $settings['disable_refresh'], FILTER_VALIDATE_BOOLEAN ) ) {
 		$settings['disable_refresh'] = true;
 	} else {
 		$settings['disable_refresh'] = false;
