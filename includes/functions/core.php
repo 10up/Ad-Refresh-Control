@@ -15,16 +15,13 @@ use \WP_Error as WP_Error;
  * @return void
  */
 function setup() {
-	$n = function( $function ) {
-		return __NAMESPACE__ . "\\$function";
-	};
 
-	add_action( 'init', $n( 'i18n' ) );
-	add_action( 'init', $n( 'init' ) );
-	add_action( 'wp_enqueue_scripts', $n( 'scripts' ) );
+	add_action( 'init', __NAMESPACE__ . '\i18n' );
+	add_action( 'init', __NAMESPACE__ . '\init' );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\scripts' );
 
 	// Hook to allow async or defer on asset loading.
-	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
+	add_filter( 'script_loader_tag', __NAMESPACE__ . '\script_loader_tag', 10, 2 );
 
 	do_action( 'avc_loaded' );
 }
