@@ -45,7 +45,9 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 
 = 1.0.2 =
 * **Added:** Support for additional exclusion rules - line item ID, ad unit size, and ad slot ID (props [@elliott-stocks](https://profiles.wordpress.org/elliott-stocks/), [@davidrgreen](https://profiles.wordpress.org/davidrgreen/)).
-* **Added:** Linting GitHub Action (props [@jeffpaul](https://profiles.wordpress.org/jeffpaul/)).
+* **Added:** WordPress VIP support and exclusion for UsingCustomConstant PHPCS rule (props [@barryceelen](https://profiles.wordpress.org/barryceelen/)).
+* **Removed:** Unused namespace abstraction function (props [@barryceelen](https://profiles.wordpress.org/barryceelen/)).
+* **Fixed:** Add check that explicitly verifies that `disable_refresh` is `true` before saving the setting (props [@barryceelen](https://github.com/barryceelen)).
 * **Security:** Bump `dot-prop` from 4.2.0 to 4.2.1 (props [@dependabot](https://github.com/apps/dependabot)).
 
 = 1.0.1 =
