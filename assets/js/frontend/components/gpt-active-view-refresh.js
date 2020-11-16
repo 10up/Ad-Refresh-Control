@@ -1,6 +1,9 @@
 const {googletag} = window;
 const advertiserIds = window.AdRefreshControl.advertiserIds || []; // Do not trigger active view refresh for the given advertiserId.
 const viewabilityThreshold = window.AdRefreshControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
+const lineItemIds = window.AdRefreshControl.lineItemIds || []; // Do not trigger active view refresh for the given line item Ids.
+const sizesToExclude = window.AdRefreshControl.sizesToExclude || []; // Do not trigger active view refresh for the given sizes.
+const slotIdsToExclude = window.AdRefreshControl.slotIdsToExclude || []; // Do not trigger active view refresh for the given slot IDs.
 const refreshInterval      = ( window.AdRefreshControl.refreshInterval || 30 ) * 1000;
 const maximumRefreshes = window.AdRefreshControl.maximumRefreshes || 10;
 let browserFocus = true;
@@ -87,20 +90,22 @@ const slotRenderEndedHandler = ( event ) => {
 		return;
 	}
 	if ( 'undefined' === typeof adsData[ slotID ] ) {
-		initializeSlotData( event.slot );
+		initializeSlotData( event );
 	} else {
 		adsData[ slotID ].renderCount += 1;
 		adsData[ slotID ].timeViewable = 0;
 		adsData[ slotID ].viewable = false;
-		adsData[ slotID ].canRefresh = isEligible( event.slot );
+		adsData[ slotID ].canRefresh = isEligible( event );
 	}
 };
 
 /**
  * Initialize the data being recorded for the slot.
- * @param {object} slot A GPT slot object.
+ * @param {object} event googletag.events.SlotRenderEndedEvent
+ * see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
  */
-const initializeSlotData = ( slot ) => {
+const initializeSlotData = ( event ) => {
+	const {slot} = event;
 	const slotID = slot.getSlotElementId();
 	if ( ! slotID ) {
 		return;
@@ -116,29 +121,55 @@ const initializeSlotData = ( slot ) => {
 	// added, we need to ensure the ad data is fully populated.
 	adsData[ slotID ].renderCount = 1;
 	adsData[ slotID ].timeViewable = 0;
-	adsData[ slotID ].canRefresh = isEligible( slot );
+	adsData[ slotID ].canRefresh = isEligible( event );
 	adsData[ slotID ].slotObject = slot;
 	adsData[ slotID ].viewability = 0;
 };
 
 /**
  * Determine whether an ad slot should be eligible for active refresh.
- * @param {object} slot Slot object.
+ * @param {object} event googletag.events.SlotRenderEndedEvent
+ * see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
  * @returns bool
  */
-const isEligible = ( slot ) => {
+const isEligible = ( event ) => {
+	const {slot} = event;
 	const slotInfo = slot.getResponseInformation();
 	if ( ! slotInfo ) {
 		return false;
 	}
+
+	let slotSize = event.size.toString();
+
+	const slotSizes = slot.getSizes();
+	const slotID = slot.getSlotElementId();
 
 	// Prevent a refresh if the ad has a blacklisted advertiser ID.
 	if ( 'undefined' !== typeof advertiserIds[ slotInfo.advertiserId ] ) {
 		return false;
 	}
 
+	// Prevent a refresh if the line item ID is blacklisted.
+	if ( 'undefined' !== typeof lineItemIds[slotInfo.lineItemId] ) {
+		return false;
+	}
+
+	// Fluid returns 0x0 - ensure fluid is supported on the unit too.
+	if ( '0,0' === slotSize && slotSizes.includes( 'fluid' ) ) {
+		slotSize = 'fluid';
+	}
+
+	// Prevent a refresh if the slot size is blacklisted.
+	if ( sizesToExclude.includes( slotSize ) ) {
+		return false;
+	}
+
+	// Prevent a refresh if the slot ID is blacklisted.
+	if ( 'undefined' !== typeof slotIdsToExclude[ slotID ] ) {
+		return false;
+	}
+
 	// Enforce limit on maximum number of refreshes per slot.
-	const slotID = slot.getSlotElementId();
 	if ( 'undefined' !== typeof adsData[ slotID ] &&
 			adsData[ slotID ].renderCount >= maximumRefreshes ) {
 		return false;
