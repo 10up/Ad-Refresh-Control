@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Support for additional exclusion rules - line item ID, ad unit size, and ad slot ID (props [@elliott-stocks](https://github.com/elliott-stocks), [@davidrgreen](https://github.com/davidrgreen) via [#22](https://github.com/10up/Ad-Refresh-Control/pull/22)).
 - WordPress VIP support and exclusion for UsingCustomConstant PHPCS rule (props [@barryceelen](https://github.com/barryceelen) via [#30](https://github.com/10up/Ad-Refresh-Control/pull/30)).
 
+### Changed
+- Webpack config to use CoreJS 3 instead of 2 to handle ES7 polyfills (props [@davidrgreen](https://github.com/davidrgreen) via [#31](https://github.com/10up/Ad-Refresh-Control/pull/31)).
+
 ### Removed
 - Unused namespace abstraction function (props [@barryceelen](https://github.com/barryceelen) via [#28](https://github.com/10up/Ad-Refresh-Control/pull/28), [#29](https://github.com/10up/Ad-Refresh-Control/pull/29)).
 
