@@ -15,16 +15,13 @@ use \WP_Error as WP_Error;
  * @return void
  */
 function setup() {
-	$n = function( $function ) {
-		return __NAMESPACE__ . "\\$function";
-	};
 
-	add_action( 'init', $n( 'i18n' ) );
-	add_action( 'init', $n( 'init' ) );
-	add_action( 'wp_enqueue_scripts', $n( 'scripts' ) );
+	add_action( 'init', __NAMESPACE__ . '\i18n' );
+	add_action( 'init', __NAMESPACE__ . '\init' );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\scripts' );
 
 	// Hook to allow async or defer on asset loading.
-	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
+	add_filter( 'script_loader_tag', __NAMESPACE__ . '\script_loader_tag', 10, 2 );
 
 	do_action( 'avc_loaded' );
 }
@@ -101,6 +98,41 @@ function scripts() {
 	foreach ( $advertiser_ids as $advertiser_id ) {
 		$advertiser_ids_assoc[ $advertiser_id ] = 1;
 	}
+
+	$line_item_ids       = apply_filters(
+		'avc_line_item_ids',
+		$avc_settings['line_item_ids'] ?? []
+	);
+	$line_item_ids_assoc = [];
+	foreach ( $line_item_ids as $line_item_id ) {
+		$line_item_ids_assoc[ $line_item_id ] = 1;
+	}
+
+	$sizes_to_exclude = apply_filters(
+		'avc_sizes_to_exclude',
+		$avc_settings['sizes_to_exclude'] ?? ''
+	);
+
+	if ( ! empty( $sizes_to_exclude ) ) {
+		$sizes_to_exclude = explode( ',', $sizes_to_exclude );
+
+		$sizes_to_exclude = array_map(
+			function ( $size ) {
+				return trim( str_replace( 'x', ',', $size ) );
+			},
+			$sizes_to_exclude
+		);
+	}
+
+	$slot_ids_to_exclude       = apply_filters(
+		'avc_slot_ids_to_exclude',
+		$avc_settings['slot_ids_to_exclude'] ?? []
+	);
+	$slot_ids_to_exclude_assoc = [];
+	foreach ( $slot_ids_to_exclude as $slot_id ) {
+		$slot_ids_to_exclude_assoc[ $slot_id ] = 1;
+	}
+
 	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
 	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
 	$maximum_refreshes     = $avc_settings['maximum_refreshes'] ?? 10;
@@ -124,6 +156,9 @@ function scripts() {
 		'AdRefreshControl',
 		[
 			'advertiserIds'        => $advertiser_ids_assoc,
+			'lineItemIds'          => $line_item_ids_assoc,
+			'sizesToExclude'       => $sizes_to_exclude,
+			'slotIdsToExclude'     => $slot_ids_to_exclude_assoc,
 			'viewabilityThreshold' => apply_filters( 'avc_viewability_threshold', $viewability_threshold ),
 			'refreshInterval'      => apply_filters( 'avc_refresh_interval', $refresh_interval ),
 			'maximumRefreshes'      => apply_filters( 'avc_maximum_refreshes', $maximum_refreshes ),

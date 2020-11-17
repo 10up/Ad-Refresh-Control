@@ -13,10 +13,6 @@ namespace AdRefreshControl\Settings;
  * @return void
  */
 function setup() {
-	$n = function( $function ) {
-		return __NAMESPACE__ . "\\$function";
-	};
-
 	add_action( 'admin_menu', __NAMESPACE__ . '\admin_menu', 20 );
 	add_action( 'admin_init', __NAMESPACE__ . '\setup_fields_sections' );
 	add_action( 'admin_init', __NAMESPACE__ . '\register_settings' );
@@ -72,6 +68,9 @@ function setup_fields_sections() {
 	add_settings_field( 'refresh_interval', esc_html__( 'Refresh Interval', 'ad-refresh-control' ), __NAMESPACE__ . '\refresh_interval_callback', 'ad-refresh-control', 'arc-section-1' );
 	add_settings_field( 'maximum_refreshes', esc_html__( 'Maximum Refreshes', 'ad-refresh-control' ), __NAMESPACE__ . '\maximum_refreshes_callback', 'ad-refresh-control', 'arc-section-1' );
 	add_settings_field( 'advertiser_ids', esc_html__( 'Excluded Advertiser IDs', 'ad-refresh-control' ), __NAMESPACE__ . '\advertiser_ids_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'line_item_ids', esc_html__( 'Line Items IDs to Exclude', 'ad-refresh-control' ), __NAMESPACE__ . '\line_items_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'sizes_to_exclude', esc_html__( 'Sizes to Exclude', 'ad-refresh-control' ), __NAMESPACE__ . '\sizes_to_exclude_callback', 'ad-refresh-control', 'arc-section-1' );
+	add_settings_field( 'slot_ids_to_exclude', esc_html__( 'Slot IDs to Exclude', 'ad-refresh-control' ), __NAMESPACE__ . '\slot_ids_to_exclude_callback', 'ad-refresh-control', 'arc-section-1' );
 }
 
 /**
@@ -161,6 +160,54 @@ function advertiser_ids_callback() {
 }
 
 /**
+ * Output the line items settings field.
+ *
+ * @since 1.0.2
+ */
+function line_items_callback() {
+	$avc_settings = get_option( 'avc_settings' );
+	$value        = $avc_settings['line_item_ids'] ?? [];
+
+	?>
+		<label><input type="text" value="<?php echo esc_attr( implode( ',', $value ) ); ?>" name="avc_settings[line_item_ids]">
+			<p><?php esc_html_e( 'Prevent ad refreshs for specific line item IDs. (Comma Seperated List)', 'ad-refresh-control' ); ?></p>
+		</label>
+	<?php
+}
+
+/**
+ * Output the sizes to exclude field.
+ *
+ * @since 1.0.2
+ */
+function sizes_to_exclude_callback() {
+	$avc_settings = get_option( 'avc_settings' );
+	$value        = $avc_settings['sizes_to_exclude'] ?? '';
+
+	?>
+		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[sizes_to_exclude]">
+			<p><?php esc_html_e( 'Prevent ad refreshs for specific sizes. Accepts string (fluid) or array (300x250). Example: fluid, 300x250.', 'ad-refresh-control' ); ?></p>
+		</label>
+	<?php
+}
+
+/**
+ * Output the slot IDs to exclude field.
+ *
+ * @since 1.0.2
+ */
+function slot_ids_to_exclude_callback() {
+	$avc_settings = get_option( 'avc_settings' );
+	$value        = $avc_settings['slot_ids_to_exclude'] ?? [];
+
+	?>
+		<label><input type="text" value="<?php echo esc_attr( implode( ',', $value ) ); ?>" name="avc_settings[slot_ids_to_exclude]">
+			<p><?php esc_html_e( 'Prevent ad refreshs for specific slot IDs e.g. div-gpt-ad-grid-1. (Comma Seperated List).', 'ad-refresh-control' ); ?></p>
+		</label>
+	<?php
+}
+
+/**
  * Register settings for options table
  *
  * @since  1.0
@@ -180,7 +227,7 @@ function register_settings() {
 function sanitize_settings( $settings ) {
 
 	// disable_refresh
-	if ( isset( $settings['disable_refresh'] ) ) {
+	if ( isset( $settings['disable_refresh'] ) && filter_var( $settings['disable_refresh'], FILTER_VALIDATE_BOOLEAN ) ) {
 		$settings['disable_refresh'] = true;
 	} else {
 		$settings['disable_refresh'] = false;
@@ -239,6 +286,63 @@ function sanitize_settings( $settings ) {
 		$settings['advertiser_ids'] = $advertiser_ids;
 	} else {
 		$settings['advertiser_ids'] = $advertiser_ids_default;
+	}
+
+	// Line item IDs.
+	$line_item_ids_default = [];
+	if ( isset( $settings['line_item_ids'] ) ) {
+
+		$line_item_ids = explode( ',', $settings['line_item_ids'] );
+
+		$line_item_ids = array_filter(
+			$line_item_ids,
+			function ( $line_item_id ):int {
+				return is_numeric( $line_item_id );
+			}
+		);
+		$line_item_ids = array_map(
+			function ( $line_item_id ) {
+				return (int) $line_item_id;
+			},
+			$line_item_ids
+		);
+
+		$settings['line_item_ids'] = $line_item_ids;
+	} else {
+		$settings['line_item_ids'] = $line_item_ids_default;
+	}
+
+	// Sizes.
+	$sizes_to_exclude_default = '';
+	if ( isset( $settings['sizes_to_exclude'] ) ) {
+		$sizes                        = sanitize_text_field( $settings['sizes_to_exclude'] );
+		$settings['sizes_to_exclude'] = $sizes;
+	} else {
+		$settings['sizes_to_exclude'] = $sizes_to_exclude_default;
+	}
+
+	// Slot IDs.
+	$slot_ids_to_exclude_default = [];
+	if ( isset( $settings['slot_ids_to_exclude'] ) ) {
+
+		$slot_ids_to_exclude = explode( ',', $settings['slot_ids_to_exclude'] );
+
+		$slot_ids_to_exclude = array_filter(
+			$slot_ids_to_exclude,
+			function ( $slot_id ):int {
+				return is_string( $slot_id );
+			}
+		);
+		$slot_ids_to_exclude = array_map(
+			function ( $slot_id ) {
+				return (string) $slot_id;
+			},
+			$slot_ids_to_exclude
+		);
+
+		$settings['slot_ids_to_exclude'] = $slot_ids_to_exclude;
+	} else {
+		$settings['slot_ids_to_exclude'] = $slot_ids_to_exclude_default;
 	}
 
 	return $settings;
