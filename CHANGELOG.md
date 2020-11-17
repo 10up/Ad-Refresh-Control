@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
-## [1.0.2] - 2020-11-16
+## [1.0.2] - 2020-11-17
 ### Added
 - Support for additional exclusion rules - line item ID, ad unit size, and ad slot ID (props [@elliott-stocks](https://github.com/elliott-stocks), [@davidrgreen](https://github.com/davidrgreen) via [#22](https://github.com/10up/Ad-Refresh-Control/pull/22)).
 - WordPress VIP support and exclusion for UsingCustomConstant PHPCS rule (props [@barryceelen](https://github.com/barryceelen) via [#30](https://github.com/10up/Ad-Refresh-Control/pull/30)).
