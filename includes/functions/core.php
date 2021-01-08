@@ -150,7 +150,6 @@ function scripts() {
 		true
 	);
 
-
 	wp_localize_script(
 		'avc_frontend',
 		'AdRefreshControl',
