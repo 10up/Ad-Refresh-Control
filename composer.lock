@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8be6a88fc6d4757ce448e13b221b8adb",
+    "content-hash": "e572239f81c2ca9ea401006dc62a06c2",
     "packages": [],
     "packages-dev": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/10up/phpcs-composer.git",
-                "reference": "4cbf9af0c55ad3ec6ffeef03053736ac1ea57391"
+                "reference": "2f5c3608bc03fe1ca65acf462dd7b5008f6829a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/10up/phpcs-composer/zipball/4cbf9af0c55ad3ec6ffeef03053736ac1ea57391",
-                "reference": "4cbf9af0c55ad3ec6ffeef03053736ac1ea57391",
+                "url": "https://api.github.com/repos/10up/phpcs-composer/zipball/2f5c3608bc03fe1ca65acf462dd7b5008f6829a0",
+                "reference": "2f5c3608bc03fe1ca65acf462dd7b5008f6829a0",
                 "shasum": ""
             },
             "require": {
@@ -38,20 +38,20 @@
                     "email": "ephraim.gregor@10up.com"
                 }
             ],
-            "time": "2019-11-25T15:12:37+00:00"
+            "time": "2021-01-08T03:03:06+00:00"
         },
         {
             "name": "10up/wp_mock",
-            "version": "dev-master",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/10up/wp_mock.git",
-                "reference": "9927f0c2600d2537e53ac7b17856891ab61dfb36"
+                "reference": "9019226eb50df275aa86bb15bfc98a619601ee49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/10up/wp_mock/zipball/9927f0c2600d2537e53ac7b17856891ab61dfb36",
-                "reference": "9927f0c2600d2537e53ac7b17856891ab61dfb36",
+                "url": "https://api.github.com/repos/10up/wp_mock/zipball/9019226eb50df275aa86bb15bfc98a619601ee49",
+                "reference": "9019226eb50df275aa86bb15bfc98a619601ee49",
                 "shasum": ""
             },
             "require": {
@@ -79,7 +79,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "A mocking library to take the pain out of unit testing for WordPress",
-            "time": "2019-09-16T18:03:59+00:00"
+            "time": "2019-03-16T03:44:39+00:00"
         },
         {
             "name": "antecedent/patchwork",
@@ -244,6 +244,20 @@
             "keywords": [
                 "constructor",
                 "instantiate"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finstantiator",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-29T17:27:14+00:00"
         },
@@ -1134,6 +1148,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -1216,6 +1231,16 @@
                 "phpunit",
                 "testing",
                 "xunit"
+            ],
+            "funding": [
+                {
+                    "url": "https://phpunit.de/donate.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
             ],
             "time": "2020-05-22T13:51:52+00:00"
         },
@@ -1941,6 +1966,20 @@
                 "polyfill",
                 "portable"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-12T16:14:59+00:00"
         },
         {
@@ -1988,12 +2027,12 @@
             "version": "1.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
                 "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
                 "shasum": ""
             },
@@ -2081,7 +2120,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "10up/wp_mock": 20,
         "10up/phpcs-composer": 20
     },
     "prefer-stable": false,
@@ -2089,5 +2127,6 @@
     "platform": {
         "php": ">=7.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
