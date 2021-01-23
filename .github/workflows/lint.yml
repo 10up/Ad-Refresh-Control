@@ -25,6 +25,8 @@ jobs:
       uses: icrawl/action-eslint@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        custom-glob: assets
   phpcs:
     name: phpcs
     runs-on: ubuntu-latest
