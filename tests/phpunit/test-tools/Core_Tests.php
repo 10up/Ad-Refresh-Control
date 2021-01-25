@@ -88,9 +88,7 @@ class Core_Tests extends Base\TestCase {
 	 */
 	public function test_activate() {
 		// Setup
-		\WP_Mock::userFunction( 'flush_rewrite_rules', array(
-			'times' => 1
-		) );
+		\WP_Mock::expectAction( 'avc_init' );
 
 		// Act
 		activate();
