@@ -6,6 +6,7 @@ const sizesToExclude = window.AdRefreshControl.sizesToExclude || []; // Do not t
 const slotIdsToExclude = window.AdRefreshControl.slotIdsToExclude || []; // Do not trigger active view refresh for the given slot IDs.
 const refreshInterval      = ( window.AdRefreshControl.refreshInterval || 30 ) * 1000;
 const maximumRefreshes = window.AdRefreshControl.maximumRefreshes || 10;
+const refreshCallback = window.AdRefreshControl.refreshCallback || false;
 let browserFocus = true;
 const adsData = [];
 
@@ -36,7 +37,11 @@ const checkForAdsReadyToRefresh = () => {
 	}
 
 	if ( 0 < slotsToRefresh.length ) {
-		googletag.pubads().refresh( slotsToRefresh );
+		if ( refreshCallback && 'function' === typeof window[refreshCallback] ) {
+			window[refreshCallback]( slotsToRefresh );
+		} else {
+			googletag.pubads().refresh( slotsToRefresh );
+		}
 	}
 
 	setTimeout( checkForAdsReadyToRefresh, 500 );
