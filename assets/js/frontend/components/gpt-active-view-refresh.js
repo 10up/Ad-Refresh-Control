@@ -73,7 +73,7 @@ const viewabilityHandler = ( event ) => {
 
 	const slotID = event.slot.getSlotElementId();
 	if ( 'undefined' === typeof adsData[ slotID ] ) {
-		initializeSlotData( event.slot );
+		initializeSlotData( event );
 	}
 
 	adsData[ slotID ].viewability = inViewPercentage;
