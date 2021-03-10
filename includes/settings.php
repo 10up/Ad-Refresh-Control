@@ -213,7 +213,7 @@ function slot_ids_to_exclude_callback() {
  * @since  1.0
  */
 function register_settings() {
-	if ( apply_filters( 'avc_menu_access', current_user_can('manage_options') ) ) {
+	if ( apply_filters( 'avc_menu_access', current_user_can( 'manage_options' ) ) ) {
 		register_setting( 'avc_settings', 'avc_settings', __NAMESPACE__ . '\sanitize_settings' );
 	}
 }

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
+## [1.0.3] - 2021-03-09
+### Added
+- Custom callback and `avc_refresh_callback` filter to be used when an ad slot is ready for refresh (props [@darylldoyle](https://github.com/darylldoyle) via [#34](https://github.com/10up/Ad-Refresh-Control/pull/34)).
+- Linting and testing GitHub Actions (props [@jeffpaul](https://github.com/jeffpaul), [@dinhtungdu](https://github.com/dinhtungdu) via [#24](https://github.com/10up/Ad-Refresh-Control/pull/24)).
+
+### Changed
+- Bump WordPress version "tested up to" 5.7 (props [@darylldoyle](https://github.com/darylldoyle) via [#32](https://github.com/10up/Ad-Refresh-Control/issues/32)).
+
+### Fixed
+- Issue within `viewabilityHandler()` where it was calling `initializeSlotData()` and passing the individual slot instead of the expected event (props [@darylldoyle](https://github.com/darylldoyle) via [#34](https://github.com/10up/Ad-Refresh-Control/pull/34)).
+
+### Security
+- Bump `ini` from 1.3.5 to 1.3.8 (props [@dependabot](https://github.com/apps/dependabot) via [#33](https://github.com/10up/Ad-Refresh-Control/pull/33)).
+
 ## [1.0.2] - 2020-11-17
 ### Added
 - Support for additional exclusion rules - line item ID, ad unit size, and ad slot ID (props [@elliott-stocks](https://github.com/elliott-stocks), [@davidrgreen](https://github.com/davidrgreen) via [#22](https://github.com/10up/Ad-Refresh-Control/pull/22)).
@@ -36,6 +50,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Initial public release! 🎉
 
 [Unreleased]: https://github.com/10up/Ad-Refresh-Control/compare/trunk...develop
+[1.0.3]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/10up/Ad-Refresh-Control/compare/v1.0.0...1.0.1
 [1.0.0]: https://github.com/10up/Ad-Refresh-Control/releases/tag/v1.0.0

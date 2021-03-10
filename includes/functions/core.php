@@ -150,7 +150,6 @@ function scripts() {
 		true
 	);
 
-
 	wp_localize_script(
 		'avc_frontend',
 		'AdRefreshControl',
@@ -161,7 +160,8 @@ function scripts() {
 			'slotIdsToExclude'     => $slot_ids_to_exclude_assoc,
 			'viewabilityThreshold' => apply_filters( 'avc_viewability_threshold', $viewability_threshold ),
 			'refreshInterval'      => apply_filters( 'avc_refresh_interval', $refresh_interval ),
-			'maximumRefreshes'      => apply_filters( 'avc_maximum_refreshes', $maximum_refreshes ),
+			'maximumRefreshes'     => apply_filters( 'avc_maximum_refreshes', $maximum_refreshes ),
+			'refreshCallback'      => apply_filters( 'avc_refresh_callback', false ),
 		]
 	);
 }

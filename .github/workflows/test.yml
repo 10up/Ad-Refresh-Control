@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+  push:
+    branches:
+      - develop
+      - trunk
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: getong/mariadb-action@v1.1
+
+    - name: Set PHP version
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.3'
+        coverage: none
+        tools: composer:v1
+
+    - name: Install dependencies
+      run: composer install
+
+    - name: PHPUnit
+      run: './vendor/bin/phpunit'
