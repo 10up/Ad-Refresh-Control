@@ -58,7 +58,7 @@ const impressionViewableHandler = ( event ) => {
 		return;
 	}
 	if ( 'undefined' === typeof adsData[ slotID ] ) {
-		initializeSlotData( event.slot );
+		initializeSlotData( event );
 	}
 	adsData[ slotID ].viewable = true;
 };
