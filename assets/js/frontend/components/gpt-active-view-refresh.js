@@ -144,7 +144,8 @@ const isEligible = ( event ) => {
 		return false;
 	}
 
-	let slotSize = event.size.toString();
+	// The size property only exists within the googletag.events.SlotRenderEndedEvent so we need to check it's there before accessing it.
+	let slotSize = 'size' in event ? event.size.toString() : false;
 
 	const slotSizes = slot.getSizes();
 	const slotID = slot.getSlotElementId();
