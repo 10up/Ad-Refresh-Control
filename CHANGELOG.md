@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
+## [1.0.4] - 2021-03-24
+### Fixed
+- `initializeSlotData()` now correctly receives an event instead of a `Slot` (props [@darylldoyle](https://github.com/darylldoyle) via [#39](https://github.com/10up/Ad-Refresh-Control/pull/39)).
+- `isEligible()` prevents Uncaught TypeError by checking if `event.size` exists before attempting to access it (props [@darylldoyle](https://github.com/darylldoyle) via [#39](https://github.com/10up/Ad-Refresh-Control/pull/39)).
+
+### Security
+- Bump `elliptic` from 6.5.3 to 6.5.4 (props [@dependabot](https://github.com/apps/dependabot) via [#37](https://github.com/10up/Ad-Refresh-Control/pull/37)).
+
 ## [1.0.3] - 2021-03-09
 ### Added
 - Custom callback and `avc_refresh_callback` filter to be used when an ad slot is ready for refresh (props [@darylldoyle](https://github.com/darylldoyle) via [#34](https://github.com/10up/Ad-Refresh-Control/pull/34)).
@@ -50,6 +58,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Initial public release! 🎉
 
 [Unreleased]: https://github.com/10up/Ad-Refresh-Control/compare/trunk...develop
+[1.0.4]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/10up/Ad-Refresh-Control/compare/v1.0.0...1.0.1

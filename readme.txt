@@ -43,6 +43,11 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 
 == Changelog ==
 
+= 1.0.4 =
+* **Fixed:** `initializeSlotData()` now correctly receives an event instead of a `Slot` (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
+* **Fixed:** `isEligible()` prevents Uncaught TypeError by checking if `event.size` exists before attempting to access it (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
+* **Security:** Bump `elliptic` from 6.5.3 to 6.5.4 (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
+
 = 1.0.3 =
 * **Added:** Custom callback and `avc_refresh_callback` filter to be used when an ad slot is ready for refresh (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
 * **Added:** Linting and testing GitHub Actions (props [@jeffpaul](https://profiles.wordpress.org/jeffpaul/), [@dinhtungdu](https://profiles.wordpress.org/dinhtungdu/)).
