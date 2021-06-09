@@ -41,7 +41,7 @@ A settings page will allow adjustments such as the time between refreshes, the m
 ### Hooks
 
 ####`avc_refresh_interval_value` 
-- Filters the default refresh interval value of 30 seconds. This hook is applied to the value at storage and retrieval phases.
+- Filters the default refresh interval value of 30 seconds. This filter is applied to the value at storage and retrieval phases.
 - Since 1.0.5
 
 **Usage:**
