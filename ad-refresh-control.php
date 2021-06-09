@@ -17,7 +17,7 @@
  */
 
 // Useful global constants.
-define( 'AD_REFRESH_CONTROL_VERSION', '1.0.4' );
+define( 'AD_REFRESH_CONTROL_VERSION', '1.0.5' );
 define( 'AD_REFRESH_CONTROL_URL', plugin_dir_url( __FILE__ ) );
 define( 'AD_REFRESH_CONTROL_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AD_REFRESH_CONTROL_INC', AD_REFRESH_CONTROL_PATH . 'includes/' );
