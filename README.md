@@ -54,7 +54,7 @@ add_filter( 'avc_refresh_interval_value', 'my_filter_callback', 10, 1 );
  *
  * @param  int $interval The interval value to filter on.
  *
- * @return int The refresh interval, fitlered or not.
+ * @return int The refresh interval, filtered or not.
  */
 function my_filter_callback( $interval ) {
 	$interval = 45;
