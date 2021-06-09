@@ -128,7 +128,6 @@ function refresh_interval_callback() {
 	 * @link  https://github.com/10up/Ad-Refresh-Control/issues/46
 	 *
 	 * @param int $value The refresh interval in seconds. Defaults to 30.
-	 *
 	 */
 	$value        = absint( apply_filters( 'avc_refresh_interval_value', $value ) );
 
@@ -268,7 +267,6 @@ function sanitize_settings( $settings ) {
 	 * @link  https://github.com/10up/Ad-Refresh-Control/issues/46
 	 *
 	 * @param int $refresh_interval_default The refresh interval in seconds. Defaults to 30.
-	 *
 	 */
 	$refresh_interval_default = 30;
 	$refresh_interval_default = absint( apply_filters( 'avc_refresh_interval_value', $refresh_interval_default ) );
