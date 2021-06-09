@@ -135,6 +135,20 @@ function scripts() {
 
 	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
 	$refresh_interval      = $avc_settings['refresh_interval'] ?? 30;
+	/**
+	 * Refresh interval.
+	 *
+	 * Allows developers to filter the default refresh interval value of 30 seconds.
+	 * We strongly advise developers to not filter this to a value less than 30 seconds.
+	 * Filterable via the avc_refresh_interval_value filter hook.
+	 *
+	 * @since 1.0.5
+	 * @link  https://github.com/10up/Ad-Refresh-Control/issues/46
+	 *
+	 * @param int $refresh_interval The refresh interval in seconds. Defaults to 30.
+	 *
+	 */
+	$refresh_interval      = absint( apply_filters( 'avc_refresh_interval_value', $refresh_interval ) );
 	$maximum_refreshes     = $avc_settings['maximum_refreshes'] ?? 10;
 
 	if ( $disable_refresh ) {
