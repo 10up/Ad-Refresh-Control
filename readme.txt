@@ -43,6 +43,14 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 
 == Changelog ==
 
+= 1.0.5 =
+* **Added:** `avc_refresh_interval_value` filter applied to default refresh interval value of 30 seconds (props [@simondowdles](https://profiles.wordpress.org/simondowdles/)).
+* **Security:** Bump `y18n` from 3.2.1 to 3.2.2 (props [@dependabot](https://github.com/apps/dependabot)).
+* **Security:** Bump `ssri` from 6.0.1 to 6.0.2 (props [@dependabot](https://github.com/apps/dependabot)).
+* **Security:** Bump `lodash` from 4.17.19 to 4.17.21 (props [@dependabot](https://github.com/apps/dependabot)).
+* **Security:** Bump `hosted-git-info` from 2.7.1 to 2.8.9 (props [@dependabot](https://github.com/apps/dependabot)).
+* **Security:** Bump `browserslist` from 4.5.5 to 4.16.5 (props [@dependabot](https://github.com/apps/dependabot)).
+
 = 1.0.4 =
 * **Fixed:** `initializeSlotData()` now correctly receives an event instead of a `Slot` (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
 * **Fixed:** `isEligible()` prevents Uncaught TypeError by checking if `event.size` exists before attempting to access it (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
