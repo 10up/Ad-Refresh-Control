@@ -3,7 +3,7 @@
  * Plugin Name:       Ad Refresh Control
  * Plugin URI:        https://github.com/10up/Ad-Refresh-Control
  * Description:       Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Requires at least: 4.9
  * Requires PHP:      7.0
  * Author:            10up
