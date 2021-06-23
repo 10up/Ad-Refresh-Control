@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
-## [1.0.5] - TBD
+## [1.0.5] - 2021-06-23
 ### Added
 - `avc_refresh_interval_value` filter applied to default refresh interval value of 30 seconds (props [@10upsimon](https://github.com/10upsimon) via [#48](https://github.com/10up/Ad-Refresh-Control/pull/48)).
 
