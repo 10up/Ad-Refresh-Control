@@ -117,10 +117,23 @@ function refresh_interval_callback() {
 
 	$avc_settings = get_option( 'avc_settings' );
 	$value        = $avc_settings['refresh_interval'] ?? 30;
+	/**
+	 * Refresh interval.
+	 *
+	 * Allows developers to filter the default refresh interval value of 30 seconds.
+	 * We strongly advise developers to not filter this to a value less than 30 seconds.
+	 * Filterable via the avc_refresh_interval_value filter hook.
+	 *
+	 * @since 1.0.5
+	 * @link  https://github.com/10up/Ad-Refresh-Control/issues/46
+	 *
+	 * @param int $value The refresh interval in seconds. Defaults to 30.
+	 */
+	$value        = absint( apply_filters( 'avc_refresh_interval_value', $value ) );
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[refresh_interval]">
-			<p><?php esc_html_e( 'The number of seconds that must pass between an ad crossing the viewability threshold and the the ad refreshing. The plugin enforces a minimum of 30 in order to avoid your site being flagged for abusing ad refreshes by advertisers.', 'ad-refresh-control' ); ?></p>
+			<p><?php esc_html_e( 'The number of seconds that must pass between an ad crossing the viewability threshold and the the ad refreshing. The plugin enforces a minimum of 30 in order to avoid your site being flagged for abusing ad refreshes by advertisers. This value may however be overridden via the avc_refresh_interval_value filter hook.', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
 }
@@ -243,8 +256,21 @@ function sanitize_settings( $settings ) {
 		$settings['viewability_threshold'] = $viewability_threshold_default;
 	}
 
-	// refresh_interval
+	/**
+	 * Refresh interval.
+	 *
+	 * Allows developers to filter the default refresh interval value of 30 seconds.
+	 * We strongly advise developers to not filter this to a value less than 30 seconds.
+	 * Filterable via the avc_refresh_interval_value filter hook.
+	 *
+	 * @since 1.0.5
+	 * @link  https://github.com/10up/Ad-Refresh-Control/issues/46
+	 *
+	 * @param int $refresh_interval_default The refresh interval in seconds. Defaults to 30.
+	 */
 	$refresh_interval_default = 30;
+	$refresh_interval_default = absint( apply_filters( 'avc_refresh_interval_value', $refresh_interval_default ) );
+
 	if ( isset( $settings['refresh_interval'] ) ) {
 		if ( ! is_numeric( $settings['refresh_interval'] ) || intval( $settings['refresh_interval'] ) < 30 ) {
 			$settings['refresh_interval'] = intval( $refresh_interval_default );

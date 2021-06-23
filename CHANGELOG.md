@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
+## [1.0.5] - 2021-06-23
+### Added
+- `avc_refresh_interval_value` filter applied to default refresh interval value of 30 seconds (props [@10upsimon](https://github.com/10upsimon) via [#48](https://github.com/10up/Ad-Refresh-Control/pull/48)).
+
+### Security
+- Bump `y18n` from 3.2.1 to 3.2.2 (props [@dependabot](https://github.com/apps/dependabot) via [#42](https://github.com/10up/Ad-Refresh-Control/pull/42)).
+- Bump `ssri` from 6.0.1 to 6.0.2 (props [@dependabot](https://github.com/apps/dependabot) via [#43](https://github.com/10up/Ad-Refresh-Control/pull/43)).
+- Bump `lodash` from 4.17.19 to 4.17.21 (props [@dependabot](https://github.com/apps/dependabot) via [#44](https://github.com/10up/Ad-Refresh-Control/pull/44)).
+- Bump `hosted-git-info` from 2.7.1 to 2.8.9 (props [@dependabot](https://github.com/apps/dependabot) via [#45](https://github.com/10up/Ad-Refresh-Control/pull/45)).
+- Bump `browserslist` from 4.5.5 to 4.16.5 (props [@dependabot](https://github.com/apps/dependabot) via [#47](https://github.com/10up/Ad-Refresh-Control/pull/47)).
+
 ## [1.0.4] - 2021-03-24
 ### Fixed
 - `initializeSlotData()` now correctly receives an event instead of a `Slot` (props [@darylldoyle](https://github.com/darylldoyle) via [#39](https://github.com/10up/Ad-Refresh-Control/pull/39)).
@@ -58,6 +69,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Initial public release! 🎉
 
 [Unreleased]: https://github.com/10up/Ad-Refresh-Control/compare/trunk...develop
+[1.0.5]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.4...1.0.5
 [1.0.4]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.1...1.0.2

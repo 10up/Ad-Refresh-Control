@@ -38,6 +38,31 @@ A settings page will allow adjustments such as the time between refreshes, the m
 
 - **Slot IDs to Exclude:** Prevent ad refreshes for specific slot IDs in the format of a comma separated list based on the ID of the div, e.g. div-gpt-ad-grid-1.
 
+### Hooks
+
+####`avc_refresh_interval_value` 
+- Filters the default refresh interval value of 30 seconds. This filter is applied to the value at storage and retrieval phases.
+- Since 1.0.5
+
+**Usage:**
+
+```
+add_filter( 'avc_refresh_interval_value', 'my_filter_callback', 10, 1 );
+
+/**
+ * Filter refresh interval to 45 seconds.
+ *
+ * @param  int $interval The interval value to filter on.
+ *
+ * @return int The refresh interval, filtered or not.
+ */
+function my_filter_callback( $interval ) {
+	$interval = 45;
+	
+	return $interval;
+}
+```
+
 ## Support Level
 
 **Active:** 10up is actively working on this, and we expect to continue work for the foreseeable future including keeping tested up to the most recent version of WordPress.  Bug reports, feature requests, questions, and pull requests are welcome.

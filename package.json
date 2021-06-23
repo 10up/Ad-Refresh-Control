@@ -1,6 +1,6 @@
 {
   "name": "@10up/ad-refresh-control",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Ad Refresh Control",
   "license": "GPL-2.0-or-later",
   "homepage": "https://github.com/10up/ad-refresh-control",
@@ -61,7 +61,7 @@
     "babel-loader": "^8.0.0",
     "browser-sync": "^2.26.5",
     "browser-sync-webpack-plugin": "^2.2.2",
-    "browserslist": "^4.5.5",
+    "browserslist": "^4.16.5",
     "caniuse-db": "^1.0.30000963",
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.0.3",
