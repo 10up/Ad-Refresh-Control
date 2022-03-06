@@ -292,7 +292,7 @@ function sanitize_settings( $settings ) {
 
 	// advertiser_ids
 	$advertiser_ids_default = [];
-	if ( isset( $settings['advertiser_ids'] ) ) {
+	if ( ! empty( $settings['advertiser_ids'] ) ) {
 
 		$advertiser_ids = explode( ',', $settings['advertiser_ids'] );
 
@@ -316,7 +316,7 @@ function sanitize_settings( $settings ) {
 
 	// Line item IDs.
 	$line_item_ids_default = [];
-	if ( isset( $settings['line_item_ids'] ) ) {
+	if ( ! empty( $settings['line_item_ids'] ) ) {
 
 		$line_item_ids = explode( ',', $settings['line_item_ids'] );
 
@@ -340,7 +340,7 @@ function sanitize_settings( $settings ) {
 
 	// Sizes.
 	$sizes_to_exclude_default = '';
-	if ( isset( $settings['sizes_to_exclude'] ) ) {
+	if ( ! empty( $settings['sizes_to_exclude'] ) ) {
 		$sizes                        = sanitize_text_field( $settings['sizes_to_exclude'] );
 		$settings['sizes_to_exclude'] = $sizes;
 	} else {
@@ -349,7 +349,7 @@ function sanitize_settings( $settings ) {
 
 	// Slot IDs.
 	$slot_ids_to_exclude_default = [];
-	if ( isset( $settings['slot_ids_to_exclude'] ) ) {
+	if ( ! empty( $settings['slot_ids_to_exclude'] ) ) {
 
 		$slot_ids_to_exclude = explode( ',', $settings['slot_ids_to_exclude'] );
 
