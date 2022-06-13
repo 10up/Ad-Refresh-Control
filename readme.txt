@@ -2,7 +2,7 @@
 Contributors:      10up, doomwaxer, davidrgreen
 Tags:              google, ad manager
 Requires at least: 4.9
-Tested up to:      5.7
+Tested up to:      6.0
 Requires PHP:      7.0
 Stable tag:        1.0.5
 License:           GPLv2 or later
