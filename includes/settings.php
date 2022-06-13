@@ -294,7 +294,11 @@ function sanitize_settings( $settings ) {
 	$advertiser_ids_default = [];
 	if ( ! empty( $settings['advertiser_ids'] ) ) {
 
-		$advertiser_ids = explode( ',', $settings['advertiser_ids'] );
+		if ( is_array( $settings['advertiser_ids'] ) ) {
+			$advertiser_ids = $settings['advertiser_ids'];
+		} else {
+			$advertiser_ids = explode( ',', $settings['advertiser_ids'] );
+		}
 
 		$advertiser_ids = array_filter(
 			$advertiser_ids,
@@ -318,7 +322,11 @@ function sanitize_settings( $settings ) {
 	$line_item_ids_default = [];
 	if ( ! empty( $settings['line_item_ids'] ) ) {
 
-		$line_item_ids = explode( ',', $settings['line_item_ids'] );
+		if ( is_array( $settings['line_item_ids'] ) ) {
+			$line_item_ids = $settings['line_item_ids'];
+		} else {
+			$line_item_ids = explode( ',', $settings['line_item_ids'] );
+		}
 
 		$line_item_ids = array_filter(
 			$line_item_ids,
@@ -351,7 +359,11 @@ function sanitize_settings( $settings ) {
 	$slot_ids_to_exclude_default = [];
 	if ( ! empty( $settings['slot_ids_to_exclude'] ) ) {
 
-		$slot_ids_to_exclude = explode( ',', $settings['slot_ids_to_exclude'] );
+		if ( is_array( $settings['slot_ids_to_exclude'] ) ) {
+			$slot_ids_to_exclude = $settings['slot_ids_to_exclude'];
+		} else {
+			$slot_ids_to_exclude = explode( ',', $settings['slot_ids_to_exclude'] );
+		}
 
 		$slot_ids_to_exclude = array_filter(
 			$slot_ids_to_exclude,
