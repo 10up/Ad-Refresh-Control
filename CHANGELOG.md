@@ -92,6 +92,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Initial public release! 🎉
 
 [Unreleased]: https://github.com/10up/Ad-Refresh-Control/compare/trunk...develop
+[1.0.5]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.5...1.1.0
 [1.0.5]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.4...1.0.5
 [1.0.4]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.2...1.0.3
