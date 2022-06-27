@@ -2,9 +2,9 @@
 Contributors:      10up, doomwaxer, davidrgreen
 Tags:              google, ad manager
 Requires at least: 4.9
-Tested up to:      5.7
+Tested up to:      6.0
 Requires PHP:      7.0
-Stable tag:        1.0.5
+Stable tag:        1.1.0
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,7 +43,18 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 
 == Changelog ==
 
-= 1.0.5 =
+= 1.1.0 - 2022-06-27 =
+* **Added:** Dependency security scanning (props [@jeffpaul](https://github.com/jeffpaul), [@Sidsector9](https://github.com/Sidsector9) via [#63](https://github.com/10up/Ad-Refresh-Control/pull/63)).
+* **Changed:** Bump WordPress version "tested up to" 6.0 (props [@cadic](https://github.com/cadic) via [#66](https://github.com/10up/Ad-Refresh-Control/issues/66)).
+* **Fixed:** PHP Warnings when pushing "Submit" on the settings page (props [@sksaju](https://github.com/sksaju), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#60](https://github.com/10up/Ad-Refresh-Control/pull/60)).
+* **Fixed:** Error when saving settings for the first time of using the plugin (props [@cadic](https://github.com/cadic), [@faisal-alvi](https://github.com/faisal-alvi) via [#67](https://github.com/10up/Ad-Refresh-Control/pull/67)).
+* **Security:** Bump `color-string` from 1.5.3 to 1.5.5 (props [@dependabot](https://github.com/apps/dependabot) via [#51](https://github.com/10up/Ad-Refresh-Control/pull/51)).
+* **Security:** Bump `path-parse` from 1.0.6 to 1.0.7 (props [@dependabot](https://github.com/apps/dependabot) via [#53](https://github.com/10up/Ad-Refresh-Control/pull/53)).
+* **Security:** Bump `follow-redirects` from 1.7.0 to 1.14.8 (props [@dependabot](https://github.com/apps/dependabot) via [#55](https://github.com/10up/Ad-Refresh-Control/pull/55), [#57](https://github.com/10up/Ad-Refresh-Control/pull/57)).
+* **Security:** Bump `ajv` from 6.10.0 to 6.12.6 (props [@dependabot](https://github.com/apps/dependabot) via [#56](https://github.com/10up/Ad-Refresh-Control/pull/56)).
+* **Security:** Bump `tar` from 4.4.8 to 4.4.19 (props [@dependabot](https://github.com/apps/dependabot) via [#58](https://github.com/10up/Ad-Refresh-Control/pull/58)).
+
+= 1.0.5 - 2021-06-23 =
 * **Added:** `avc_refresh_interval_value` filter applied to default refresh interval value of 30 seconds (props [@simondowdles](https://profiles.wordpress.org/simondowdles/)).
 * **Security:** Bump `y18n` from 3.2.1 to 3.2.2 (props [@dependabot](https://github.com/apps/dependabot)).
 * **Security:** Bump `ssri` from 6.0.1 to 6.0.2 (props [@dependabot](https://github.com/apps/dependabot)).
@@ -51,19 +62,19 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 * **Security:** Bump `hosted-git-info` from 2.7.1 to 2.8.9 (props [@dependabot](https://github.com/apps/dependabot)).
 * **Security:** Bump `browserslist` from 4.5.5 to 4.16.5 (props [@dependabot](https://github.com/apps/dependabot)).
 
-= 1.0.4 =
+= 1.0.4 - 2021-03-24 =
 * **Fixed:** `initializeSlotData()` now correctly receives an event instead of a `Slot` (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
 * **Fixed:** `isEligible()` prevents Uncaught TypeError by checking if `event.size` exists before attempting to access it (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
 * **Security:** Bump `elliptic` from 6.5.3 to 6.5.4 (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
 
-= 1.0.3 =
+= 1.0.3 - 2021-03-09 =
 * **Added:** Custom callback and `avc_refresh_callback` filter to be used when an ad slot is ready for refresh (props [@enshrined](https://profiles.wordpress.org/enshrined/)).
 * **Added:** Linting and testing GitHub Actions (props [@jeffpaul](https://profiles.wordpress.org/jeffpaul/), [@dinhtungdu](https://profiles.wordpress.org/dinhtungdu/)).
 * **Changed:** Bump WordPress version "tested up to" 5.7 (props [@enshrined](https://profiles.wordpress.org/enshrined/))).
 * **Fixed:** Issue within `viewabilityHandler()` where it was calling `initializeSlotData()` and passing the individual slot instead of the expected event (props [@enshrined](https://profiles.wordpress.org/enshrined/))).
 * **Security:** Bump `ini` from 1.3.5 to 1.3.8 (props [@dependabot](https://github.com/apps/dependabot)).
 
-= 1.0.2 =
+= 1.0.2 - 2020-11-17 =
 * **Added:** Support for additional exclusion rules - line item ID, ad unit size, and ad slot ID (props [@elliott-stocks](https://profiles.wordpress.org/elliott-stocks/), [@davidrgreen](https://profiles.wordpress.org/davidrgreen/)).
 * **Added:** WordPress VIP support and exclusion for UsingCustomConstant PHPCS rule (props [@barryceelen](https://profiles.wordpress.org/barryceelen/)).
 * **Changed:** Webpack config to use CoreJS 3 instead of 2 to handle ES7 polyfills (props [@davidrgreen](https://profiles.wordpress.org/davidrgreen/)).
@@ -71,12 +82,12 @@ __Excluded Advertiser IDs__: Prevent ad refreshes for specific advertiser IDs in
 * **Fixed:** Add check that explicitly verifies that `disable_refresh` is `true` before saving the setting (props [@barryceelen](https://github.com/barryceelen)).
 * **Security:** Bump `dot-prop` from 4.2.0 to 4.2.1 (props [@dependabot](https://github.com/apps/dependabot)).
 
-= 1.0.1 =
+= 1.0.1 - 2020-09-30 =
 * **Added:** Plugin header and icon images (props [@jackiekjome](https://profiles.wordpress.org/jackiekjome/)).
 * **Added:** GitHub Actions for deploys to WordPress.org (props [@jeffpaul](https://profiles.wordpress.org/jeffpaul/)).
 * **Added:** Documentation updates (props [@jeffpaul](https://profiles.wordpress.org/jeffpaul/)).
 * **Security:** Bump `lodash` from 4.17.15 to 4.17.19 (props [@dependabot](https://github.com/apps/dependabot)).
 * **Security:** Bump `elliptic` from 6.4.1 to 6.5.3 (props [@dependabot](https://github.com/apps/dependabot)).
 
-= 1.0.0 =
+= 1.0.0 - 2020-06-10 =
 * **Added:** Initial public release! 🎉
