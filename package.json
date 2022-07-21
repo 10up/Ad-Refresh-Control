@@ -82,7 +82,7 @@
     "stylelint-declaration-use-variable": "^1.7.0",
     "stylelint-order": "^1.0.0",
     "stylelint-webpack-plugin": "^0.10.5",
-    "terser": "^3.17.0",
+    "terser": "^4.8.1",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
     "webpack-fix-style-only-entries": "^0.2.1",
