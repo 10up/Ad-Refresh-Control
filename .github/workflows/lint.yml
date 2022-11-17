@@ -43,7 +43,7 @@ jobs:
       run: composer install
     - name: PHPCS check
       id: phpcs-sniffs
-      run: ./vendor/bin/phpcs . --report-full --report-checkstyle=${RUNNER_TEMP}/phpcs-report.xml
+      run: ./vendor/bin/phpcs . --report-full --warning-severity=0 --report-checkstyle=${RUNNER_TEMP}/phpcs-report.xml
 
     - name: Show PHPCS results in PR
       if: ${{ always() }}
