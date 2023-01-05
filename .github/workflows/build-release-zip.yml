@@ -53,3 +53,5 @@ jobs:
 
       - name: Generate ZIP file
         uses: 10up/action-wordpress-plugin-build-zip@stable
+        env:
+          SLUG: ad-refresh-control
