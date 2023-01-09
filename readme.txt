@@ -1,5 +1,5 @@
 === Ad Refresh Control ===
-Contributors:      10up, doomwaxer, davidrgreen
+Contributors:      10up, doomwaxer, davidrgreen, jeffpaul
 Tags:              google, ad manager
 Requires at least: 5.7
 Tested up to:      6.1
