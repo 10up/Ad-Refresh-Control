@@ -129,7 +129,7 @@ function refresh_interval_callback() {
 	 *
 	 * @param int $value The refresh interval in seconds. Defaults to 30.
 	 */
-	$value        = absint( apply_filters( 'avc_refresh_interval_value', $value ) );
+	$value = absint( apply_filters( 'avc_refresh_interval_value', $value ) );
 
 	?>
 		<label><input type="text" value="<?php echo esc_attr( $value ); ?>" name="avc_settings[refresh_interval]">
