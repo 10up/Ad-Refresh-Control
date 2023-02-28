@@ -33,7 +33,12 @@
     "format-js": "eslint --fix assets/js",
     "lint": "npm run lint-css && npm run lint-js && npm run lint-php",
     "format": "npm run format-js",
-    "env": "wp-env"
+    "env": "wp-env",
+    "cypress:open": "cypress open --config-file tests/cypress/config.js --e2e --browser chrome",
+    "cypress:run": "cypress run --config-file tests/cypress/config.js",
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "postenv:start": "./tests/bin/initialize.sh"
   },
   "husky": {
     "hooks": {
@@ -53,6 +58,7 @@
     "url": "https://github.com/10up/ad-refresh-control"
   },
   "devDependencies": {
+    "@10up/cypress-wp-utils": "github:10up/cypress-wp-utils#build",
     "@10up/eslint-config": "^1.0.9",
     "@10up/stylelint-config": "^1.0.3",
     "@babel/core": "^7.0.0",
@@ -70,6 +76,7 @@
     "core-js": "^3.1.4",
     "css-loader": "^2.1.1",
     "cssnano": "^5.1.14",
+    "cypress": "^10.11.0",
     "eslint": "^5.4.0",
     "eslint-loader": "^2.1.2",
     "husky": "^1.3.1",
