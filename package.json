@@ -32,7 +32,8 @@
     "lint-php": "composer run lint",
     "format-js": "eslint --fix assets/js",
     "lint": "npm run lint-css && npm run lint-js && npm run lint-php",
-    "format": "npm run format-js"
+    "format": "npm run format-js",
+    "env": "wp-env"
   },
   "husky": {
     "hooks": {
