@@ -57,6 +57,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@wordpress/env": "^5.12.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.0",
     "browser-sync": "^2.27.10",
