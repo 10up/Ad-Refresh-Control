@@ -8,14 +8,7 @@
 /node_modules
 
 # Files
-.babelrc
-.browserslistrc
-.distignore
-.editorconfig
-.eslintignore
-.eslintrc
-.gitignore
-.stylelintrc
+.*
 CHANGELOG.md
 CODE_OF_CONDUCT.md
 composer.json
