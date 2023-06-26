@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
-## [1.1.2] - 2023-05-31
+## [1.1.2] - 2023-06-14
 ### Changed
 - Bump WordPress "tested up to" version 6.2 (props [@Sidsector9](https://github.com/Sidsector9), [@iamdharmesh](https://github.com/iamdharmesh) via [#110](https://github.com/10up/Ad-Refresh-Control/pull/110)).
 - Documentation & deploy action updates (props [@barryceelen](https://github.com/barryceelen), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter) via [#104](https://github.com/10up/Ad-Refresh-Control/pull/104), [#116](https://github.com/10up/Ad-Refresh-Control/pull/116)).
