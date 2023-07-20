@@ -56,7 +56,7 @@ if ( ! site_meets_php_requirements() ) {
 					echo wp_kses_post(
 						sprintf(
 							/* translators: %s: Minimum required PHP version */
-							__( 'Ad Refresh Control requires PHP version %s or later. Please upgrade PHP or disable the plugin.', 'safe-svg' ),
+							__( 'Ad Refresh Control requires PHP version %s or later. Please upgrade PHP or disable the plugin.', 'ad-refresh-control' ),
 							esc_html( minimum_php_requirement() )
 						)
 					);
