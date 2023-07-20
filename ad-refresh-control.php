@@ -3,7 +3,7 @@
  * Plugin Name:       Ad Refresh Control
  * Plugin URI:        https://github.com/10up/Ad-Refresh-Control
  * Description:       Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Requires at least: 5.7
  * Requires PHP:      7.4
  * Author:            10up
@@ -17,10 +17,57 @@
  */
 
 // Useful global constants.
-define( 'AD_REFRESH_CONTROL_VERSION', '1.1.2' );
+define( 'AD_REFRESH_CONTROL_VERSION', '1.1.3' );
 define( 'AD_REFRESH_CONTROL_URL', plugin_dir_url( __FILE__ ) );
 define( 'AD_REFRESH_CONTROL_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AD_REFRESH_CONTROL_INC', AD_REFRESH_CONTROL_PATH . 'includes/' );
+
+/**
+ * Get the minimum version of PHP required by this plugin.
+ *
+ * @since 1.1.3
+ *
+ * @return string Minimum version required.
+ */
+function minimum_php_requirement() {
+	return '7.4';
+}
+
+/**
+ * Whether PHP installation meets the minimum requirements
+ *
+ * @since 1.1.3
+ *
+ * @return bool True if meets minimum requirements, false otherwise.
+ */
+function site_meets_php_requirements() {
+	return version_compare( phpversion(), minimum_php_requirement(), '>=' );
+}
+
+// Ensuring our PHP version requirement is met first before loading plugin.
+if ( ! site_meets_php_requirements() ) {
+	add_action(
+		'admin_notices',
+		function() {
+			?>
+			<div class="notice notice-error">
+				<p>
+					<?php
+					echo wp_kses_post(
+						sprintf(
+							/* translators: %s: Minimum required PHP version */
+							__( 'Ad Refresh Control requires PHP version %s or later. Please upgrade PHP or disable the plugin.', 'safe-svg' ),
+							esc_html( minimum_php_requirement() )
+						)
+					);
+					?>
+				</p>
+			</div>
+			<?php
+		}
+	);
+	return;
+}
 
 // phpcs:disable WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
 require_once AD_REFRESH_CONTROL_INC . 'functions/core.php';
