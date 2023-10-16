@@ -42,7 +42,7 @@ jobs:
 
       - name: Install Node dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci --omit=optional
+        run: npm ci --omit=optional -f
 
       - name: Install Composer dependencies
         if: steps.cache-vendor.outputs.cache-hit != 'true'
