@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
+## [1.1.3] - 2023-10-16
+### Changed
+- Updated the `skaut/wordpress-version-checker` to check WordPress "tested up to" during the Release Candidate phase (props [@jeffpaul](https://github.com/jeffpaul), [@iamdharmesh](https://github.com/iamdharmesh) via [#118](https://github.com/10up/Ad-Refresh-Control/pull/118)).
+- Bump WordPress "tested up to" version 6.3 (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#125](https://github.com/10up/Ad-Refresh-Control/pull/125), [#126](https://github.com/10up/Ad-Refresh-Control/pull/126)).
+
+### Security
+- Bump `stylelint` from 14.15.0 to 15.10.1 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#121](https://github.com/10up/Ad-Refresh-Control/pull/121)).
+- Bump `fsevents` from 1.2.8 to 1.2.13 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#128](https://github.com/10up/Ad-Refresh-Control/pull/128)).
+
 ## [1.1.2] - 2023-06-14
 ### Changed
 - Bump WordPress "tested up to" version 6.2 (props [@Sidsector9](https://github.com/Sidsector9), [@iamdharmesh](https://github.com/iamdharmesh) via [#110](https://github.com/10up/Ad-Refresh-Control/pull/110)).
@@ -136,6 +145,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Initial public release! 🎉
 
 [Unreleased]: https://github.com/10up/Ad-Refresh-Control/compare/trunk...develop
+[1.1.3]: https://github.com/10up/Ad-Refresh-Control/compare/1.1.2...1.1.3
 [1.1.2]: https://github.com/10up/Ad-Refresh-Control/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/10up/Ad-Refresh-Control/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.5...1.1.0
