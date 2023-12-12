@@ -1,6 +1,13 @@
 name: Update asset/readme on WordPress.org
 
 on:
+  workflow_dispatch:
+    inputs:
+      ignoreOtherFiles:
+        description: 'Ignore other file changes'
+        required: true
+        type: boolean
+        default: false
   push:
     branches:
     - trunk
@@ -28,3 +35,4 @@ jobs:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
         SLUG: ad-refresh-control
+        IGNORE_OTHER_FILES: ${{ inputs.ignoreOtherFiles || false }}
