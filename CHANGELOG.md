@@ -4,6 +4,39 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
+## [1.1.4] - 2023-11-16
+### Changed
+- Bump WordPress "tested up to" version 6.4 (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul) via [#134](https://github.com/10up/Ad-Refresh-Control/pull/134), [#135](https://github.com/10up/Ad-Refresh-Control/pull/135)).
+
+### Security
+- Bump `postcss` from 8.4.25 to 8.4.31, `css-loader` from 2.1.1 to 6.8.1, `postcss-import` from 12.0.1 to 15.1.0, `postcss-loader` from 3.0.0 to 7.3.3 and `stylelint-order` from 1.0.0 to 6.0.3 (props [@dependabot](https://github.com/apps/dependabot), [@Sidsector9](https://github.com/Sidsector9) via [#127](https://github.com/10up/Ad-Refresh-Control/pull/127)).
+- Bump `@babel/traverse` from 7.4.3 to 7.23.2 (props [@dependabot](https://github.com/apps/dependabot), [@dkotter](https://github.com/dkotter) via [#131](https://github.com/10up/Ad-Refresh-Control/pull/131)).
+- Bump `browserify-sign` from 4.0.4 to 4.2.2 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#133](https://github.com/10up/Ad-Refresh-Control/pull/133)).
+
+## [1.1.3] - 2023-10-16
+### Changed
+- Updated the `skaut/wordpress-version-checker` to check WordPress "tested up to" during the Release Candidate phase (props [@jeffpaul](https://github.com/jeffpaul), [@iamdharmesh](https://github.com/iamdharmesh) via [#118](https://github.com/10up/Ad-Refresh-Control/pull/118)).
+- Bump WordPress "tested up to" version 6.3 (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#125](https://github.com/10up/Ad-Refresh-Control/pull/125), [#126](https://github.com/10up/Ad-Refresh-Control/pull/126)).
+
+### Security
+- Bump `stylelint` from 14.15.0 to 15.10.1 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#121](https://github.com/10up/Ad-Refresh-Control/pull/121)).
+- Bump `fsevents` from 1.2.8 to 1.2.13 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#128](https://github.com/10up/Ad-Refresh-Control/pull/128)).
+
+## [1.1.2] - 2023-06-14
+### Changed
+- Bump WordPress "tested up to" version 6.2 (props [@Sidsector9](https://github.com/Sidsector9), [@iamdharmesh](https://github.com/iamdharmesh) via [#110](https://github.com/10up/Ad-Refresh-Control/pull/110)).
+- Documentation & deploy action updates (props [@barryceelen](https://github.com/barryceelen), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter) via [#104](https://github.com/10up/Ad-Refresh-Control/pull/104), [#116](https://github.com/10up/Ad-Refresh-Control/pull/116)).
+
+### Security
+- Bump `minimist` from 1.2.0 to 1.2.8 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#105](https://github.com/10up/Ad-Refresh-Control/pull/105)).
+- Bump `mkdirp` from 0.5.1 to 0.5.6 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#105](https://github.com/10up/Ad-Refresh-Control/pull/105)).
+- Bump `loader-fs-cache` from 1.0.2 to 1.0.3 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#105](https://github.com/10up/Ad-Refresh-Control/pull/105)).
+- Bump `ua-parser-js` from 1.0.2 to 1.0.34 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#106](https://github.com/10up/Ad-Refresh-Control/pull/106)).
+- Bump `browser-sync` from 2.27.10 to 2.28.3 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#106](https://github.com/10up/Ad-Refresh-Control/pull/106)).
+- Bump `yaml` from 2.1.3 to 2.2.2 (props [@dependabot](https://github.com/apps/dependabot), [@faisal-alvi](https://github.com/faisal-alvi) via [#111](https://github.com/10up/Ad-Refresh-Control/pull/111)).
+- Bump `json5` from 1.0.1 to 1.0.2 (props [@dependabot](https://github.com/apps/dependabot), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#103](https://github.com/10up/Ad-Refresh-Control/pull/103)).
+- Bump `socket.io-parser` from 4.2.2 to 4.2.3 (props [@dependabot](https://github.com/apps/dependabot), [@faisal-alvi](https://github.com/faisal-alvi) via [#112](https://github.com/10up/Ad-Refresh-Control/pull/112)).
+
 ## [1.1.1] - 2023-01-05
 **Note that this release bumps the WordPress minimum version from 4.9 to 5.7 and the PHP minimum version from 7.0 to 7.4.**
 
@@ -121,6 +154,9 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Initial public release! 🎉
 
 [Unreleased]: https://github.com/10up/Ad-Refresh-Control/compare/trunk...develop
+[1.1.4]: https://github.com/10up/Ad-Refresh-Control/compare/1.1.3...1.1.4
+[1.1.3]: https://github.com/10up/Ad-Refresh-Control/compare/1.1.2...1.1.3
+[1.1.2]: https://github.com/10up/Ad-Refresh-Control/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/10up/Ad-Refresh-Control/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.5...1.1.0
 [1.0.5]: https://github.com/10up/Ad-Refresh-Control/compare/1.0.4...1.0.5
