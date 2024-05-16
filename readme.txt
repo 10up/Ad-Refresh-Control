@@ -1,9 +1,7 @@
 === Ad Refresh Control ===
 Contributors:      10up, doomwaxer, davidrgreen, jeffpaul
 Tags:              google, ad manager
-Requires at least: 5.7
-Tested up to:      6.4
-Requires PHP:      7.4
+Tested up to:      6.5
 Stable tag:        1.1.4
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
