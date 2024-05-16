@@ -3,8 +3,8 @@ Contributors:      10up, doomwaxer, davidrgreen, jeffpaul
 Tags:              google, ad manager
 Tested up to:      6.5
 Stable tag:        1.1.4
-License:           GPLv2 or later
-License URI:       http://www.gnu.org/licenses/gpl-2.0.html
+License:           GPL-2.0-or-later
+License URI:       https://spdx.org/licenses/GPL-2.0-or-later.html
 
 Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
 
