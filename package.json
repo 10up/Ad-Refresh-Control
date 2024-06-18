@@ -22,9 +22,8 @@
   "scripts": {
     "test": "phpunit",
     "start": "composer install && npm install && npm run build",
-    "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
-    "dev": "NODE_ENV=development webpack --config config/webpack.dev.js",
-    "watch": "NODE_ENV=development webpack --watch --config config/webpack.dev.js",
+    "build": "wp-scripts build",
+    "dev": "wp-scripts start",
     "build-release": "npm install -f && composer install --no-dev -o && npm run build",
     "lint-release": "npm install -f && composer install && npm run lint",
     "lint-css": "stylelint assets/css",
