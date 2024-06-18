@@ -26,10 +26,10 @@
     "dev": "wp-scripts start",
     "build-release": "npm install -f && composer install --no-dev -o && npm run build",
     "lint-release": "npm install -f && composer install && npm run lint",
-    "lint-css": "stylelint assets/css",
-    "lint-js": "eslint assets/js",
+    "lint-css": "wp-scripts lint-style assets/css",
+    "lint-js": "wp-scripts lint-js assets/js",
     "lint-php": "composer run lint",
-    "format-js": "eslint --fix assets/js",
+    "format-js": "wp-scripts format --fix assets/js",
     "lint": "npm run lint-css && npm run lint-js && npm run lint-php",
     "format": "npm run format-js"
   },
