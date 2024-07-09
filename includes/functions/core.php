@@ -85,12 +85,12 @@ function script_url( $script ) {
  */
 function scripts() {
 
-	$avc_settings          = get_option( 'avc_settings' );
-	$disable_refresh       = apply_filters(
+	$avc_settings         = get_option( 'avc_settings' );
+	$disable_refresh      = apply_filters(
 		'avc_disable_refresh',
 		$avc_settings['disable_refresh'] ?? false
 	);
-	$advertiser_ids        = apply_filters(
+	$advertiser_ids       = apply_filters(
 		'avc_advertiser_ids',
 		$avc_settings['advertiser_ids'] ?? []
 	);
@@ -147,8 +147,8 @@ function scripts() {
 	 *
 	 * @param int $refresh_interval The refresh interval in seconds. Defaults to 30.
 	 */
-	$refresh_interval      = absint( apply_filters( 'avc_refresh_interval_value', $refresh_interval ) );
-	$maximum_refreshes     = $avc_settings['maximum_refreshes'] ?? 10;
+	$refresh_interval  = absint( apply_filters( 'avc_refresh_interval_value', $refresh_interval ) );
+	$maximum_refreshes = $avc_settings['maximum_refreshes'] ?? 10;
 
 	if ( $disable_refresh ) {
 		// No need to enqueue scripts if no refreshing will occur.
