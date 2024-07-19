@@ -1,10 +1,11 @@
-const {googletag} = window;
+const { googletag } = window;
 const advertiserIds = window.AdRefreshControl.advertiserIds || []; // Do not trigger active view refresh for the given advertiserId.
 const viewabilityThreshold = window.AdRefreshControl.viewabilityThreshold || 70; // Percentage of visibility above which to trigger active view refresh.
 const lineItemIds = window.AdRefreshControl.lineItemIds || []; // Do not trigger active view refresh for the given line item Ids.
 const sizesToExclude = window.AdRefreshControl.sizesToExclude || []; // Do not trigger active view refresh for the given sizes.
 const slotIdsToExclude = window.AdRefreshControl.slotIdsToExclude || []; // Do not trigger active view refresh for the given slot IDs.
-const refreshInterval      = ( window.AdRefreshControl.refreshInterval || 30 ) * 1000;
+const refreshInterval =
+	( window.AdRefreshControl.refreshInterval || 30 ) * 1000;
 const maximumRefreshes = window.AdRefreshControl.maximumRefreshes || 10;
 const refreshCallback = window.AdRefreshControl.refreshCallback || false;
 let browserFocus = true;
@@ -22,8 +23,11 @@ const checkForAdsReadyToRefresh = () => {
 	}
 	for ( const slot in adsData ) {
 		if ( adsData.hasOwnProperty( slot ) ) {
-			if ( ! adsData[ slot ].canRefresh || ! adsData[ slot ].viewable ||
-					adsData[ slot ].viewability < viewabilityThreshold ) {
+			if (
+				! adsData[ slot ].canRefresh ||
+				! adsData[ slot ].viewable ||
+				adsData[ slot ].viewability < viewabilityThreshold
+			) {
 				continue;
 			}
 			adsData[ slot ].timeViewable += 500;
@@ -37,8 +41,11 @@ const checkForAdsReadyToRefresh = () => {
 	}
 
 	if ( 0 < slotsToRefresh.length ) {
-		if ( refreshCallback && 'function' === typeof window[refreshCallback] ) {
-			window[refreshCallback]( slotsToRefresh );
+		if (
+			refreshCallback &&
+			'function' === typeof window[ refreshCallback ]
+		) {
+			window[ refreshCallback ]( slotsToRefresh );
 		} else {
 			googletag.pubads().refresh( slotsToRefresh );
 		}
@@ -49,8 +56,8 @@ const checkForAdsReadyToRefresh = () => {
 
 /**
  * Handle impressionViewable event.
- * @param {object} event googletag.events.ImpressionViewableEvent
- * see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.impressionviewableevent
+ * @param {Object} event googletag.events.ImpressionViewableEvent
+ *                       see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.impressionviewableevent
  */
 const impressionViewableHandler = ( event ) => {
 	const slotID = event.slot.getSlotElementId();
@@ -63,14 +70,13 @@ const impressionViewableHandler = ( event ) => {
 	adsData[ slotID ].viewable = true;
 };
 
-
 /**
  * Handle slotVisibilityChanged event.
- * @param {object} event googletag.events.SlotVisibilityChangedEvent
- * see: https://developers.google.com/doubleclick-gpt/reference#googletageventsslotvisibilitychangedevent
+ * @param {Object} event googletag.events.SlotVisibilityChangedEvent
+ *                       see: https://developers.google.com/doubleclick-gpt/reference#googletageventsslotvisibilitychangedevent
  */
 const viewabilityHandler = ( event ) => {
-	let {inViewPercentage} = event;
+	let { inViewPercentage } = event;
 
 	if ( 'undefined' === typeof event.inViewPercentage ) {
 		inViewPercentage = 100;
@@ -86,8 +92,8 @@ const viewabilityHandler = ( event ) => {
 
 /**
  * Handle slotRenderEnded event.
- * @param {object} event googletag.events.SlotRenderEndedEvent
- * see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
+ * @param {Object} event googletag.events.SlotRenderEndedEvent
+ *                       see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
  */
 const slotRenderEndedHandler = ( event ) => {
 	const slotID = event.slot.getSlotElementId();
@@ -106,11 +112,11 @@ const slotRenderEndedHandler = ( event ) => {
 
 /**
  * Initialize the data being recorded for the slot.
- * @param {object} event googletag.events.SlotRenderEndedEvent
- * see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
+ * @param {Object} event googletag.events.SlotRenderEndedEvent
+ *                       see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
  */
 const initializeSlotData = ( event ) => {
-	const {slot} = event;
+	const { slot } = event;
 	const slotID = slot.getSlotElementId();
 	if ( ! slotID ) {
 		return;
@@ -133,12 +139,12 @@ const initializeSlotData = ( event ) => {
 
 /**
  * Determine whether an ad slot should be eligible for active refresh.
- * @param {object} event googletag.events.SlotRenderEndedEvent
- * see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
- * @returns bool
+ * @param {Object} event googletag.events.SlotRenderEndedEvent
+ *                       see: https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent
+ * @return {boolean} Returns true of ad slot is eligible for refresh.
  */
 const isEligible = ( event ) => {
-	const {slot} = event;
+	const { slot } = event;
 	const slotInfo = slot.getResponseInformation();
 	if ( ! slotInfo ) {
 		return false;
@@ -147,18 +153,17 @@ const isEligible = ( event ) => {
 	// The size property only exists within the googletag.events.SlotRenderEndedEvent so we need to check it's there before accessing it.
 	let slotSize = 'size' in event ? event.size.toString() : false;
 
-	const slotSizes = slot.getSizes();
-	const slotID = slot.getSlotElementId();
-
 	// Prevent a refresh if the ad has a blacklisted advertiser ID.
 	if ( 'undefined' !== typeof advertiserIds[ slotInfo.advertiserId ] ) {
 		return false;
 	}
 
 	// Prevent a refresh if the line item ID is blacklisted.
-	if ( 'undefined' !== typeof lineItemIds[slotInfo.lineItemId] ) {
+	if ( 'undefined' !== typeof lineItemIds[ slotInfo.lineItemId ] ) {
 		return false;
 	}
+
+	const slotSizes = slot.getSizes();
 
 	// Fluid returns 0x0 - ensure fluid is supported on the unit too.
 	if ( '0,0' === slotSize && slotSizes.includes( 'fluid' ) ) {
@@ -170,14 +175,18 @@ const isEligible = ( event ) => {
 		return false;
 	}
 
+	const slotID = slot.getSlotElementId();
+
 	// Prevent a refresh if the slot ID is blacklisted.
 	if ( 'undefined' !== typeof slotIdsToExclude[ slotID ] ) {
 		return false;
 	}
 
 	// Enforce limit on maximum number of refreshes per slot.
-	if ( 'undefined' !== typeof adsData[ slotID ] &&
-			adsData[ slotID ].renderCount >= maximumRefreshes ) {
+	if (
+		'undefined' !== typeof adsData[ slotID ] &&
+		adsData[ slotID ].renderCount >= maximumRefreshes
+	) {
 		return false;
 	}
 
@@ -188,9 +197,15 @@ const isEligible = ( event ) => {
  * Add event listeners for viewability.
  */
 const viewabilityListener = () => {
-	googletag.pubads().addEventListener( 'impressionViewable', impressionViewableHandler );
-	googletag.pubads().addEventListener( 'slotVisibilityChanged', viewabilityHandler );
-	googletag.pubads().addEventListener( 'slotRenderEnded', slotRenderEndedHandler );
+	googletag
+		.pubads()
+		.addEventListener( 'impressionViewable', impressionViewableHandler );
+	googletag
+		.pubads()
+		.addEventListener( 'slotVisibilityChanged', viewabilityHandler );
+	googletag
+		.pubads()
+		.addEventListener( 'slotRenderEnded', slotRenderEndedHandler );
 };
 
 /**
@@ -199,7 +214,7 @@ const viewabilityListener = () => {
 const setupBrowserFocusDetection = () => {
 	if ( 'undefined' !== typeof document.hidden ) {
 		browserFocus = ! document.hidden;
-		document.addEventListener( 'visibilitychange', function() {
+		document.addEventListener( 'visibilitychange', function () {
 			browserFocus = ! document.hidden;
 		} );
 	} else if ( 'undefined' !== typeof document.onfocusin ) {
