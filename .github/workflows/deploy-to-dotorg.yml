@@ -32,11 +32,8 @@ jobs:
         SLUG: ad-refresh-control
 
     - name: Upload release asset
-      uses: actions/upload-release-asset@v1
+      uses: softprops/action-gh-release@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ${{ github.workspace }}/ad-refresh-control.zip
-        asset_name: ad-refresh-control.zip
-        asset_content_type: application/zip
+        files: ${{github.workspace}}/${{ github.event.repository.name }}.zip
