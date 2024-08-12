@@ -2,7 +2,9 @@
 
 > Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
 
-[![Support Level](https://img.shields.io/badge/support-stable-blue.svg)](#support-level) [![Release Version](https://img.shields.io/github/release/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/releases/latest) ![WordPress tested up to version](https://img.shields.io/wordpress/plugin/tested/ad-refresh-control?label=WordPress) [![GPL-2.0-or-later License](https://img.shields.io/github/license/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/blob/develop/LICENSE.md)
+[![Support Level](https://img.shields.io/badge/support-stable-blue.svg)](#support-level) ![WordPress tested up to version](https://img.shields.io/wordpress/plugin/tested/ad-refresh-control?label=WordPress) [![GPL-2.0-or-later License](https://img.shields.io/github/license/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/blob/develop/LICENSE.md) [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/ad-refresh-control?logo=wordpress&logoColor=FFFFFF&label=Playground%20Demo&labelColor=3858E9&color=3858E9)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/10up/Ad-Refresh-Control/develop/.wordpress-org/blueprints/blueprint.json)
+
+[![Test](https://github.com/10up/Ad-Refresh-Control/actions/workflows/test.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/test.yml) [![Linting](https://github.com/10up/Ad-Refresh-Control/actions/workflows/lint.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/lint.yml) [![Dependency Review](https://github.com/10up/Ad-Refresh-Control/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/dependency-review.yml)
 
 ## Background & Purpose
 
