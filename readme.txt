@@ -2,7 +2,7 @@
 Contributors:      10up, doomwaxer, davidrgreen, jeffpaul
 Tags:              google, ad manager
 Tested up to:      6.6
-Stable tag:        1.1.4
+Stable tag:        1.1.5
 License:           GPL-2.0-or-later
 License URI:       https://spdx.org/licenses/GPL-2.0-or-later.html
 
