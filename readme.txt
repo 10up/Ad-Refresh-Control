@@ -47,6 +47,17 @@ __Slot IDs to Exclude__: Prevent ad refreshes for specific slot IDs in the forma
 
 == Changelog ==
 
+= 1.1.5 - 2024-08-20 =
+* **Added:** Better error handling for environments that don't match our minimum PHP version (props [@rahulsprajapati](https://github.com/rahulsprajapati), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#123](https://github.com/10up/Ad-Refresh-Control/pull/123)).
+* **Added:** Support for the WordPress.org plugin preview (props [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#138](https://github.com/10up/Ad-Refresh-Control/pull/138)).
+* **Changed:** Bump WordPress "tested up to" version 6.6 (props [@sudip-md](https://github.com/sudip-md), [@ankitguptaindia](https://github.com/ankitguptaindia), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter) via [#147](https://github.com/10up/Ad-Refresh-Control/pull/147), [#152](https://github.com/10up/Ad-Refresh-Control/pull/152)).
+* **Changed:** Bump WordPress minimum supported version to 6.4 (props [@sudip-md](https://github.com/sudip-md), [@ankitguptaindia](https://github.com/ankitguptaindia), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter) via [#147](https://github.com/10up/Ad-Refresh-Control/pull/147), [#152](https://github.com/10up/Ad-Refresh-Control/pull/152)).
+* **Security:** Bump `browser-sync` from 2.28.3 to 3.0.2 (props [@dependabot](https://github.com/apps/dependabot), [@Sidsector9](https://github.com/Sidsector9) via [#142](https://github.com/10up/Ad-Refresh-Control/pull/142)).
+* **Developer:** Clean up NPM dependencies and update node to v20 (props [@Sidsector9](https://github.com/Sidsector9), [@dkotter](https://github.com/dkotter) via [#155](https://github.com/10up/Ad-Refresh-Control/pull/155)).
+* **Developer:** Move from `actions/upload-release-asset` to `softprops/action-gh-release` GitHub action (props [@Sidsector9](https://github.com/Sidsector9), [@jeffpaul](https://github.com/jeffpaul) via [#156](https://github.com/10up/Ad-Refresh-Control/pull/156)).
+* **Developer:** Replaced `lee-dohm/no-response` with `actions/stale` to help with closing no-response/stale issues (props [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter) via [#145](https://github.com/10up/Ad-Refresh-Control/pull/145)).
+* **Developer:** "Testing" section in the `CONTRIBUTING.md` file (props [@kmgalanakis](https://github.com/kmgalanakis), [@jeffpaul](https://github.com/jeffpaul) via [#146](https://github.com/10up/Ad-Refresh-Control/pull/146)).
+
 = 1.1.4 - 2023-11-16 =
 * **Changed:** Bump WordPress "tested up to" version 6.4 (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul) via [#134](https://github.com/10up/Ad-Refresh-Control/pull/134), [#135](https://github.com/10up/Ad-Refresh-Control/pull/135)).
 * **Security:** Bump `postcss` from 8.4.25 to 8.4.31, `css-loader` from 2.1.1 to 6.8.1, `postcss-import` from 12.0.1 to 15.1.0, `postcss-loader` from 3.0.0 to 7.3.3 and `stylelint-order` from 1.0.0 to 6.0.3 (props [@dependabot](https://github.com/apps/dependabot), [@Sidsector9](https://github.com/Sidsector9) via [#127](https://github.com/10up/Ad-Refresh-Control/pull/127)).
