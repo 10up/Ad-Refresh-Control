@@ -1,7 +1,8 @@
 === Ad Refresh Control ===
 Contributors:      10up, doomwaxer, davidrgreen, jeffpaul
 Tags:              google, ad manager
-Tested up to:      6.6
+Requires at least: 6.6
+Tested up to:      6.7
 Stable tag:        1.1.5
 License:           GPL-2.0-or-later
 License URI:       https://spdx.org/licenses/GPL-2.0-or-later.html
