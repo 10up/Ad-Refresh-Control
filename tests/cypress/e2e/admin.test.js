@@ -21,5 +21,6 @@ describe( 'Admin can login and open dashboard', () => {
 		cy.get( 'input[name="avc_settings[maximum_refreshes]"]' ).type( '10' );
 
 		cy.get( '#submit' ).click();
+		cy.get( '#setting-error-settings_updated' ).should( 'contain', 'Settings saved.' );
 	} );
 } );
