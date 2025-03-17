@@ -1,4 +1,10 @@
 {
-  "core": null,
-  "plugins": [".", "./tests/plugins/test-plugin.php"]
+  "plugins": [".", "./tests/plugins/test-plugin.php"],
+  "env": {
+    "tests": {
+      "mappings": {
+        "wp-cli.yml": "./tests/bin/wp-cli.yml"
+      }
+    }
+  }
 }
