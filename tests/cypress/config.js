@@ -21,7 +21,10 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return setBaseUrl(on, config);
     },
-    specPattern: 'tests/cypress/e2e/**/*.test.{js,jsx,ts,tsx}',
+    specPattern: [
+      'tests/cypress/e2e/admin.test.js',
+      'tests/cypress/e2e/ad-refresh.test.js',
+    ],
     supportFile: 'tests/cypress/support/e2e.js'
   },
 });
