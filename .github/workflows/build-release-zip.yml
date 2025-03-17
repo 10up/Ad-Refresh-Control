@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache vendor
         id: cache-composer
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-vendor
         with:
@@ -27,7 +27,7 @@ jobs:
 
       - name: Cache node_modules
         id: cache-node-modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-node-modules
         with:
@@ -35,14 +35,14 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Setup node version and npm cache
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install Node dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci --no-optional
+        run: npm ci --omit=optional -f
 
       - name: Install Composer dependencies
         if: steps.cache-vendor.outputs.cache-hit != 'true'

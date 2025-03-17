@@ -1,17 +1,26 @@
 name: Deploy to WordPress.org
+
 on:
   release:
     types: [published]
+
 jobs:
   tag:
     name: New release
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
+
+    - name: Setup node version
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: '.nvmrc'
+
     - name: Build
       run: |
         npm run build-release
+
     - name: WordPress Plugin Deploy
       id: deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
@@ -21,12 +30,10 @@ jobs:
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SLUG: ad-refresh-control
+
     - name: Upload release asset
-      uses: actions/upload-release-asset@v1
+      uses: softprops/action-gh-release@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ${{github.workspace}}/${{ github.event.repository.name }}.zip
-        asset_name: ${{ github.event.repository.name }}.zip
-        asset_content_type: application/zip
+        files: ${{github.workspace}}/${{ github.event.repository.name }}.zip
