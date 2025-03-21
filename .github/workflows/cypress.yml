@@ -23,6 +23,7 @@ jobs:
           - {name: 'WP latest', version: 'latest'}
           - {name: 'WP minimum', version: 'WordPress/WordPress#6.5'}
           - {name: 'WP trunk', version: 'WordPress/WordPress#master'}
+
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -53,7 +54,7 @@ jobs:
         run: npm ci
 
       - name: Set the core version and plugins config
-        run: ./tests/bin/set-wp-config.js --core=${{ matrix.core.version }} --plugins=./${{ github.event.repository.name }}
+        run: ./tests/bin/set-core-version.js ${{ matrix.core.version }}
 
       - name: Set up WP environment
         run: npm run env:start
