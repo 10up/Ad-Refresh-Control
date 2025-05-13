@@ -1,5 +1,8 @@
 name: Deploy to WordPress.org
 
+permissions:
+  contents: write
+
 on:
   release:
     types: [published]
