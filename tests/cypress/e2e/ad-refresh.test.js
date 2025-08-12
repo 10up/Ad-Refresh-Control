@@ -6,7 +6,7 @@ describe( 'Verify the Ad Refresh', () => {
 		cy.login();
 	} );
 
-	it.skip( 'Verify ads exist and are refreshed', () => {
+	it( 'Verify ads exist and are refreshed', () => {
 
 		let ad = '';
 		let ad1 ='';
@@ -30,4 +30,3 @@ describe( 'Verify the Ad Refresh', () => {
 
 	} );
 } );
-
