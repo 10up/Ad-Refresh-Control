@@ -26,7 +26,5 @@ describe( 'Verify the Ad Refresh', () => {
 				cy.wrap( ad ).should( 'not.equal', ad1 );
 				return;
 			} );
-
-
 	} );
 } );
