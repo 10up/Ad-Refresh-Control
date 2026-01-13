@@ -66,6 +66,12 @@ function my_filter_callback( $interval ) {
 }
 ```
 
+## Frequently Asked Questions
+
+### Where do I report security bugs found in this plugin?
+
+Please report security bugs found in the source code of the Ad Refresh Control plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/f87546b2-9abb-4cc0-96ed-38b6f8957286).  The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 ## Support Level
 
 **Stable:** 10up is not planning to develop any new features for this, but will still respond to bug reports and security concerns. We welcome PRs, but any that include new features should be small and easy to integrate and should not include breaking changes. We otherwise intend to keep this tested up to the most recent version of WordPress.
