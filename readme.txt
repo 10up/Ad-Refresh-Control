@@ -41,6 +41,12 @@ __Sizes to Exclude__: Prevent ad refreshes for specific sizes in the format of a
 
 __Slot IDs to Exclude__: Prevent ad refreshes for specific slot IDs in the format of a comma-separated list based on the ID of the div, e.g. div-gpt-ad-grid-1.
 
+== Frequently Asked Questions ==
+
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the Ad Refresh Control plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/f87546b2-9abb-4cc0-96ed-38b6f8957286).  The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin. 
+
 == Screenshots ==
 
 1. Ad Refresh Control plugin settings.
