@@ -27,7 +27,6 @@
   },
   "require-dev": {
     "10up/phpcs-composer": "dev-master",
-    "phpunit/phpunit": "^8.2",
     "wp-phpunit/wp-phpunit": "^6.9",
     "yoast/phpunit-polyfills": "^4.0"
   },
