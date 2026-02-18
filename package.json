@@ -20,7 +20,7 @@
     "ad-manager"
   ],
   "scripts": {
-    "test": "phpunit",
+    "test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/Ad-Refresh-Control vendor/bin/phpunit -c phpunit.xml.dist",
     "start": "composer install && npm install && npm run build",
     "build": "wp-scripts build",
     "watch": "wp-scripts start",
