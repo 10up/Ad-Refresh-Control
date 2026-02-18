@@ -37,7 +37,7 @@ jobs:
       with:
         php-version: '7.4'
         coverage: none
-        tools: composer:v1, cs2pr
+        tools: cs2pr
     - name: composer install
       run: composer install
     - name: PHPCS check
