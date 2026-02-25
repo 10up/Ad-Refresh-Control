@@ -1,31 +1,22 @@
 <?php
-if ( ! defined( 'PROJECT' ) ) {
-	define( 'PROJECT', __DIR__ . '/../includes/' );
-}
+/**
+ * PHPUnit bootstrap file.
+ *
+ * @package Ad-Refresh-Control
+ */
 
-if ( ! defined( 'AD_REFRESH_CONTROL_DIR' ) ) {
-	define( 'AD_REFRESH_CONTROL_DIR', __DIR__ . '/' );
-}
+$_tests_dir = getenv( 'WP_TESTS_DIR' );
 
-// Place any additional bootstrapping requirements here for PHP Unit.
-if ( ! defined( 'WP_LANG_DIR' ) ) {
-	define( 'WP_LANG_DIR', 'lang_dir' );
-}
-if ( ! defined( 'AD_REFRESH_CONTROL_PATH' ) ) {
-	define( 'AD_REFRESH_CONTROL_PATH', 'path' );
-}
+// Give access to tests_add_filter() function.
+require_once $_tests_dir . '/includes/functions.php';
 
-if ( ! file_exists( __DIR__ . '/../vendor/autoload.php' ) ) {
-	throw new PHPUnit_Framework_Exception(
-		'ERROR' . PHP_EOL . PHP_EOL .
-		'You must use Composer to install the test suite\'s dependencies!' . PHP_EOL
-	);
-}
+// Activate the plugin.
+tests_add_filter(
+	'muplugins_loaded',
+	static function (): void {
+		require dirname( __DIR__ ) . '/ad-refresh-control.php';
+	}
+);
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
-require_once __DIR__ . '/../tests/phpunit/test-tools/TestCase.php';
-
-WP_Mock::setUsePatchwork( true );
-WP_Mock::bootstrap();
-WP_Mock::tearDown();
+// Start up the WP testing environment.
+require $_tests_dir . '/includes/bootstrap.php';
