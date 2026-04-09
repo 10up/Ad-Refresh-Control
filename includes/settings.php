@@ -213,8 +213,15 @@ function slot_ids_to_exclude_callback() {
 	$avc_settings = get_option( 'avc_settings' );
 	$value        = $avc_settings['slot_ids_to_exclude'] ?? [];
 
+	$value = array_filter(
+		array_map(
+			'trim',
+			$value
+		),
+		'strlen'
+	);
 	?>
-		<label><input type="text" value="<?php echo esc_attr( implode( ',', $value ) ); ?>" name="avc_settings[slot_ids_to_exclude]">
+		<label><input type="text" value="<?php echo esc_attr( implode( ', ', $value ) ); ?>" name="avc_settings[slot_ids_to_exclude]">
 			<p><?php esc_html_e( 'Prevent ad refreshes for specific slot IDs e.g. div-gpt-ad-grid-1. (Comma-separated list).', 'ad-refresh-control' ); ?></p>
 		</label>
 	<?php
@@ -373,7 +380,7 @@ function sanitize_settings( $settings ) {
 		);
 		$slot_ids_to_exclude = array_map(
 			function ( $slot_id ) {
-				return (string) $slot_id;
+				return (string) trim( $slot_id );
 			},
 			$slot_ids_to_exclude
 		);
