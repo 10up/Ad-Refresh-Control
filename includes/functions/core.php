@@ -130,7 +130,7 @@ function scripts() {
 	);
 	$slot_ids_to_exclude_assoc = [];
 	foreach ( $slot_ids_to_exclude as $slot_id ) {
-		$slot_ids_to_exclude_assoc[ $slot_id ] = 1;
+		$slot_ids_to_exclude_assoc[ trim( $slot_id ) ] = 1;
 	}
 
 	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;
