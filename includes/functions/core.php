@@ -75,7 +75,7 @@ function deactivate() {
  * @return string|WP_Error URL
  */
 function script_url( $script ) {
-	return AD_REFRESH_CONTROL_URL . "dist/js/${script}.js";
+	return AD_REFRESH_CONTROL_URL . "dist/js/{$script}.js";
 }
 
 /**
