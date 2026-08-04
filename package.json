@@ -60,7 +60,7 @@
   "devDependencies": {
     "@10up/cypress-wp-utils": "^0.6.0",
     "@wordpress/env": "^10.37.0",
-    "@wordpress/scripts": "^31.2.0",
+    "@wordpress/scripts": "^34.0.0",
     "copy-webpack-plugin": "^12.0.2",
     "cypress": "^15.17.0",
     "husky": "^1.3.1",
