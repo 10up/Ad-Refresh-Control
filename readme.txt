@@ -54,6 +54,17 @@ Please report security bugs found in the source code of the Ad Refresh Control p
 
 == Changelog ==
 
+= 1.2.0 - 2026-09-01 =
+* **Fixed:** PHP deprecation message: `Using ${var} in strings is deprecated...` (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@blloyd78](https://github.com/blloyd78), [@dkotter](https://github.com/dkotter) via [#213](https://github.com/10up/Ad-Refresh-Control/pull/213)).
+* **Fixed:** Trim whitespace from slot ID exclusion list entries to prevent space-padded keys from failing to match slot element IDs (props [@trrill](https://github.com/trrill), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#205](https://github.com/10up/Ad-Refresh-Control/pull/205)).
+* **Changed:** Bump WordPress minimum supported version to 6.9 (props [@mphillips](https://github.com/mphillips), [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
+* **Changed:** Bump WordPress minimum supported version to 6.6 (props [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#175](https://github.com/10up/Ad-Refresh-Control/pull/175)).
+* **Changed:** Bump "tested up to header" to indicate WordPress 7.1 support (props [@mphillips](https://github.com/mphillips), [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
+* **Changed:** Bump "tested up to header" to indicate WordPress 6.9 support (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#184](https://github.com/10up/Ad-Refresh-Control/pull/184)).
+* **Changed:** Bump "tested up to header" to indicate WordPress 6.8 support (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#176](https://github.com/10up/Ad-Refresh-Control/pull/176)).
+* **Changed:** Bump "tested up to header" to indicate WordPress 6.8 support (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@vikrampm1](https://github.com/vikrampm1), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#174](https://github.com/10up/Ad-Refresh-Control/pull/174)).
+* **Changed:** Bump "tested up to header" to indicate WordPress 6.7 support (props [@jjgrainger](https://github.com/jjgrainger), [@sudip-md](https://github.com/sudip-md), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#166](https://github.com/10up/Ad-Refresh-Control/pull/166)).
+
 = 1.1.5 - 2024-08-20 =
 * **Added:** Better error handling for environments that don't match our minimum PHP version (props [@rahulsprajapati](https://github.com/rahulsprajapati), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#123](https://github.com/10up/Ad-Refresh-Control/pull/123), [#157](https://github.com/10up/Ad-Refresh-Control/pull/157)).
 * **Added:** Support for the WordPress.org plugin preview (props [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#138](https://github.com/10up/Ad-Refresh-Control/pull/138)).
@@ -76,40 +87,5 @@ Please report security bugs found in the source code of the Ad Refresh Control p
 * **Changed:** Bump WordPress "tested up to" version 6.3 (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#125](https://github.com/10up/Ad-Refresh-Control/pull/125), [#126](https://github.com/10up/Ad-Refresh-Control/pull/126)).
 * **Security:** Bump `stylelint` from 14.15.0 to 15.10.1 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#121](https://github.com/10up/Ad-Refresh-Control/pull/121)).
 * **Security:** Bump `fsevents` from 1.2.8 to 1.2.13 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#128](https://github.com/10up/Ad-Refresh-Control/pull/128)).
-
-= 1.1.2 - 2023-06-14 =
-* **Changed:** Bump WordPress "tested up to" version 6.2 (props [@Sidsector9](https://github.com/Sidsector9), [@iamdharmesh](https://github.com/iamdharmesh) via [#110](https://github.com/10up/Ad-Refresh-Control/pull/110)).
-* **Changed:** Documentation & deploy action updates (props [@barryceelen](https://github.com/barryceelen), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter) via [#104](https://github.com/10up/Ad-Refresh-Control/pull/104), [#116](https://github.com/10up/Ad-Refresh-Control/pull/116)).
-* **Security:** Bump `minimist` from 1.2.0 to 1.2.8 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#105](https://github.com/10up/Ad-Refresh-Control/pull/105)).
-* **Security:** Bump `mkdirp` from 0.5.1 to 0.5.6 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#105](https://github.com/10up/Ad-Refresh-Control/pull/105)).
-* **Security:** Bump `loader-fs-cache` from 1.0.2 to 1.0.3 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#105](https://github.com/10up/Ad-Refresh-Control/pull/105)).
-* **Security:** Bump `ua-parser-js` from 1.0.2 to 1.0.34 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#106](https://github.com/10up/Ad-Refresh-Control/pull/106)).
-* **Security:** Bump `browser-sync` from 2.27.10 to 2.28.3 (props [@dependabot](https://github.com/apps/dependabot), [@cadic](https://github.com/cadic) via [#106](https://github.com/10up/Ad-Refresh-Control/pull/106)).
-* **Security:** Bump `yaml` from 2.1.3 to 2.2.2 (props [@dependabot](https://github.com/apps/dependabot), [@faisal-alvi](https://github.com/faisal-alvi) via [#111](https://github.com/10up/Ad-Refresh-Control/pull/111)).
-* **Security:** Bump `json5` from 1.0.1 to 1.0.2 (props [@dependabot](https://github.com/apps/dependabot), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#103](https://github.com/10up/Ad-Refresh-Control/pull/103)).
-* **Security:** Bump `socket.io-parser` from 4.2.2 to 4.2.3 (props [@dependabot](https://github.com/apps/dependabot), [@faisal-alvi](https://github.com/faisal-alvi) via [#112](https://github.com/10up/Ad-Refresh-Control/pull/112)).
-
-= 1.1.1 - 2023-01-05 =
-* **Added:** Release build GitHub Action (props [@dkotter](https://github.com/dkotter) via [#99](https://github.com/10up/Ad-Refresh-Control/pull/99)).
-* **Changed:** Bump WordPress minimum version from 4.9 to 5.7 and PHP minimum version from 7.0 to 7.4 (props [@jayedul](https://github.com/jayedul), [@dkotter](https://github.com/dkotter) via [#72](https://github.com/10up/Ad-Refresh-Control/pull/72)).
-* **Changed:** Bump WordPress "tested up to" version to 6.1 (props [@jayedul](https://github.com/jayedul), [@dkotter](https://github.com/dkotter) via [#97](https://github.com/10up/Ad-Refresh-Control/pull/97)).
-* **Changed:** [Support Level](https://github.com/10up/Ad-Refresh-Control#support-level) from `Active` to `Stable` (props [@jeffpaul](https://github.com/jeffpaul) via [#73](https://github.com/10up/Ad-Refresh-Control/pull/73)).
-* **Removed:** `simple-git` as it is no longer used after updating ancestor dependency `lint-staged` (props [@dependabot](https://github.com/apps/dependabot) via [#82](https://github.com/10up/Ad-Refresh-Control/pull/82)).
-* **Removed:** `is-svg` as it is no longer used after updating ancestor dependency `postcss-svgo` (props [@dependabot](https://github.com/apps/dependabot) via [#88](https://github.com/10up/Ad-Refresh-Control/pull/88)).
-* **Fixed:** PHPCS workflow failures (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@cadic](https://github.com/cadic) via [#84](https://github.com/10up/Ad-Refresh-Control/pull/84)).
-* **Security:** Bump `terser` from 3.17.0 to 4.8.1 (props [@dependabot](https://github.com/apps/dependabot) via [#71](https://github.com/10up/Ad-Refresh-Control/pull/71)).
-* **Security:** Bump `loader-utils` from 1.2.3 to 1.4.2 (props [@dependabot](https://github.com/apps/dependabot) via [#74](https://github.com/10up/Ad-Refresh-Control/pull/74)).
-* **Security:** Bump `minimatch` from 3.0.4 to 3.1.2 (props [@dependabot](https://github.com/apps/dependabot) via [#76](https://github.com/10up/Ad-Refresh-Control/pull/76)).
-* **Security:** Bump `engine.io` from 3.2.1 to 6.2.1 and `browser-sync` from 2.26.5 to 2.27.10 (props [@dependabot](https://github.com/apps/dependabot) via [#78](https://github.com/10up/Ad-Refresh-Control/pull/78), [#91](https://github.com/10up/Ad-Refresh-Control/pull/91)).
-* **Security:** Bump `postcss` from 7.0.14 to 8.4.19 and `postcss-preset-env` from 5.3.0 to 7.8.3 (props [@dependabot](https://github.com/apps/dependabot) via [#81](https://github.com/10up/Ad-Refresh-Control/pull/81)).
-* **Security:** Bump `lint-staged` from 8.1.5 to 13.0.3 (props [@dependabot](https://github.com/apps/dependabot) via [#82](https://github.com/10up/Ad-Refresh-Control/pull/82)).
-* **Security:** Bump `set-value` from 2.0.0 to 2.0.1 and `union-value` from 1.0.0 to 1.0.1 (props [@dependabot](https://github.com/apps/dependabot) via [#86](https://github.com/10up/Ad-Refresh-Control/pull/86)).
-* **Security:** Bump `yargs-parser` from 10.1.0 to 20.2.9, `stylelint` from 9.10.1 to 14.15.0, and `webpack-cli` from 3.3.1 to 3.3.12 (props [@dependabot](https://github.com/apps/dependabot) via [#87](https://github.com/10up/Ad-Refresh-Control/pull/87)).
-* **Security:** Bump `postcss-svgo` from 4.0.2 to 4.0.3 (props [@dependabot](https://github.com/apps/dependabot) via [#88](https://github.com/10up/Ad-Refresh-Control/pull/88)).
-* **Security:** Bump `nth-check` from 1.0.2 to 2.1.1 and `cssnano` from 4.1.10 to 5.1.14 (props [@dependabot](https://github.com/apps/dependabot) via [#89](https://github.com/10up/Ad-Refresh-Control/pull/89)).
-* **Security:** Bump `trim-newlines` from 2.0.0 to 3.0.1 and `stylelint-declaration-use-variable` from 1.7.0 to 1.7.3 (props [@dependabot](https://github.com/apps/dependabot) via [#93](https://github.com/10up/Ad-Refresh-Control/pull/93)).
-* **Security:** Bump `kind-of` from 6.0.2 to 6.0.3 (props [@dependabot](https://github.com/apps/dependabot) via [#94](https://github.com/10up/Ad-Refresh-Control/pull/94)).
-* **Security:** Bump `serialize-javascript` from 1.7.0 to 4.0.0, `copy-webpack-plugin` from 5.0.3 to 5.1.2, and `terser-webpack-plugin` from 1.2.3 to 1.4.5 (props [@dependabot](https://github.com/apps/dependabot) via [#95](https://github.com/10up/Ad-Refresh-Control/pull/95)).
-* **Security:** Bump `decode-uri-component` from 0.2.0 to 0.2.2 (props [@dependabot](https://github.com/apps/dependabot) via [#98](https://github.com/10up/Ad-Refresh-Control/pull/98)).
 
 [View historical changelog details here](https://github.com/10up/Ad-Refresh-Control/blob/develop/CHANGELOG.md).
