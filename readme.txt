@@ -1,7 +1,8 @@
 === Ad Refresh Control ===
 Contributors:      10up, doomwaxer, davidrgreen, jeffpaul
 Tags:              google, ad manager
-Tested up to:      6.9
+Tested up to:      7.1
+Requires at least: 6.9
 Stable tag:        1.1.5
 License:           GPL-2.0-or-later
 License URI:       https://spdx.org/licenses/GPL-2.0-or-later.html
@@ -45,7 +46,7 @@ __Slot IDs to Exclude__: Prevent ad refreshes for specific slot IDs in the forma
 
 = Where do I report security bugs found in this plugin? =
 
-Please report security bugs found in the source code of the Ad Refresh Control plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/f87546b2-9abb-4cc0-96ed-38b6f8957286).  The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin. 
+Please report security bugs found in the source code of the Ad Refresh Control plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/f87546b2-9abb-4cc0-96ed-38b6f8957286).  The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Screenshots ==
 
