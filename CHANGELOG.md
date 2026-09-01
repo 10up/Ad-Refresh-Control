@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 ## [Unreleased] - TBD
 
 ## [1.2.0] - 2026-09-01
+**Note that this release bumps the WordPress minimum version from 6.4 to 6.9.**
 
 ### Fixed
 - PHP deprecation message: `Using ${var} in strings is deprecated...` (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@blloyd78](https://github.com/blloyd78), [@dkotter](https://github.com/dkotter) via [#213](https://github.com/10up/Ad-Refresh-Control/pull/213)).

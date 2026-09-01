@@ -55,6 +55,8 @@ Please report security bugs found in the source code of the Ad Refresh Control p
 == Changelog ==
 
 = 1.2.0 - 2026-09-01 =
+**Note that this release bumps the WordPress minimum version from 6.4 to 6.9.**
+
 * **Fixed:** PHP deprecation message: `Using ${var} in strings is deprecated...` (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@blloyd78](https://github.com/blloyd78), [@dkotter](https://github.com/dkotter) via [#213](https://github.com/10up/Ad-Refresh-Control/pull/213)).
 * **Fixed:** Trim whitespace from slot ID exclusion list entries to prevent space-padded keys from failing to match slot element IDs (props [@trrill](https://github.com/trrill), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#205](https://github.com/10up/Ad-Refresh-Control/pull/205)).
 * **Changed:** Bump WordPress minimum supported version to 6.9 (props [@mphillips](https://github.com/mphillips), [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
