@@ -55,19 +55,21 @@ Please report security bugs found in the source code of the Ad Refresh Control p
 == Changelog ==
 
 = 1.2.0 - 2026-09-01 =
+
 **Note that this release bumps the WordPress minimum version from 6.4 to 6.9.**
 
-* **Fixed:** PHP deprecation message: `Using ${var} in strings is deprecated...` (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@blloyd78](https://github.com/blloyd78), [@dkotter](https://github.com/dkotter) via [#213](https://github.com/10up/Ad-Refresh-Control/pull/213)).
-* **Fixed:** Trim whitespace from slot ID exclusion list entries to prevent space-padded keys from failing to match slot element IDs (props [@trrill](https://github.com/trrill), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#205](https://github.com/10up/Ad-Refresh-Control/pull/205)).
-* **Changed:** Bump WordPress minimum supported version to 6.9 (props [@mphillips](https://github.com/mphillips), [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
-* **Changed:** Bump WordPress minimum supported version to 6.6 (props [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#175](https://github.com/10up/Ad-Refresh-Control/pull/175)).
-* **Changed:** Bump "tested up to header" to indicate WordPress 7.1 support (props [@mphillips](https://github.com/mphillips), [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
-* **Changed:** Bump "tested up to header" to indicate WordPress 6.9 support (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#184](https://github.com/10up/Ad-Refresh-Control/pull/184)).
-* **Changed:** Bump "tested up to header" to indicate WordPress 6.8 support (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#176](https://github.com/10up/Ad-Refresh-Control/pull/176)).
-* **Changed:** Bump "tested up to header" to indicate WordPress 6.8 support (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@vikrampm1](https://github.com/vikrampm1), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#174](https://github.com/10up/Ad-Refresh-Control/pull/174)).
-* **Changed:** Bump "tested up to header" to indicate WordPress 6.7 support (props [@jjgrainger](https://github.com/jjgrainger), [@sudip-md](https://github.com/sudip-md), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#166](https://github.com/10up/Ad-Refresh-Control/pull/166)).
+**Changed**
+
+* Bump WordPress minimum supported version to 6.9 (props [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc), [@mphillips](https://github.com/mphillips), [@dkotter](https://github.com/dkotter) via [#175](https://github.com/10up/Ad-Refresh-Control/pull/175), [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
+* Bump WordPress tested-up-to 7.1 (props [@jjgrainger](https://github.com/jjgrainger), [@sudip-md](https://github.com/sudip-md), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc), [@QAharshalkadu](https://github.com/QAharshalkadu), [@vikrampm1](https://github.com/vikrampm1), [@dkotter](https://github.com/dkotter), [@mphillips](https://github.com/mphillips) via [#166](https://github.com/10up/Ad-Refresh-Control/pull/166), [#174](https://github.com/10up/Ad-Refresh-Control/pull/174), [#176](https://github.com/10up/Ad-Refresh-Control/pull/176), [#184](https://github.com/10up/Ad-Refresh-Control/pull/184), [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
+
+**Fixed**
+
+* PHP deprecation message: `Using ${var} in strings is deprecated...` (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@blloyd78](https://github.com/blloyd78), [@dkotter](https://github.com/dkotter) via [#213](https://github.com/10up/Ad-Refresh-Control/pull/213)).
+* Trim whitespace from slot ID exclusion list entries to prevent space-padded keys from failing to match slot element IDs (props [@trrill](https://github.com/trrill), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#205](https://github.com/10up/Ad-Refresh-Control/pull/205)).
 
 = 1.1.5 - 2024-08-20 =
+
 * **Added:** Better error handling for environments that don't match our minimum PHP version (props [@rahulsprajapati](https://github.com/rahulsprajapati), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#123](https://github.com/10up/Ad-Refresh-Control/pull/123), [#157](https://github.com/10up/Ad-Refresh-Control/pull/157)).
 * **Added:** Support for the WordPress.org plugin preview (props [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#138](https://github.com/10up/Ad-Refresh-Control/pull/138)).
 * **Changed:** Bump WordPress "tested up to" version 6.6 (props [@sudip-md](https://github.com/sudip-md), [@ankitguptaindia](https://github.com/ankitguptaindia), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter) via [#147](https://github.com/10up/Ad-Refresh-Control/pull/147), [#152](https://github.com/10up/Ad-Refresh-Control/pull/152)).
@@ -79,12 +81,14 @@ Please report security bugs found in the source code of the Ad Refresh Control p
 * **Developer:** "Testing" section in the `CONTRIBUTING.md` file (props [@kmgalanakis](https://github.com/kmgalanakis), [@jeffpaul](https://github.com/jeffpaul) via [#146](https://github.com/10up/Ad-Refresh-Control/pull/146)).
 
 = 1.1.4 - 2023-11-16 =
+
 * **Changed:** Bump WordPress "tested up to" version 6.4 (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul) via [#134](https://github.com/10up/Ad-Refresh-Control/pull/134), [#135](https://github.com/10up/Ad-Refresh-Control/pull/135)).
 * **Security:** Bump `postcss` from 8.4.25 to 8.4.31, `css-loader` from 2.1.1 to 6.8.1, `postcss-import` from 12.0.1 to 15.1.0, `postcss-loader` from 3.0.0 to 7.3.3 and `stylelint-order` from 1.0.0 to 6.0.3 (props [@dependabot](https://github.com/apps/dependabot), [@Sidsector9](https://github.com/Sidsector9) via [#127](https://github.com/10up/Ad-Refresh-Control/pull/127)).
 * **Security:** Bump `@babel/traverse` from 7.4.3 to 7.23.2 (props [@dependabot](https://github.com/apps/dependabot), [@dkotter](https://github.com/dkotter) via [#131](https://github.com/10up/Ad-Refresh-Control/pull/131)).
 * **Security:** Bump `browserify-sign` from 4.0.4 to 4.2.2 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#133](https://github.com/10up/Ad-Refresh-Control/pull/133)).
 
 = 1.1.3 - 2023-10-16 =
+
 * **Changed:** Updated the `skaut/wordpress-version-checker` to check WordPress "tested up to" during the Release Candidate phase (props [@jeffpaul](https://github.com/jeffpaul), [@iamdharmesh](https://github.com/iamdharmesh) via [#118](https://github.com/10up/Ad-Refresh-Control/pull/118)).
 * **Changed:** Bump WordPress "tested up to" version 6.3 (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#125](https://github.com/10up/Ad-Refresh-Control/pull/125), [#126](https://github.com/10up/Ad-Refresh-Control/pull/126)).
 * **Security:** Bump `stylelint` from 14.15.0 to 15.10.1 (props [@dependabot](https://github.com/apps/dependabot), [@ravinderk](https://github.com/ravinderk) via [#121](https://github.com/10up/Ad-Refresh-Control/pull/121)).
