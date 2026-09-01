@@ -7,18 +7,13 @@ All notable changes to this project will be documented in this file, per [the Ke
 ## [1.2.0] - 2026-09-01
 **Note that this release bumps the WordPress minimum version from 6.4 to 6.9.**
 
+### Changed
+- Bump WordPress minimum supported version to 6.9 (props [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc), [@mphillips](https://github.com/mphillips), [@dkotter](https://github.com/dkotter) via [#175](https://github.com/10up/Ad-Refresh-Control/pull/175), [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
+- Bump WordPress tested-up-to 7.1 (props [@jjgrainger](https://github.com/jjgrainger), [@sudip-md](https://github.com/sudip-md), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc), [@QAharshalkadu](https://github.com/QAharshalkadu), [@vikrampm1](https://github.com/vikrampm1), [@dkotter](https://github.com/dkotter), [@mphillips](https://github.com/mphillips) via [#166](https://github.com/10up/Ad-Refresh-Control/pull/166), [#174](https://github.com/10up/Ad-Refresh-Control/pull/174), [#176](https://github.com/10up/Ad-Refresh-Control/pull/176), [#184](https://github.com/10up/Ad-Refresh-Control/pull/184), [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
+
 ### Fixed
 - PHP deprecation message: `Using ${var} in strings is deprecated...` (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@blloyd78](https://github.com/blloyd78), [@dkotter](https://github.com/dkotter) via [#213](https://github.com/10up/Ad-Refresh-Control/pull/213)).
 - Trim whitespace from slot ID exclusion list entries to prevent space-padded keys from failing to match slot element IDs (props [@trrill](https://github.com/trrill), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#205](https://github.com/10up/Ad-Refresh-Control/pull/205)).
-
-### Changed
-- Bump WordPress minimum supported version to 6.9 (props [@mphillips](https://github.com/mphillips), [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
-- Bump WordPress minimum supported version to 6.6 (props [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#175](https://github.com/10up/Ad-Refresh-Control/pull/175)).
-- Bump "tested up to header" to indicate WordPress 7.1 support (props [@mphillips](https://github.com/mphillips), [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#219](https://github.com/10up/Ad-Refresh-Control/pull/219)).
-- Bump "tested up to header" to indicate WordPress 6.9 support (props [@peterwilsoncc](https://github.com/peterwilsoncc), [@dkotter](https://github.com/dkotter), [@jeffpaul](https://github.com/jeffpaul) via [#184](https://github.com/10up/Ad-Refresh-Control/pull/184)).
-- Bump "tested up to header" to indicate WordPress 6.8 support (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#176](https://github.com/10up/Ad-Refresh-Control/pull/176)).
-- Bump "tested up to header" to indicate WordPress 6.8 support (props [@QAharshalkadu](https://github.com/QAharshalkadu), [@jeffpaul](https://github.com/jeffpaul), [@vikrampm1](https://github.com/vikrampm1), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#174](https://github.com/10up/Ad-Refresh-Control/pull/174)).
-- Bump "tested up to header" to indicate WordPress 6.7 support (props [@jjgrainger](https://github.com/jjgrainger), [@sudip-md](https://github.com/sudip-md), [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#166](https://github.com/10up/Ad-Refresh-Control/pull/166)).
 
 ### Developer
 - Add Patchstack security-reporting FAQ (props [@jeffpaul](https://github.com/jeffpaul), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#185](https://github.com/10up/Ad-Refresh-Control/pull/185)).
