@@ -62,6 +62,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Bump `@wordpress/e2e-test-utils-playwright` from 1.8.1 to 1.20.0 (props [@dependabot[bot]](https://github.com/apps/dependabot), [@jeffpaul](https://github.com/jeffpaul), [@Sidsector9](https://github.com/Sidsector9), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#170](https://github.com/10up/Ad-Refresh-Control/pull/170)).
 - Bump `tmp` from 0.2.5 to 0.2.7 (props [@dependabot[bot]](https://github.com/apps/dependabot), [@jeffpaul](https://github.com/jeffpaul), [@dkotter](https://github.com/dkotter), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#215](https://github.com/10up/Ad-Refresh-Control/pull/215)).
 - Bump `webpack` from 5.92.1 to 5.105.0 (props [@dependabot[bot]](https://github.com/apps/dependabot), [@jeffpaul](https://github.com/jeffpaul), [@faisal-alvi](https://github.com/faisal-alvi), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#161](https://github.com/10up/Ad-Refresh-Control/pull/161), [#190](https://github.com/10up/Ad-Refresh-Control/pull/190)).
+- Bump `adm-zip` from 0.5.16 to 0.6.0 (props [@dependabot[bot]](https://github.com/apps/dependabot), [@dkotter](https://github.com/dkotter) via [#232](https://github.com/10up/Ad-Refresh-Control/pull/232).
 
 ## [1.1.5] - 2024-08-20
 **Note that this release bumps the WordPress minimum version from 5.7 to 6.4.**
