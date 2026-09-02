@@ -75,7 +75,7 @@ function deactivate() {
  * @return string|WP_Error URL
  */
 function script_url( $script ) {
-	return AD_REFRESH_CONTROL_URL . "dist/js/${script}.js";
+	return AD_REFRESH_CONTROL_URL . "dist/js/{$script}.js";
 }
 
 /**
@@ -130,7 +130,7 @@ function scripts() {
 	);
 	$slot_ids_to_exclude_assoc = [];
 	foreach ( $slot_ids_to_exclude as $slot_id ) {
-		$slot_ids_to_exclude_assoc[ $slot_id ] = 1;
+		$slot_ids_to_exclude_assoc[ trim( $slot_id ) ] = 1;
 	}
 
 	$viewability_threshold = $avc_settings['viewability_threshold'] ?? 70;

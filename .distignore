@@ -20,5 +20,6 @@ package-lock.json
 package.json
 phpcs.xml
 phpunit.xml
+phpunit.xml.dist
 postcss.config.js
 README.md

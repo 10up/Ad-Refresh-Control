@@ -1,10 +1,10 @@
 # Ad Refresh Control
 
+![Ad Refresh Control](https://github.com/10up/Ad-Refresh-Control/blob/develop/.wordpress-org/banner-1544x500.png)
+
+[![Support Level](https://img.shields.io/badge/support-stable-blue.svg)](#support-level) ![Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/ad-refresh-control?label=Requires%20PHP) ![Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/ad-refresh-control?label=Requires%20WordPress) ![WordPress tested up to version](https://img.shields.io/wordpress/plugin/tested/ad-refresh-control?label=WordPress) [![GPL-2.0-or-later License](https://img.shields.io/github/license/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/blob/develop/LICENSE.md) [![Dependency Review](https://github.com/10up/Ad-Refresh-Control/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/dependency-review.yml) [![Test](https://github.com/10up/Ad-Refresh-Control/actions/workflows/test.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/test.yml) [![Linting](https://github.com/10up/Ad-Refresh-Control/actions/workflows/lint.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/lint.yml) [![CodeQL](https://github.com/10up/Ad-Refresh-Control/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/github-code-scanning/codeql) [![WordPress Playground Demo](https://img.shields.io/wordpress/plugin/v/ad-refresh-control?logo=wordpress&logoColor=FFFFFF&label=Playground%20Demo&labelColor=3858E9&color=3858E9)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/10up/Ad-Refresh-Control/develop/.wordpress-org/blueprints/blueprint.json)
+
 > Enable Active View refresh for Google Ad Manager ads without needing to modify any code.
-
-[![Support Level](https://img.shields.io/badge/support-stable-blue.svg)](#support-level) ![WordPress tested up to version](https://img.shields.io/wordpress/plugin/tested/ad-refresh-control?label=WordPress) [![GPL-2.0-or-later License](https://img.shields.io/github/license/10up/ad-refresh-control.svg)](https://github.com/10up/ad-refresh-control/blob/develop/LICENSE.md) [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/ad-refresh-control?logo=wordpress&logoColor=FFFFFF&label=Playground%20Demo&labelColor=3858E9&color=3858E9)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/10up/Ad-Refresh-Control/develop/.wordpress-org/blueprints/blueprint.json)
-
-[![Test](https://github.com/10up/Ad-Refresh-Control/actions/workflows/test.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/test.yml) [![Linting](https://github.com/10up/Ad-Refresh-Control/actions/workflows/lint.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/lint.yml) [![Dependency Review](https://github.com/10up/Ad-Refresh-Control/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/10up/Ad-Refresh-Control/actions/workflows/dependency-review.yml)
 
 ## Background & Purpose
 
@@ -42,7 +42,8 @@ A settings page will allow adjustments such as the time between refreshes, the m
 
 ### Hooks
 
-#### `avc_refresh_interval_value` 
+#### `avc_refresh_interval_value`
+
 - Filters the default refresh interval value of 30 seconds. This filter is applied to the value at storage and retrieval phases.
 - Since 1.0.5
 
@@ -65,6 +66,12 @@ function my_filter_callback( $interval ) {
 }
 ```
 
+## Frequently Asked Questions
+
+### Where do I report security bugs found in this plugin?
+
+Please report security bugs found in the source code of the Ad Refresh Control plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/f87546b2-9abb-4cc0-96ed-38b6f8957286).  The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 ## Support Level
 
 **Stable:** 10up is not planning to develop any new features for this, but will still respond to bug reports and security concerns. We welcome PRs, but any that include new features should be small and easy to integrate and should not include breaking changes. We otherwise intend to keep this tested up to the most recent version of WordPress.
@@ -79,4 +86,4 @@ Please read [CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md) for details on our code of
 
 ## Like what you see?
 
-<a href="http://10up.com/contact/"><img src="https://10up.com/uploads/2016/10/10up-Github-Banner.png" alt="Work with 10up, we create amazing websites and tools that make content management simple and fun using open source tools and platforms"></a>
+<a href="http://10up.com/contact/"><img src="https://github.com/10up/.github/blob/trunk/profile/10up-github-banner.jpg" width="850" alt="Work with the 10up WordPress Practice at Fueled"></a>

@@ -26,3 +26,6 @@ Thumbs.db
 Desktop.ini
 
 *.cache
+/tests/_output/*
+!/tests/_output/.gitkeep
+/tests/.phpunit.result.cache
