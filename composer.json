@@ -28,6 +28,7 @@
   "require-dev": {
     "10up/phpcs-composer": "^3.0",
     "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "phpunit/phpunit": "^9.6",
     "wp-phpunit/wp-phpunit": "^6.9",
     "yoast/phpunit-polyfills": "^4.0"
   },
