@@ -309,12 +309,12 @@ function sanitize_settings( $settings ) {
 
 		$advertiser_ids = array_filter(
 			$advertiser_ids,
-			function( $advertiser_id ):int {
+			function ( $advertiser_id ): int {
 				return is_numeric( $advertiser_id );
 			}
 		);
 		$advertiser_ids = array_map(
-			function( $advertiser_id ) {
+			function ( $advertiser_id ) {
 				return (int) $advertiser_id;
 			},
 			$advertiser_ids
@@ -337,7 +337,7 @@ function sanitize_settings( $settings ) {
 
 		$line_item_ids = array_filter(
 			$line_item_ids,
-			function ( $line_item_id ):int {
+			function ( $line_item_id ): int {
 				return is_numeric( $line_item_id );
 			}
 		);
@@ -374,7 +374,7 @@ function sanitize_settings( $settings ) {
 
 		$slot_ids_to_exclude = array_filter(
 			$slot_ids_to_exclude,
-			function ( $slot_id ):int {
+			function ( $slot_id ): int {
 				return is_string( $slot_id );
 			}
 		);
