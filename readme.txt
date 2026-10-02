@@ -3,6 +3,7 @@ Contributors:      10up, doomwaxer, davidrgreen, jeffpaul
 Tags:              google, ad manager
 Tested up to:      7.1
 Requires at least: 6.9
+Requires PHP:      8.2
 Stable tag:        1.2.0
 License:           GPL-2.0-or-later
 License URI:       https://spdx.org/licenses/GPL-2.0-or-later.html

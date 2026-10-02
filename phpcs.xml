@@ -2,6 +2,10 @@
 <ruleset name="10up PHPCS">
 	<description>10up PHPCS extended.</description>
 	<rule ref="10up-Default" />
+	<rule ref="PHPCompatibilityWP">
+		<include-pattern>*\.php$</include-pattern>
+	</rule>
+	<config name="testVersion" value="8.2-8.5" />
 	<exclude-pattern>dist</exclude-pattern>
 	<exclude-pattern>tests</exclude-pattern>
 </ruleset>

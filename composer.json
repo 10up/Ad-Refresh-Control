@@ -18,7 +18,7 @@
     }
   ],
   "require": {
-    "php": ">=7.4"
+    "php": ">=8.2"
   },
   "autoload": {
     "psr-4": {
@@ -26,7 +26,9 @@
     }
   },
   "require-dev": {
-    "10up/phpcs-composer": "dev-master",
+    "10up/phpcs-composer": "^3.0",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "phpunit/phpunit": "^9.6",
     "wp-phpunit/wp-phpunit": "^6.9",
     "yoast/phpunit-polyfills": "^4.0"
   },
@@ -37,6 +39,9 @@
   "config": {
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "platform": {
+      "php": "8.2.0"
     }
   }
 }

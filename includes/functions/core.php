@@ -7,7 +7,7 @@
 
 namespace AdRefreshControl\Core;
 
-use \WP_Error as WP_Error;
+use WP_Error;
 
 /**
  * Default setup routine
@@ -64,7 +64,6 @@ function activate() {
  * @return void
  */
 function deactivate() {
-
 }
 
 /**
