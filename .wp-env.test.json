@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/wp-env.json",
+  "testsEnvironment": false,
+  "port": 8889,
+  "core": null,
+  "plugins": [".", "./tests/e2e-plugins/ad-refresh-control-e2e-helpers"],
+  "config": {
+    "FS_METHOD": "direct",
+    "WP_DEBUG": true
+  },
+  "mappings": {
+    "/wp-content/plugins/Ad-Refresh-Control": "."
+  }
+}
