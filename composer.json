@@ -27,8 +27,9 @@
   },
   "require-dev": {
     "10up/phpcs-composer": "dev-master",
-    "wp-phpunit/wp-phpunit": "^6.9",
-    "yoast/phpunit-polyfills": "^4.0"
+    "wp-phpunit/wp-phpunit": "^7.1",
+    "yoast/phpunit-polyfills": "^4.0",
+    "phpunit/phpunit": "^9.6"
   },
   "scripts": {
     "lint": "phpcs .",
