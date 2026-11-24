@@ -17,7 +17,7 @@ use WP_UnitTestCase;
  * and compares sizes against `event.size.toString()`, so the shape of this data
  * is a contract: a different shape silently disables every exclusion.
  */
-class Scripts_Tests extends WP_UnitTestCase {
+class ScriptsTest extends WP_UnitTestCase {
 
 	/**
 	 * The global script registry before the test.

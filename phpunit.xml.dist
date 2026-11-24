@@ -15,7 +15,7 @@
 >
 	<testsuites>
 		<testsuite name="integration">
-			<directory suffix="Tests.php">./tests/phpunit</directory>
+			<directory suffix="Test.php">./tests/Integration</directory>
 		</testsuite>
 	</testsuites>
 	<coverage processUncoveredFiles="false">

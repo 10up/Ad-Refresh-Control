@@ -12,7 +12,7 @@ use WP_UnitTestCase;
 /**
  * Saving avc_settings through the registered sanitize callback.
  */
-class Settings_Tests extends WP_UnitTestCase {
+class SettingsTest extends WP_UnitTestCase {
 
 	/**
 	 * Registers the setting as an administrator, the way admin_init does on options.php.
